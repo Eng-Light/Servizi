@@ -19,7 +19,7 @@ class SignUpViewModel : ViewModel() {
     private val _signUpData = MutableLiveData<TechnicianData>()
     private val _signUpResponseData = MutableLiveData<TechSignUpResponseData>()
 
-    // The external immutable LiveData for the request status
+    //The external immutable LiveData for the request status
     val signUpLoadingStatus: LiveData<TechSignUpApiStatus> = _signUpLoadingStatus
     val signUpData: LiveData<TechnicianData> = _signUpData
     val signUpResponseData: LiveData<TechSignUpResponseData> = _signUpResponseData
