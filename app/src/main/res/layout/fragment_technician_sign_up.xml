@@ -158,6 +158,85 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_text_input"
+                    android:hint="@string/age"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_text_input"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:paddingStart="10dp"
+                    android:text="@string/city"
+                    android:textSize="18sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <Spinner
+                    android:id="@+id/city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:autofillHints="postalAddress"
+                    android:dropDownWidth="180dp"
+                    android:entries="@array/Convert_Type"
+                    android:spinnerMode="dropdown"
+                    tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck"
+                    tools:listitem="@layout/support_simple_spinner_dropdown_item" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_text_input"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:paddingStart="10dp"
+                    android:text="@string/governorate"
+                    android:textSize="18sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <Spinner
+                    android:id="@+id/governorate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:autofillHints="postalAddress"
+                    android:dropDownWidth="180dp"
+                    android:entries="@array/Convert_Type"
+                    android:spinnerMode="dropdown"
+                    tools:ignore="TouchTargetSizeCheck"
+                    tools:listitem="@layout/support_simple_spinner_dropdown_item" />
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/national_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
