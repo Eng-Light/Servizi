@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/PagerFragment">
+
+    <fragment
+        android:id="@+id/PagerFragment"
+        android:name="com.example.servizi.user.ui.login_signup_pager.UserPagerFragment"
+        android:label="Servizi"
+        tools:layout="@layout/fragment_user_pager" />
+</navigation>

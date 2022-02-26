@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph2"
+    app:startDestination="@id/TechnicianPagerFragment">
+    <fragment
+        android:id="@+id/TechnicianPagerFragment"
+        android:name="com.example.servizi.technician.ui.login_signup_pager.TechnicianPagerFragment"
+        android:label="Servizi_2"
+        tools:layout="@layout/fragment_technician_pager" />
+</navigation>

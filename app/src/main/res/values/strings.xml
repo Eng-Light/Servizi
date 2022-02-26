@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Servizi</string>
+    <string name="image">image</string>
+    <string name="user">User</string>
+    <string name="technician">Technician</string>
+    <string name="already_have_account">Already have account ?</string>
+    <string name="terms_condition">By creating an account you agree to our Terms of Service and PrivacyPolicy</string>
+    <string name="title_activity_user_main">UserMainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_technician_main">TechnicianMainActivity</string>
+    <string name="todo">TODO</string>
+    <string name="tab_text_1">Login</string>
+    <string name="tab_text_2">SignUp</string>
+    <string name="register_as_a_technician">Register as a Technician</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="create_password">Create password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="phone">Phone</string>
+    <string name="age">Age</string>
+    <string name="servizi">Servizi</string>
+    <string name="best_solution_for_every_house_problems">Best solution for every house problems</string>
+    <string name="national_id">National ID</string>
+    <string name="profession">Profession</string>
+    <string name="already_have_an_account">Already have an account? LOGIN</string>
+    <string name="register">Register</string>
+</resources>
