@@ -32,4 +32,27 @@
     <string name="profession">Profession</string>
     <string name="already_have_an_account">Already have an account? LOGIN</string>
     <string name="register">Register</string>
+    <string name="TemperatureString">Temperature</string>
+    <string name="WeightString">Weight</string>
+    <string name="VolumeString">Volume</string>
+    <string name="SpeedString">Speed</string>
+    <string name="LengthString">Length</string>
+    <string name="AreaString">Area</string>
+    <string name="EnergyString">Energy</string>
+    <string name="PressureString">Pressure</string>
+    <string name="MemoryString">Memory</string>
+    <string name="city">City</string>
+    <string name="governorate">Governorate</string>
+
+    <string-array name="Convert_Type">
+        <item>@string/TemperatureString</item>
+        <item>@string/WeightString</item>
+        <item>@string/VolumeString</item>
+        <item>@string/SpeedString</item>
+        <item>@string/LengthString</item>
+        <item>@string/AreaString</item>
+        <item>@string/EnergyString</item>
+        <item>@string/PressureString</item>
+        <item>@string/MemoryString</item>
+    </string-array>
 </resources>
