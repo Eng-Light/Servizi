@@ -7,9 +7,45 @@
     tools:context=".user.ui.login_signup_pager.UserPagerFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/user_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.Servizi.AppBarOverlay">
+        android:layout_height="149dp"
+        android:theme="@style/Theme.Servizi.AppBarOverlay"
+        app:layout_anchor="@+id/user_bar"
+        app:layout_anchorGravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:contentDescription="@string/image"
+                android:scaleType="fitXY"
+                android:src="@drawable/main_background" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="20dp"
+                android:text="@string/servizi"
+                android:textAlignment="center"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="50sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:paddingBottom="20dp"
+                android:text="@string/best_solution_for_every_house_problems"
+                android:textColor="#FEE6E4E4" />
+        </FrameLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/user_tabs"
@@ -24,15 +60,5 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/todo"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
