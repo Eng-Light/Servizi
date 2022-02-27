@@ -163,7 +163,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_text_input"
                     android:hint="@string/age"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:textColor="@color/black" />
 

@@ -10,10 +10,10 @@ data class TechnicianData(
     @Json(name = "phone") val phone: String,
     @Json(name = "city") val city: String,
     @Json(name = "governorate") val governorate: String,
-    @Json(name = "nationalId") val nationalId: String,
+    @Json(name = "natinalId") val natinalId: String,
     @Json(name = "profession") val profession: String,
     @Json(name = "age") val age: String,
-    @Json(name = "password") val password: String,
+    @Json(name = "password") val password: String
 
     )
 
