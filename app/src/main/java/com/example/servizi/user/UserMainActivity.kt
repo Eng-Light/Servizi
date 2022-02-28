@@ -1,6 +1,7 @@
 package com.example.servizi.user
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -21,11 +22,24 @@ class UserMainActivity : AppCompatActivity() {
         binding = ActivityUserMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbar2)
 
         val navController = findNavController(R.id.nav_host_fragment_content_user_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.user_view_pager -> {
+                    supportActionBar?.hide()
+                    binding.toolbar2.visibility = View.GONE
+                }
+                else -> {
+                    supportActionBar?.show()
+                    binding.toolbar2.visibility = View.VISIBLE
+                }
+            }
+        }
+            }
 /*
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -33,11 +47,12 @@ class UserMainActivity : AppCompatActivity() {
         }
         */
 
-    }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_user_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
-}
+
+            override fun onSupportNavigateUp(): Boolean {
+                val navController = findNavController(R.id.nav_host_fragment_content_user_main)
+                return navController.navigateUp(appBarConfiguration)
+                        || super.onSupportNavigateUp()
+            }
+        }
+

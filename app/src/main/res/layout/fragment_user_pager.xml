@@ -9,14 +9,11 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/user_bar"
         android:layout_width="match_parent"
-        android:layout_height="149dp"
+        android:layout_height="wrap_content"
         android:theme="@style/Theme.Servizi.AppBarOverlay"
-        app:layout_anchor="@+id/user_bar"
-        app:layout_anchorGravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

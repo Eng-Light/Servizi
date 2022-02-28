@@ -43,6 +43,7 @@
     <string name="MemoryString">Memory</string>
     <string name="city">City</string>
     <string name="governorate">Governorate</string>
+    <string name="register_as_a_User">Register_as_a_User</string>
     <string name="birth_date">Birth Date \'YYYY-MM-DD\'</string>
 
     <string-array name="Convert_Type">
@@ -56,4 +57,6 @@
         <item>@string/PressureString</item>
         <item>@string/MemoryString</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
