@@ -27,17 +27,17 @@ class TechnicianMainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_technician_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navController.addOnDestinationChangedListener{ _, destination,_ ->
-        when(destination.id){
-            R.id.TechnicianPagerFragment -> {
-                supportActionBar?.hide()
-                binding.toolbar.visibility = View.GONE
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.TechnicianPagerFragment -> {
+                    supportActionBar?.hide()
+                    binding.toolbar.visibility = View.GONE
+                }
+                else -> {
+                    supportActionBar?.show()
+                    binding.toolbar.visibility = View.VISIBLE
+                }
             }
-            else -> {
-                supportActionBar?.show()
-                binding.toolbar.visibility = View.VISIBLE
-            }
-        }
         }
 
 
