@@ -53,8 +53,10 @@ class SignUpViewModel : ViewModel() {
                     val errorResponse: TechSignUpResponseFail? =
                         gson.fromJson(result.errorBody()?.string(), type)
                     _errorMessage.value = errorResponse!!
+                    _errorMessage.value?.let { Log.d("Test_SignUp_Error", it.toString()) }
+                    _signUpLoadingStatus.value = TechSignUpApiStatus.ERROR
                 }
-                _errorMessage.value?.let { Log.d("Test_SignUp_Error", it.toString()) }
+                //Toast.makeText(coroutineContext,errorMessage.value,Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Log.d("Test_SignUp_4", e.toString())
                 _signUpLoadingStatus.value = TechSignUpApiStatus.ERROR
@@ -69,5 +71,8 @@ class SignUpViewModel : ViewModel() {
 
     fun signUp(data: TechnicianData) {
         signUpApiRequest(data)
+    }
+    fun resetStatus(){
+        _signUpLoadingStatus.value = TechSignUpApiStatus.LOADING
     }
 }

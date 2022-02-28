@@ -12,7 +12,7 @@ data class TechnicianData(
     @Json(name = "governorate") val governorate: String,
     @Json(name = "natinalId") val natinalId: String,
     @Json(name = "profession") val profession: String,
-    @Json(name = "age") val age: String,
+    @Json(name = "age") val birthDate: String,
     @Json(name = "password") val password: String
 
     )

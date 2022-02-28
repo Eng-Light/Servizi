@@ -158,11 +158,11 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/age"
+                    android:id="@+id/birthDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_text_input"
-                    android:hint="@string/age"
+                    android:hint="@string/birth_date"
                     android:inputType="text"
                     android:maxLines="1"
                     android:textColor="@color/black" />
