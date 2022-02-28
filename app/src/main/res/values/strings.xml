@@ -23,7 +23,7 @@
     <string name="last_name">Last Name</string>
     <string name="e_mail">E-mail</string>
     <string name="create_password">Create password</string>
-    <string name="repeat_password">Repeat password</string>
+    <string name="repeat_password">Re_Enter password</string>
     <string name="phone">Phone</string>
     <string name="age">Age</string>
     <string name="servizi">Servizi</string>
@@ -44,6 +44,7 @@
     <string name="city">City</string>
     <string name="governorate">Governorate</string>
     <string name="register_as_a_User">Register_as_a_User</string>
+    <string name="birth_date">Birth Date \'YYYY-MM-DD\'</string>
 
     <string-array name="Convert_Type">
         <item>@string/TemperatureString</item>

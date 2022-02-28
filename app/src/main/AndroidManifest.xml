@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.servizi">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,16 +14,19 @@
             android:name=".technician.TechnicianMainActivity"
             android:exported="false"
             android:label="@string/title_activity_technician_main"
-            android:theme="@style/Theme.Servizi.NoActionBar" />
+            android:theme="@style/Theme.Servizi.NoActionBar"
+            android:hardwareAccelerated="false"/>
         <activity
             android:name=".user.UserMainActivity"
             android:exported="false"
             android:label="@string/title_activity_user_main"
-            android:theme="@style/Theme.Servizi.NoActionBar" />
+            android:theme="@style/Theme.Servizi.NoActionBar"
+            android:hardwareAccelerated="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Servizi.NoActionBar">
+            android:theme="@style/Theme.Servizi.NoActionBar"
+            android:hardwareAccelerated="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
