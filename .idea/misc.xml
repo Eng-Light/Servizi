@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/activity_main.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/activity_technician_main.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/activity_user_main.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/content_technician_main.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/content_user_main.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_blank.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_technician_pager.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_technician_sign_up.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_login.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_pager.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.21784420289855072" />
+        <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up_view_model.xml" value="0.21784420289855072" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.204" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/rounded_button.xml" value="0.1585" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/rounded_text_input.xml" value="0.1585" />

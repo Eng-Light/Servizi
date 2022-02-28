@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.example.servizi.databinding.FragmentUserPagerBinding
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 /** A simple [Fragment] subclass as the default destination in the navigation.*/
@@ -41,10 +40,7 @@ class UserPagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fab.setOnClickListener {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
     }
 
     override fun onDestroyView() {
