@@ -1,4 +1,4 @@
-package com.example.servizi.technician.model
+package com.example.servizi.technician.model.signup.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import java.util.regex.Pattern
 
 
-class signupfragment : Fragment() {
+class Signupfragment : Fragment() {
     private lateinit var viewModel: UserSignUpViewModel
     private var _binding: FragmentUserSignUpBinding? = null
     // This property is only valid between onCreateView and
@@ -88,26 +88,8 @@ class signupfragment : Fragment() {
             }
         }
     }
-            /**companion object {
-
-             * The fragment argument representing the section number for this
-             * fragment.
-
-            private const val ARG_SECTION_NUMBER = "section_number"
 
 
-             * Returns a new instance of this fragment for the given section
-             * number.
-
-            @JvmStatic
-            fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
-            arguments = Bundle().apply {
-            putInt(ARG_SECTION_NUMBER, sectionNumber)
-            }
-            }
-            }
-            }**/
             private fun validate(user: UserData): Boolean {
                 var valid = true
 
@@ -145,19 +127,6 @@ class signupfragment : Fragment() {
                 binding.yourEmail.text = null
                 binding.ypurPhone.text = null
                 binding.createYourPassword.text = null
-            }
-
-            private fun StringValidator(_name: String): Boolean {
-                return if (_name.isEmpty() || _name.length < 3) {
-                    false
-                } else {
-                    val pattern: Pattern
-                    val name = "^[a-zA-Z\\\\\\\\s]+"
-                    pattern = Pattern.compile(name)
-                    _name.split(" ").all { pattern.matcher(it).matches() }
-                    /*val matcher: Matcher = pattern.matcher(_name)
-            matcher.matches()*/
-                }
             }
 
             private fun emailValidator(_email: String): Boolean {

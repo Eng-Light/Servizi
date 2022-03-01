@@ -11,13 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.servizi.databinding.FragmentTechnicianSignUpBinding
-import com.example.servizi.technician.model.TechnicianData
+import com.example.servizi.technician.model.signup.TechnicianData
 import com.google.android.material.snackbar.Snackbar
-import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 /**

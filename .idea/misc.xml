@@ -3,10 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/New folder/Servizi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/New folder/Servizi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.106" />
-        <entry key="..\:/New folder/Servizi/app/src/main/res/drawable/ic_visibility_24.xml" value="0.106" />
-        <entry key="..\:/New folder/Servizi/app/src/main/res/drawable/ic_visibility_off_24.xml" value="0.1" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/activity_main.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/activity_technician_main.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/activity_user_main.xml" value="0.21784420289855072" />
@@ -31,11 +27,13 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_pager.xml" value="0.2604166666666667" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_sign_up.xml" value="0.14132340052585451" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_sign_up_technician.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_main.xml" value="0.2756756756756757" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_pager.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_main.xml" value="0.2756756756756757" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_pager.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/sign_up_fragment.xml" value="0.2905405405405405" />
       </map>
     </option>

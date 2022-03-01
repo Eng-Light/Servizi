@@ -2,7 +2,6 @@ package com.example.servizi.user
 
 import android.os.Bundle
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -40,14 +39,6 @@ class UserMainActivity : AppCompatActivity() {
             }
         }
             }
-/*
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-        */
-
-
 
             override fun onSupportNavigateUp(): Boolean {
                 val navController = findNavController(R.id.nav_host_fragment_content_user_main)
