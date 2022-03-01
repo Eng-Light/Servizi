@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.servizi.technician.model.TechSignUpResponseData
-import com.example.servizi.technician.model.TechSignUpResponseFail
-import com.example.servizi.technician.model.TechnicianData
+import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
+import com.example.servizi.technician.model.signup.data.TechSignUpResponseFail
+import com.example.servizi.technician.model.signup.TechnicianData
 import com.example.servizi.technician.network.TechApi
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

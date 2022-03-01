@@ -1,7 +1,7 @@
 package com.example.servizi.technician.network
 
-import com.example.servizi.technician.model.TechSignUpResponseData
-import com.example.servizi.technician.model.TechnicianData
+import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
+import com.example.servizi.technician.model.signup.TechnicianData
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
