@@ -29,7 +29,7 @@ class UserMainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.user_view_pager -> {
+                R.id.PagerFragment -> {
                     supportActionBar?.hide()
                     binding.toolbar2.visibility = View.GONE
                 }
