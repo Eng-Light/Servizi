@@ -1,12 +1,14 @@
 package com.example.servizi.user.network
-import android.service.autofill.UserData
+import com.example.servizi.user.model.UserData
 import com.example.servizi.user.model.UserSignUpResponseData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.Deferred
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
-private const val BASE_URL = " https://servizi.seifahmed.com/"
+private const val BASE_URL = " https://servizi.seifahmed.com/auth/user/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -20,16 +22,9 @@ private val retrofit = Retrofit.Builder()
 interface UserApiService {
 
     @POST("auth/user/signup")
-    suspend fun userSignUpRequest(@Body userSignUpData: UserData): UserSignUpResponseData
+     fun userSignUpRequestAsync(@Body userSignUpData: UserData): Deferred<Response<UserSignUpResponseData>>
 
-    /**@POST("createtask")
-    suspend fun createTask(@Body title: TaskTitle): CreatedTaskResponse
 
-    @PUT("updatetask")
-    suspend fun updateTask(@Body updatedTask: UpdatedTask): TaskMsg
-
-    @DELETE("deletetask/")
-    suspend fun deleteTask(@Query("id") id: Int): TaskMsg*/
 }
 
 object UserApi {
