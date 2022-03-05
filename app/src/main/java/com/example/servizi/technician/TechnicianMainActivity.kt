@@ -22,9 +22,19 @@ class TechnicianMainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-
         val navController = findNavController(R.id.nav_host_fragment_content_technician_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        val loggedIn = intent.extras
+        if (loggedIn != null) {
+            if (loggedIn.getBoolean("LoggedIn")) {
+                navController.navigate(R.id.techHomeFragment)
+            }
+        }
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.TechnicianPagerFragment,
+                R.id.techHomeFragment
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -38,8 +48,6 @@ class TechnicianMainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

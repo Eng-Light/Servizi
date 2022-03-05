@@ -89,7 +89,9 @@ class SignUpFragment : Fragment() {
 
                     Toast.makeText(
                         context,
-                        viewModel.errorMessage.value?.data.toString(),
+                        viewModel.errorMessage.value?.msg.toString() +
+                                "\n ${viewModel.errorMessage.value?.data?.get(0)?.value.toString()}" +
+                                "\n ${viewModel.errorMessage.value?.data?.get(0)?.msg.toString()}",
                         Toast.LENGTH_LONG
                     ).show()
                 }

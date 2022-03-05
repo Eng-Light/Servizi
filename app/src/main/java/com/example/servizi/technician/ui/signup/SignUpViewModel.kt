@@ -1,4 +1,5 @@
 package com.example.servizi.technician.ui.signup
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
 import com.example.servizi.technician.model.signup.data.TechSignUpResponseFail
 import com.example.servizi.technician.model.signup.TechnicianData
+import com.example.servizi.technician.model.signup.data.SignUpResponseFail
 import com.example.servizi.technician.network.TechApi
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -58,9 +60,13 @@ class SignUpViewModel : ViewModel() {
                 //Toast.makeText(coroutineContext,errorMessage.value,Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Log.d("Test_SignUp_4", e.toString())
+                _errorMessage.value = TechSignUpResponseFail("Check Internet Connection", listOf(
+                    SignUpResponseFail("","","","")
+                ))
                 _signUpLoadingStatus.value = TechSignUpApiStatus.ERROR
                 _signUpResponseData.value = TechSignUpResponseData("", "")
             }
+            resetStatus()
         }
     }
 

@@ -1,6 +1,14 @@
 package com.example.servizi.technician.model.login.data
 
+import android.content.Context
 import com.example.servizi.technician.model.login.LoggedInUser
+import com.example.servizi.technician.network.TechApi
+import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import retrofit2.HttpException
+import retrofit2.Response
 import java.io.IOException
 import java.util.*
 
@@ -9,13 +17,23 @@ import java.util.*
  */
 class LoginDataSource {
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
-        try {
-            // TODO: handle loggedInUser authentication
-            val fakeUser = LoggedInUser(UUID.randomUUID().toString(), "Jane Doe")
-            return Result.Success(fakeUser)
-        } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
+    suspend fun <T> login(
+        apiCall: suspend () -> T
+    ): Result<T> {
+        return withContext(Dispatchers.IO) {
+            try {
+                //handle loggedInUser authentication
+                Result.Success(apiCall.invoke())
+            } catch (e: Throwable) {
+                when (e) {
+                    is HttpException -> {
+                        Result.Error(false, e.code(), e.response()?.errorBody())
+                    }
+                    else -> {
+                        Result.Error(true, null, null)
+                    }
+                }
+            }
         }
     }
 

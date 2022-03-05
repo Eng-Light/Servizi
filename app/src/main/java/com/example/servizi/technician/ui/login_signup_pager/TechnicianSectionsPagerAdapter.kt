@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.servizi.R
 import com.example.servizi.signup_login_pager.PlaceholderFragment
+import com.example.servizi.technician.ui.login.LoginFragment
 import com.example.servizi.technician.ui.signup.SignUpFragment
 
 private val TAB_TITLES = arrayOf(
@@ -23,6 +24,7 @@ class TechnicianSectionsPagerAdapter(private val context: com.example.servizi.te
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         return when(position){
+            0 -> LoginFragment()
             1 -> SignUpFragment()
             else -> {PlaceholderFragment.newInstance(position+1)}
         }

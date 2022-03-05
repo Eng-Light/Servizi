@@ -26,13 +26,12 @@
     <string name="repeat_password">Re_Enter password</string>
     <string name="phone">Phone</string>
     <string name="age">Age</string>
-    <string name="servizi">Servizi</string>
     <string name="best_solution_for_every_house_problems">Best solution for every house problems</string>
     <string name="national_id">National ID</string>
     <string name="profession">Profession</string>
     <string name="already_have_an_account">Already have an account? LOGIN</string>
     <string name="register">Register</string>
-    <string name="TemperatureString">Temperature</string>
+    <string name="CairoString">Cairo</string>
     <string name="WeightString">Weight</string>
     <string name="VolumeString">Volume</string>
     <string name="SpeedString">Speed</string>
@@ -47,7 +46,7 @@
     <string name="birth_date">Birth Date \'YYYY-MM-DD\'</string>
 
     <string-array name="Convert_Type">
-        <item>@string/TemperatureString</item>
+        <item>@string/CairoString</item>
         <item>@string/WeightString</item>
         <item>@string/VolumeString</item>
         <item>@string/SpeedString</item>
@@ -65,7 +64,12 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_userPhone">Not a valid Phone Number</string>
+    <string name="invalid_password">Password must be >= 8 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="servizi">Servizi</string>
+    <string name="sign_up_as">Register As</string>
+    <string name="or">Or</string>
 </resources>

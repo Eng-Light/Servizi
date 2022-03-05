@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_package = "com.example.servizi.datastore";
+option java_multiple_files = true;
+
+message LoginTokens {
+  string token = 1;
+  string expiresIn = 2;
+  string id = 3;
+  string userType = 4;
+}

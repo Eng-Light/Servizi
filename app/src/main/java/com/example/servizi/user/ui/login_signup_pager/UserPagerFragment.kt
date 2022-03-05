@@ -33,6 +33,8 @@ class UserPagerFragment : Fragment() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.userTabs
         tabs.setupWithViewPager(viewPager)
+        
+        
 
         return binding.root
     }

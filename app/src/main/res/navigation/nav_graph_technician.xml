@@ -8,5 +8,15 @@
         android:id="@+id/TechnicianPagerFragment"
         android:name="com.example.servizi.technician.ui.login_signup_pager.TechnicianPagerFragment"
         android:label="Servizi_2"
-        tools:layout="@layout/fragment_technician_pager" />
+        tools:layout="@layout/fragment_technician_pager">
+        <action
+            android:id="@+id/action_TechnicianPagerFragment_to_techHomeFragment"
+            app:destination="@id/techHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/techHomeFragment"
+        android:name="com.example.servizi.technician.ui.home.TechHomeFragment"
+        android:label="Tech Home"
+        tools:layout="@layout/tech_home_fragment"
+        />
 </navigation>
