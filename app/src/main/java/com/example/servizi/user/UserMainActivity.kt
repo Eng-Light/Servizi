@@ -24,11 +24,22 @@ class UserMainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar2)
 
         val navController = findNavController(R.id.nav_host_fragment_content_user_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+        val loggedIn = intent.extras
+        if (loggedIn != null) {
+            if (loggedIn.getBoolean("LoggedIn")) {
+                navController.navigate(R.id.UserHomeFragment)
+            }
+        }
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.UserHomeFragment,
+                R.id.UserPagerFragment
+            )
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.PagerFragment -> {
+                R.id.UserPagerFragment -> {
                     supportActionBar?.hide()
                     binding.toolbar2.visibility = View.GONE
                 }
@@ -38,12 +49,12 @@ class UserMainActivity : AppCompatActivity() {
                 }
             }
         }
-            }
+    }
 
-            override fun onSupportNavigateUp(): Boolean {
-                val navController = findNavController(R.id.nav_host_fragment_content_user_main)
-                return navController.navigateUp(appBarConfiguration)
-                        || super.onSupportNavigateUp()
-            }
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_content_user_main)
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
+    }
+}
 

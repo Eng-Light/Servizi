@@ -3,11 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/PagerFragment">
+    app:startDestination="@id/UserPagerFragment">
 
     <fragment
-        android:id="@+id/PagerFragment"
+        android:id="@+id/UserPagerFragment"
         android:name="com.example.servizi.user.ui.login_signup_pager.UserPagerFragment"
         android:label="Servizi"
-        tools:layout="@layout/fragment_user_pager" />
+        tools:layout="@layout/fragment_user_pager" >
+        <action
+            android:id="@+id/action_UserPagerFragment_to_UserHomeFragment"
+            app:destination="@id/UserHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/UserHomeFragment"
+        android:name="com.example.servizi.user.ui.home.UserHomeFragment"
+        android:label="User Home"
+        tools:layout="@layout/user_home_fragment" />
 </navigation>

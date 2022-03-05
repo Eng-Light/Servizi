@@ -1,6 +1,7 @@
 package com.example.servizi.technician.model.login.data
 
 import com.example.servizi.technician.model.login.LoggedInUser
+import com.example.servizi.technician.network.TechApi
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -27,20 +28,17 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
-        // handle login
-        val result = dataSource.login(username, password)
-
-        if (result is Result.Success) {
-            setLoggedInUser(result.data)
-        }
-
-        return result
+    suspend fun loginTech(
+        userPhone: String,
+        password: String
+    ) = dataSource.login{
+        TechApi.techRetrofitService.techSignInRequestAsync(TechLoginData(userPhone, password))
     }
 
-    private fun setLoggedInUser(loggedInUser: LoggedInUser) {
+
+    /*private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
-    }
+    }*/
 }

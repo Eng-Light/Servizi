@@ -2,17 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="#e2e2e2e2"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="#e2e2e2e2">
+
+    tools:context=".MainActivity">
+    <!-- android:visibility="invisible"-->
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="380dp"
+        android:background="@drawable/rounded_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,15 +24,14 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/image"
-            android:scaleType="fitXY"
-            android:src="@drawable/main_background" />
+            android:background="@drawable/rounded_background"
+            android:contentDescription="@string/image" />
 
         <ImageView
             android:layout_width="280dp"
             android:layout_height="293dp"
             android:layout_gravity="right"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="100dp"
             android:contentDescription="@string/image"
             android:scaleType="fitEnd"
             android:src="@drawable/img"
@@ -45,18 +48,43 @@
             tools:ignore="RtlSymmetry" />
     </FrameLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:text="@string/sign_up_as"
+        android:textColor="@color/primaryColor"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_user"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
-        android:textColor="@color/primaryTextColor"
-        android:text="@string/user"
         android:background="@drawable/rounded_button"
+        android:text="@string/user"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/or"
+        android:textColor="@color/primaryColor"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btn_technician"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_technician"
@@ -66,6 +94,7 @@
         android:background="@drawable/rounded_button"
         android:text="@string/technician"
         android:textColor="@color/primaryTextColor"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
