@@ -58,14 +58,22 @@ class UserPreferences(
         it.id
     }
 
-    val usertype:Flow<String?> = appContext.loginDataStore.data.map {
+    val usertype: Flow<String?> = appContext.loginDataStore.data.map {
         it.userType
     }
 
-    suspend fun saveUserType(userType: String?){
+    suspend fun saveUserType(userType: String?) {
         appContext.loginDataStore.updateData {
             it.toBuilder()
                 .setUserType(userType)
+                .build()
+        }
+    }
+
+    suspend fun saveTokenExpire(expiration: String?) {
+        appContext.loginDataStore.updateData {
+            it.toBuilder()
+                .setExpiresIn(expiration)
                 .build()
         }
     }

@@ -1,5 +1,6 @@
 package com.example.servizi.technician.ui.login
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,9 +22,13 @@ import com.example.servizi.databinding.FragmentLoginBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class LoginFragment : Fragment() {
 
+    @SuppressLint("SimpleDateFormat")
+    private val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
     private lateinit var loginViewModel: LoginViewModel
     private var _binding: FragmentLoginBinding? = null
 
@@ -83,6 +88,8 @@ class LoginFragment : Fragment() {
 
                     lifecycleScope.launch {
                         userPreferences.saveAccessToken(it.data.techToken)
+                        userPreferences.saveTokenExpire(expiration =  getExDate(it.data.techExpiresIn?.toIntOrNull())!!)
+                        Log.d("Login_UserType_ex2", getExDate(it.data.techExpiresIn?.toIntOrNull())!!)
                     }
                     Log.d("Login_UserType", "UnDefined")
 
@@ -161,6 +168,14 @@ class LoginFragment : Fragment() {
                 passwordEditText.text.toString().trim()
             )
         }
+    }
+
+    private suspend fun getExDate(interval: Int?): String? {
+        val cal = Calendar.getInstance()
+        if (interval != null) {
+            cal.add(Calendar.HOUR_OF_DAY, interval)
+        }
+        return sdf.format(cal.time).toString()
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

@@ -15,9 +15,13 @@ import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.UserMainActivity
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
+    private val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,33 +63,51 @@ class MainActivity : AppCompatActivity() {
             if (it == "") {
                 binding.MainActivity.visible(true)
             } else {
-                userPreferences.usertype.asLiveData().observe(this) { userType ->
-                    if (userType == "User") {
-                        val intent = Intent(this@MainActivity, UserMainActivity::class.java)
-                        Toast.makeText(this@MainActivity, "Opining User App", Toast.LENGTH_SHORT)
-                            .show()
-                        intent.putExtra("LoggedIn", true)
-                        startActivity(intent)
-                        finish()
-                    } else if (userType == "Tech") {
-                        val intent = Intent(this@MainActivity, TechnicianMainActivity::class.java)
-                        Toast.makeText(
-                            this@MainActivity,
-                            "Opining Technician App",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
-                        intent.putExtra("LoggedIn", true)
-                        startActivity(intent)
-                        finish()
+                userPreferences.expiration.asLiveData().observe(this) { it1 ->
+                    if (validateDate(it1)) {
+                        userPreferences.usertype.asLiveData().observe(this) { userType ->
+                            if (userType == "User") {
+                                val intent = Intent(this@MainActivity, UserMainActivity::class.java)
+                                Toast.makeText(
+                                    this@MainActivity,
+                                    "Opining User App",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                                intent.putExtra("LoggedIn", true)
+                                startActivity(intent)
+                                finish()
+                            } else if (userType == "Tech") {
+                                val intent =
+                                    Intent(this@MainActivity, TechnicianMainActivity::class.java)
+                                Toast.makeText(
+                                    this@MainActivity,
+                                    "Opining Technician App",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                                intent.putExtra("LoggedIn", true)
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
                     }
                 }
-
             }
         }
-
     }
 
+    private fun validateDate(exDate: String?): Boolean {
+        val exD = Calendar.getInstance()
+        exD.time = sdf.parse(exDate!!)!!
+        val curD = Calendar.getInstance()
+        return curD < exD
+    }
+
+    private fun gatExDate(interval: Int) {
+        val cal = Calendar.getInstance()
+        cal.add(Calendar.HOUR_OF_DAY, interval)
+    }
 
     //Fun to Hide Status Bar At The Top of The Screen
     private fun hideSystemUI() {
