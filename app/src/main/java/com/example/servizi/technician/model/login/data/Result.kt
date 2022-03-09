@@ -21,7 +21,7 @@ sealed class Result<out T> {
         return when (this) {
             is Success -> "$data"
             is Error -> "Error[exception=$errorBody]"
-            Loading -> TODO()
+            Loading -> "Loading"
         }
     }
 }

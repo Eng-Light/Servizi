@@ -2,6 +2,7 @@ package com.example.servizi.technician.model.login.data
 
 import com.example.servizi.technician.model.login.LoggedInUser
 import com.example.servizi.technician.network.TechApi
+import com.example.servizi.user.network.UserApi
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -32,7 +33,14 @@ class LoginRepository(val dataSource: LoginDataSource) {
         userPhone: String,
         password: String
     ) = dataSource.login{
-        TechApi.techRetrofitService.techSignInRequestAsync(TechLoginData(userPhone, password))
+        TechApi.techRetrofitService.techSignInRequestAsync(LoginData(userPhone, password))
+    }
+
+    suspend fun loginUser(
+        userPhone: String,
+        password: String
+    ) = dataSource.login{
+        UserApi.UserRetrofitService.userSignInRequestAsync(LoginData(userPhone, password))
     }
 
 

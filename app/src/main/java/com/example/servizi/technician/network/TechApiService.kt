@@ -1,7 +1,7 @@
 package com.example.servizi.technician.network
 
-import com.example.servizi.technician.model.login.data.TechLoginData
-import com.example.servizi.technician.model.login.data.TechLoginResponseData
+import com.example.servizi.technician.model.login.data.LoginData
+import com.example.servizi.technician.model.login.data.LoginResponseData
 import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
 import com.example.servizi.technician.model.signup.TechnicianData
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -30,7 +30,7 @@ interface TechApiService {
     fun techSignUpRequestAsync(@Body techSignUpData: TechnicianData): Deferred<Response<TechSignUpResponseData>>
 
     @POST("signin")
-    suspend fun techSignInRequestAsync(@Body techLoginData: TechLoginData): TechLoginResponseData
+    suspend fun techSignInRequestAsync(@Body loginData: LoginData): LoginResponseData
 }
 
 object TechApi {
