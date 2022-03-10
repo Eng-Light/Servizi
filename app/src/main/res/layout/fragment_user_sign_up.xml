@@ -150,7 +150,7 @@
                 android:textColorHint="#5B5C58">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ypur_phone"
+                    android:id="@+id/your_phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/rounded_text_input"

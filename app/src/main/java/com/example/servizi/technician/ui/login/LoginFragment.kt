@@ -82,7 +82,6 @@ class LoginFragment : Fragment() {
             viewLifecycleOwner
         ) {
             loadingProgressBar.visible(it is Result.Loading)
-            Log.d("LogInFragment", "Gone")
             when (it) {
                 is Result.Success -> {
 

@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import java.util.regex.Pattern
 
 
-class Signupfragment : Fragment() {
+class UserSignupFragment : Fragment() {
     private lateinit var viewModel: UserSignUpViewModel
     private var _binding: FragmentUserSignUpBinding? = null
     // This property is only valid between onCreateView and
@@ -43,11 +43,10 @@ class Signupfragment : Fragment() {
                 binding.yourFirstName.text.toString(),
                 binding.yourLastName.text.toString(),
                 binding.yourEmail.text.toString(),
-                binding.ypurPhone.text.toString(),
+                binding.yourPhone.text.toString(),
                 binding.yourCity.selectedItem.toString(),
                 binding.yourGovernorate.selectedItem.toString(),
                 binding.createYourPassword.text.toString()
-
             )
 
             Log.d("Test_SignUp", userData.toString())
@@ -55,7 +54,7 @@ class Signupfragment : Fragment() {
             if (validate(userData)) {
 
                 viewModel.setUserData(userData)
-                viewModel.usersignUpData.value?.let { it1 -> viewModel.signUpUser(it1) }
+                viewModel.userSignUpData.value?.let { it1 -> viewModel.signUpUser(it1) }
 
             } else {
                 Snackbar.make(view, "Please Chick SignUp Data", Snackbar.LENGTH_SHORT)
@@ -65,23 +64,23 @@ class Signupfragment : Fragment() {
 
 
 
-        viewModel.usersignUpLoadingStatus.observe(viewLifecycleOwner) {
+        viewModel.userSignUpLoadingStatus.observe(viewLifecycleOwner) {
             id.let {
 
-                if (viewModel.usersignUpLoadingStatus.value == UserSignUpApiStatus.DONE) {
+                if (viewModel.userSignUpLoadingStatus.value == UserSignUpApiStatus.DONE) {
 
                     cleanForm()
                     Toast.makeText(
                         context,
-                        viewModel.usersignUpResponseData.value?.msg.toString(),
+                        viewModel.userSignUpResponseData.value?.msg.toString(),
                         Toast.LENGTH_LONG
                     ).show()
 
-                } else if (viewModel.usersignUpLoadingStatus.value == UserSignUpApiStatus.ERROR) {
+                } else if (viewModel.userSignUpLoadingStatus.value == UserSignUpApiStatus.ERROR) {
 
                     Toast.makeText(
                         context,
-                        viewModel.ErrorMessage.value?.data.toString(),
+                        viewModel.errorMessage.value?.data.toString(),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -106,7 +105,7 @@ class Signupfragment : Fragment() {
                     valid = false
                 }
                 if (!phoneValidator(user.phone)) {
-                    binding.ypurPhone.error = "Not Valid Phone"
+                    binding.yourPhone.error = "Not Valid Phone"
                     valid = false
                 }
 
@@ -125,7 +124,7 @@ class Signupfragment : Fragment() {
                 binding.yourFirstName.text = null
                 binding.yourLastName.text = null
                 binding.yourEmail.text = null
-                binding.ypurPhone.text = null
+                binding.yourPhone.text = null
                 binding.createYourPassword.text = null
             }
 
