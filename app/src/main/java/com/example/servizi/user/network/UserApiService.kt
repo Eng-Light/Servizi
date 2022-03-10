@@ -13,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = " https://servizi.seifahmed.com/auth/user/"
+private const val BASE_URL = "https://servizi.seifahmed.com/auth/user/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -26,7 +26,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface UserApiService {
-    @POST("auth/user/signup")
+    @POST("signup")
     fun userSignUpRequestAsync(@Body userSignUpData: UserData): Deferred<Response<UserSignUpResponseData>>
 
     @POST("signin")

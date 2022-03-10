@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.servizi.user.model.SignUpResponseFail
 import com.example.servizi.user.model.UserData
 import com.example.servizi.user.model.UserSignUpResponseData
 import com.example.servizi.user.model.UserSignUpResponseFail
@@ -14,64 +15,71 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
 
 
-enum class UserSignUpApiStatus{LOADING, ERROR, DONE }
+enum class UserSignUpApiStatus { LOADING, ERROR, DONE }
 
 @Suppress("FunctionName")
 class UserSignUpViewModel : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
-    private val _usersignUpLoadingStatus = MutableLiveData<UserSignUpApiStatus>()
-    private val _usersignUpData = MutableLiveData<UserData>()
-    private val _usersignUpResponseData = MutableLiveData<UserSignUpResponseData>()
-    private val _ErrorCode = MutableLiveData<Int?>()
-    private val _ErrorMessage = MutableLiveData<UserSignUpResponseFail>()
+    private val _userSignUpLoadingStatus = MutableLiveData<UserSignUpApiStatus>()
+    private val _userSignUpData = MutableLiveData<UserData>()
+    private val _userSignUpResponseData = MutableLiveData<UserSignUpResponseData>()
+    private val _errorCode = MutableLiveData<Int?>()
+    private val _errorMessage = MutableLiveData<UserSignUpResponseFail>()
 
     // The external immutable LiveData for the request status
 
-    val usersignUpLoadingStatus: LiveData<UserSignUpApiStatus> = _usersignUpLoadingStatus
-    val usersignUpData: LiveData<UserData> = _usersignUpData
-    val usersignUpResponseData: LiveData<UserSignUpResponseData> = _usersignUpResponseData
-    val ErrorCode: LiveData<Int?> = _ErrorCode
-    val ErrorMessage: LiveData<UserSignUpResponseFail> = _ErrorMessage
+    val userSignUpLoadingStatus: LiveData<UserSignUpApiStatus> = _userSignUpLoadingStatus
+    val userSignUpData: LiveData<UserData> = _userSignUpData
+    val userSignUpResponseData: LiveData<UserSignUpResponseData> = _userSignUpResponseData
+    val errorCode: LiveData<Int?> = _errorCode
+    val errorMessage: LiveData<UserSignUpResponseFail> = _errorMessage
 
     //Send SignUp Request
-    private fun usersignUpApiRequest(uData:UserData){
+    private fun userSignUpApiRequest(uData: UserData) {
         viewModelScope.launch {
-            _usersignUpLoadingStatus.value = UserSignUpApiStatus.LOADING
-
+            _userSignUpLoadingStatus.value = UserSignUpApiStatus.LOADING
             try {
-                val result  = UserApi.UserRetrofitService. userSignUpRequestAsync(uData).await()
-                _ErrorCode.value = result.code()
+                val result = UserApi.UserRetrofitService.userSignUpRequestAsync(uData).await()
+                _errorCode.value = result.code()
                 if (result.isSuccessful) {
-                    _usersignUpResponseData.value = result.body()
-                    Log.d("Test_SignUp_5", _usersignUpResponseData.value.toString())
-                    _usersignUpLoadingStatus.value = UserSignUpApiStatus.DONE
+                    _userSignUpResponseData.value = result.body()
+                    Log.d("Test_SignUp_5", _userSignUpResponseData.value.toString())
+                    _userSignUpLoadingStatus.value = UserSignUpApiStatus.DONE
                 } else {
-                    val Gsonn = Gson()
-                    val Type = object : TypeToken<UserSignUpResponseFail>() {}.type
-                    val ErrorResponse: UserSignUpResponseFail? = Gsonn.fromJson(result.errorBody()?.string(), Type)
-
-                    _ErrorMessage.value = ErrorResponse!!
-                    _ErrorMessage.value?.let { Log.d("Test_SignUp_Error", it.toString()) }
-                    _usersignUpLoadingStatus.value = UserSignUpApiStatus.ERROR
+                    val gson = Gson()
+                    val type = object : TypeToken<UserSignUpResponseFail>() {}.type
+                    val errorResponse: UserSignUpResponseFail? =
+                        gson.fromJson(result.errorBody()?.string(), type)
+                    _errorMessage.value = errorResponse!!
+                    _errorMessage.value?.let { Log.d("Test_SignUp_Error", it.toString()) }
+                    _userSignUpLoadingStatus.value = UserSignUpApiStatus.ERROR
                 }
                 //Toast.makeText(coroutineContext,errorMessage.value,Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Log.d("Test_SignUp_4", e.toString())
-                _usersignUpLoadingStatus.value = UserSignUpApiStatus.ERROR
-                _usersignUpResponseData.value = UserSignUpResponseData("", "")
+                _errorMessage.value = UserSignUpResponseFail(
+                    "Check Internet Connection", listOf(
+                        SignUpResponseFail("", "", "", "")
+                    )
+                )
+                _userSignUpLoadingStatus.value = UserSignUpApiStatus.ERROR
+                _userSignUpResponseData.value = UserSignUpResponseData("", "")
             }
+            resetStatus()
         }
     }
+
     fun setUserData(userData: com.example.servizi.user.model.UserData) {
-        _usersignUpData.value = userData
+        _userSignUpData.value = userData
     }
 
 
     fun signUpUser(Data: UserData) {
-        usersignUpApiRequest(Data)
+        userSignUpApiRequest(Data)
     }
-    fun ResetStatus(){
-        _usersignUpLoadingStatus.value = UserSignUpApiStatus.LOADING
+
+    fun resetStatus() {
+        _userSignUpLoadingStatus.value = UserSignUpApiStatus.LOADING
     }
 }

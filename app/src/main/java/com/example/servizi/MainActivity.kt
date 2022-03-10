@@ -1,9 +1,13 @@
 package com.example.servizi
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
+import android.window.SplashScreen
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -14,6 +18,7 @@ import com.example.servizi.technician.TechnicianMainActivity
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.UserMainActivity
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,12 +26,22 @@ import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("SimpleDateFormat")
     private val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //handle splash screen
+        var flag = true
+        installSplashScreen().setKeepOnScreenCondition {
 
+            Handler().postDelayed({
+                flag = false
+            },1000)
+
+            flag
+        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

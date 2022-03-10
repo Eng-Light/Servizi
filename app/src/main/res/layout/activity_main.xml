@@ -8,9 +8,9 @@
     android:layout_gravity="center"
     android:background="#e2e2e2e2"
     android:orientation="vertical"
-
+    android:visibility="invisible"
     tools:context=".MainActivity">
-    <!-- android:visibility="invisible"-->
+    <!-- -->
 
     <FrameLayout
         android:id="@+id/frameLayout"

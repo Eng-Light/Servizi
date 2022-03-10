@@ -7,7 +7,7 @@ import com.example.servizi.R
 import com.example.servizi.signup_login_pager.PlaceholderFragment
 import com.example.servizi.technician.ui.login.LoginFragment
 
-import  com.example.servizi.user.ui.signup.Signupfragment
+import  com.example.servizi.user.ui.signup.UserSignupFragment
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
     R.string.tab_text_2
@@ -27,7 +27,7 @@ class SectionsPagerAdapter(private val context: UserPagerFragment, fm: FragmentM
         // Return a PlaceholderFragment (defined as a static inner class below).
         return when (position) {
             0 -> LoginFragment()
-            1 -> Signupfragment()
+            1 -> UserSignupFragment()
             else -> PlaceholderFragment.newInstance(position + 1)
         }
     }
