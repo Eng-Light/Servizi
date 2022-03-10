@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
-import android.window.SplashScreen
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -18,11 +17,9 @@ import com.example.servizi.technician.TechnicianMainActivity
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.UserMainActivity
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -117,11 +114,6 @@ class MainActivity : AppCompatActivity() {
         exD.time = sdf.parse(exDate!!)!!
         val curD = Calendar.getInstance()
         return curD < exD
-    }
-
-    private fun gatExDate(interval: Int) {
-        val cal = Calendar.getInstance()
-        cal.add(Calendar.HOUR_OF_DAY, interval)
     }
 
     //Fun to Hide Status Bar At The Top of The Screen

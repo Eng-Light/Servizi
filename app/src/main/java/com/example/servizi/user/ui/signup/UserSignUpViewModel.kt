@@ -70,7 +70,7 @@ class UserSignUpViewModel : ViewModel() {
         }
     }
 
-    fun setUserData(userData: com.example.servizi.user.model.UserData) {
+    fun setUserData(userData: UserData) {
         _userSignUpData.value = userData
     }
 
@@ -79,7 +79,7 @@ class UserSignUpViewModel : ViewModel() {
         userSignUpApiRequest(Data)
     }
 
-    fun resetStatus() {
-        _userSignUpLoadingStatus.value = UserSignUpApiStatus.LOADING
+    private fun resetStatus(){
+        _userSignUpLoadingStatus.value?.declaringClass
     }
 }

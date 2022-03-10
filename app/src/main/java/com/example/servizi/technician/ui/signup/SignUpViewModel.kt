@@ -78,6 +78,6 @@ class SignUpViewModel : ViewModel() {
         signUpApiRequest(data)
     }
     private fun resetStatus(){
-        _signUpLoadingStatus.value = TechSignUpApiStatus.LOADING
+        _signUpLoadingStatus.value?.declaringClass
     }
 }
