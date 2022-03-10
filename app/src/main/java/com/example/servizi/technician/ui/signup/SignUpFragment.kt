@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.servizi.databinding.FragmentTechnicianSignUpBinding
 import com.example.servizi.technician.model.signup.TechnicianData
+import com.example.servizi.technician.ui.login.visible
 import com.google.android.material.snackbar.Snackbar
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -44,6 +45,7 @@ class SignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
+        val loadingProgressBar = binding.loading
 
         binding.btnRegister.setOnClickListener {
 
@@ -76,25 +78,33 @@ class SignUpFragment : Fragment() {
         viewModel.signUpLoadingStatus.observe(viewLifecycleOwner) {
             it.let {
 
-                if (viewModel.signUpLoadingStatus.value == TechSignUpApiStatus.DONE) {
+                when (viewModel.signUpLoadingStatus.value) {
+                    TechSignUpApiStatus.LOADING -> {
+                        loadingProgressBar.visible(true)
+                    }
+                    TechSignUpApiStatus.DONE -> {
+                        loadingProgressBar.visible(false)
+                        cleanForm()
+                        Toast.makeText(
+                            context,
+                            viewModel.signUpResponseData.value?.msg.toString(),
+                            Toast.LENGTH_LONG
+                        ).show()
 
-                    cleanForm()
-                    Toast.makeText(
-                        context,
-                        viewModel.signUpResponseData.value?.msg.toString(),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    }
+                    TechSignUpApiStatus.ERROR -> {
 
-                } else if (viewModel.signUpLoadingStatus.value == TechSignUpApiStatus.ERROR) {
-
-                    Toast.makeText(
-                        context,
-                        viewModel.errorMessage.value?.msg.toString() +
-                                "\n ${viewModel.errorMessage.value?.data?.get(0)?.value.toString()}" +
-                                "\n ${viewModel.errorMessage.value?.data?.get(0)?.msg.toString()}",
-                        Toast.LENGTH_LONG
-                    ).show()
+                        loadingProgressBar.visible(false)
+                        Toast.makeText(
+                            context,
+                            viewModel.errorMessage.value?.msg.toString() +
+                                    "\n ${viewModel.errorMessage.value?.data?.get(0)?.value.toString()}" +
+                                    "\n ${viewModel.errorMessage.value?.data?.get(0)?.msg.toString()}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
+                //loadingProgressBar.visible(false)
             }
         }
     }
