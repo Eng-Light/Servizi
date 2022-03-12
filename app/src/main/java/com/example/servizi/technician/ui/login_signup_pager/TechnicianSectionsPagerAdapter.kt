@@ -17,7 +17,7 @@ private val TAB_TITLES = arrayOf(
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-class TechnicianSectionsPagerAdapter(private val context: com.example.servizi.technician.ui.login_signup_pager.TechnicianPagerFragment, fm: FragmentManager) :
+class TechnicianSectionsPagerAdapter(private val context: TechnicianPagerFragment, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {

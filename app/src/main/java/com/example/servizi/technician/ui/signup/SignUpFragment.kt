@@ -9,10 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.servizi.databinding.FragmentTechnicianSignUpBinding
 import com.example.servizi.technician.model.signup.TechnicianData
 import com.example.servizi.technician.ui.login.visible
+import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -25,6 +28,7 @@ import java.util.regex.Pattern
 class SignUpFragment : Fragment() {
 
     private lateinit var viewModel: SignUpViewModel
+    private val signUpPagerViewModel: PagerViewModel by activityViewModels()
     private var _binding: FragmentTechnicianSignUpBinding? = null
 
     // This property is only valid between onCreateView and
@@ -63,16 +67,20 @@ class SignUpFragment : Fragment() {
             )
 
             Log.d("Test_SignUp", techData.toString())
-
             if (validate(techData)) {
 
                 viewModel.setTechData(techData)
                 viewModel.signUpData.value?.let { it1 -> viewModel.signUp(it1) }
+                swipeToLoginFragment(0)
 
             } else {
                 Snackbar.make(view, "Please Chick SignUp Data", Snackbar.LENGTH_SHORT)
                     .show()
             }
+        }
+
+        binding.login.setOnClickListener {
+            swipeToLoginFragment(0)
         }
 
         viewModel.signUpLoadingStatus.observe(viewLifecycleOwner) {
@@ -247,5 +255,11 @@ class SignUpFragment : Fragment() {
         super.onDestroyView()
         cleanForm()
         _binding = null
+    }
+
+    //Swipe to login page
+    private fun swipeToLoginFragment(item: Int) {
+        signUpPagerViewModel.setPagerSelectedItem(item)
+        //(Fragment() as TechnicianPagerFragment).setCurrentItem(0)
     }
 }
