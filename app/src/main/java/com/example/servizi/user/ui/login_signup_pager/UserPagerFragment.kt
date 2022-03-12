@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.viewpager.widget.ViewPager
 import com.example.servizi.databinding.FragmentUserPagerBinding
+import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
 import com.google.android.material.tabs.TabLayout
 
 /** A simple [Fragment] subclass as the default destination in the navigation.*/
@@ -15,6 +17,7 @@ import com.google.android.material.tabs.TabLayout
 class UserPagerFragment : Fragment() {
 
     private var _binding: FragmentUserPagerBinding? = null
+    private val pagerViewModel: PagerViewModel by activityViewModels()
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,6 +44,11 @@ class UserPagerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        pagerViewModel.pagerItem.observe(viewLifecycleOwner) {
+
+            binding.userViewPager.currentItem = it
+
+        }
 
     }
 

@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.servizi.databinding.FragmentUserSignUpBinding
 import com.example.servizi.technician.ui.login.visible
+import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
 import com.example.servizi.user.model.UserData
 import com.google.android.material.snackbar.Snackbar
 import java.util.regex.Pattern
@@ -18,6 +20,7 @@ import java.util.regex.Pattern
 
 class UserSignupFragment : Fragment() {
     private lateinit var viewModel: UserSignUpViewModel
+    private val signUpPagerViewModel: PagerViewModel by activityViewModels()
     private var _binding: FragmentUserSignUpBinding? = null
 
     // This property is only valid between onCreateView and
@@ -59,11 +62,15 @@ class UserSignupFragment : Fragment() {
 
                 viewModel.setUserData(userData)
                 viewModel.userSignUpData.value?.let { it1 -> viewModel.signUpUser(it1) }
+                swipeToLoginFragment(0)
 
             } else {
                 Snackbar.make(view, "Please Chick SignUp Data", Snackbar.LENGTH_SHORT)
                     .show()
             }
+        }
+        binding.login.setOnClickListener {
+            swipeToLoginFragment(0)
         }
 
 
@@ -177,6 +184,12 @@ class UserSignupFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    //Swipe to login page
+    private fun swipeToLoginFragment(item: Int) {
+        signUpPagerViewModel.setPagerSelectedItem(item)
+        //(Fragment() as TechnicianPagerFragment).setCurrentItem(0)
     }
 
 }
