@@ -12,7 +12,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -22,7 +21,6 @@ import com.example.servizi.R
 import com.example.servizi.databinding.FragmentLoginBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
-import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -88,9 +86,9 @@ class LoginFragment : Fragment() {
                 is Result.Success -> {
 
                     lifecycleScope.launch {
-                        userPreferences.saveAccessToken(it.data.techToken)
-                        userPreferences.saveTokenExpire(expiration =  getExDate(it.data.techExpiresIn?.toIntOrNull())!!)
-                        Log.d("Login_UserType_ex2", getExDate(it.data.techExpiresIn?.toIntOrNull())!!)
+                        userPreferences.saveAccessToken(it.data.userToken)
+                        userPreferences.saveTokenExpire(expiration =  getExDate(it.data.userExpiresIn?.toIntOrNull())!!)
+                        Log.d("Login_UserType_ex2", getExDate(it.data.userExpiresIn?.toIntOrNull())!!)
                     }
                     Log.d("Login_UserType", "UnDefined")
 
@@ -115,7 +113,7 @@ class LoginFragment : Fragment() {
                     }
                     Toast.makeText(
                         this.context,
-                        "Logged In Successfully ${it.data.techId}",
+                        "Logged In Successfully ${it.data.userId}",
                         Toast.LENGTH_LONG
                     ).show()
                     //updateUiWithUser(LoggedInUserView(loginViewModel))
