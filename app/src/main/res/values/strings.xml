@@ -45,18 +45,6 @@
     <string name="register_as_a_User">Register as a User</string>
     <string name="birth_date">Birth Date \'YYYY-MM-DD\'</string>
 
-    <string-array name="Convert_Type">
-        <item>@string/CairoString</item>
-        <item>@string/WeightString</item>
-        <item>@string/VolumeString</item>
-        <item>@string/SpeedString</item>
-        <item>@string/LengthString</item>
-        <item>@string/AreaString</item>
-        <item>@string/EnergyString</item>
-        <item>@string/PressureString</item>
-        <item>@string/MemoryString</item>
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
