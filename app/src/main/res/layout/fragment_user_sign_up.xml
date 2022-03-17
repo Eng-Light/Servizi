@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="@drawable/dark_background"
+    android:fillViewport="true"
     app:layout_constraintBottom_toBottomOf="parent"
     tools:context=".technician.ui.signup.SignUpFragment">
 
@@ -166,21 +166,27 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="320dp"
-                    android:layout_height="70dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rounded_text_input"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
                     android:textColorHint="#5B5C58">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="start|top"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="30dp"
                         android:paddingStart="10dp"
                         android:text="@string/city"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:ignore="RtlSymmetry" />
@@ -193,26 +199,34 @@
                         android:dropDownWidth="180dp"
                         android:entries="@array/Convert_Type"
                         android:spinnerMode="dropdown"
-                        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"                        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck"
                         tools:listitem="@layout/support_simple_spinner_dropdown_item" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="320dp"
-                    android:layout_height="70dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/rounded_text_input"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
                     android:textColorHint="#5B5C58">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="start|top"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="30dp"
                         android:paddingStart="10dp"
                         android:text="@string/governorate"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         tools:ignore="RtlSymmetry" />
@@ -225,10 +239,12 @@
                         android:dropDownWidth="180dp"
                         android:entries="@array/Convert_Type"
                         android:spinnerMode="dropdown"
-                        tools:ignore="TouchTargetSizeCheck"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"                        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck"
                         tools:listitem="@layout/support_simple_spinner_dropdown_item" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/your_btn_register"
