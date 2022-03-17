@@ -85,7 +85,7 @@ protobuf{
         artifact = 'com.google.protobuf:protoc:3.14.0'
     }
 
-    //Generates the java protobuf-lite code for the Protobufs in the project. see
+    //Generates the java protobuf-lite code for the Protobuf in the project. see
     //https://github.com/google/protobuf-gradle-plugin#customizing-protobuf-complitation
     //for more information.
     generateProtoTasks{

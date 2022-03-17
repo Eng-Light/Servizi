@@ -1,16 +1,8 @@
 package com.example.servizi.technician.model.login.data
 
-import android.content.Context
-import com.example.servizi.technician.model.login.LoggedInUser
-import com.example.servizi.technician.network.TechApi
-import com.google.gson.Gson
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
-import retrofit2.Response
-import java.io.IOException
-import java.util.*
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.

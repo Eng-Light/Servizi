@@ -29,7 +29,7 @@
     <string name="best_solution_for_every_house_problems">Best solution for every house problems</string>
     <string name="national_id">National ID</string>
     <string name="profession">Profession</string>
-    <string name="already_have_an_account">Already have an account? LOGIN</string>
+    <string name="already_have_an_account">Already have an account? \t<b><u>LOGIN</u></b> </string>
     <string name="register">Register</string>
     <string name="CairoString">Cairo</string>
     <string name="WeightString">Weight</string>

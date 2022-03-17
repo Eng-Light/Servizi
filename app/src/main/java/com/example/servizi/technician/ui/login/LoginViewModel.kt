@@ -1,6 +1,5 @@
 package com.example.servizi.technician.ui.login
 
-import android.app.Activity
 import android.util.Log
 import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +11,8 @@ import com.example.servizi.R
 import com.example.servizi.application.FTApplication
 import com.example.servizi.technician.TechnicianMainActivity
 import com.example.servizi.technician.model.login.data.LoginRepository
-import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.LoginResponseData
+import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.user.UserMainActivity
 import kotlinx.coroutines.launch
 
