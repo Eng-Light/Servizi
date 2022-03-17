@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="@drawable/dark_background"
+    android:fillViewport="true"
     app:layout_constraintBottom_toBottomOf="parent"
     tools:context=".technician.ui.signup.SignUpFragment">
 
@@ -199,13 +199,14 @@
                     android:textColorHint="#5B5C58">
 
                     <TextView
+                        android:id="@+id/governorate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginEnd="30dp"
                         android:gravity="center"
                         android:paddingStart="10dp"
-                        android:text="@string/city"
+                        android:text="@string/governorate"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -214,12 +215,11 @@
                         tools:ignore="RtlSymmetry" />
 
                     <Spinner
-                        android:id="@+id/your_city"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/your_governorate"
+                        android:layout_width="170dp"
                         android:layout_height="match_parent"
                         android:autofillHints="postalAddress"
                         android:dropDownWidth="180dp"
-                        android:entries="@array/Convert_Type"
                         android:spinnerMode="dropdown"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -246,7 +246,7 @@
                         android:layout_marginEnd="30dp"
                         android:gravity="center"
                         android:paddingStart="10dp"
-                        android:text="@string/governorate"
+                        android:text="@string/city"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -255,12 +255,11 @@
                         tools:ignore="RtlSymmetry" />
 
                     <Spinner
-                        android:id="@+id/your_governorate"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/your_city"
+                        android:layout_width="170dp"
                         android:layout_height="match_parent"
                         android:autofillHints="postalAddress"
                         android:dropDownWidth="180dp"
-                        android:entries="@array/Convert_Type"
                         android:spinnerMode="dropdown"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -344,7 +343,7 @@
         android:id="@+id/already"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/already_background"
+        android:background="@drawable/top_rounded_background"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">

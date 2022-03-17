@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="Governorate_List">
+        <item>Suez</item>
+        <item>Cairo</item>
+        <item>Alexandria</item>
+        <item>Qalyubia</item>
+        <item>Giza</item>
+    </string-array>
+
+    <string-array name="Suez_Cities">
+        <item>Arbaeen</item>
+        <item>Ganayen</item>
+        <item>Suez</item>
+        <item>Attaka</item>
+        <item>Faisal</item>
+        <item>Port Suez P-D</item>
+    </string-array>
+
+    <string-array name="Cairo_Cities">
+        <item>15 May City</item>
+        <item>El Darb El Ahmar</item>
+        <item>Ain Shams</item>
+        <item>Amreya</item>
+        <item>Azbakeya</item>
+        <item>El Basatin</item>
+        <item>Maadi</item>
+        <item>El Marg</item>
+        <item>El Matareya</item>
+        <item>El Mokattam</item>
+        <item>New Cairo 1</item>
+        <item>New Cairo 2</item>
+        <item>New Cairo 3</item>
+        <item>El Weili</item>
+        <item>El Nozha</item>
+        <item>El Sahel</item>
+        <item>El Sharabiya</item>
+        <item>El Shorouk</item>
+        <item>El Segil</item>
+        <item>El Salam</item>
+        <item>El Sayeda Zeinab</item>
+        <item>El Tebbin</item>
+        <item>El Zaher</item>
+        <item>Zamalek</item>
+        <item>El Zawya El Hamra</item>
+        <item>Zeitoun</item>
+        <item>Bab El Sharia</item>
+        <item>Bulaq</item>
+        <item>Dar El Salam</item>
+        <item>Hada`iq El Qobbah</item>
+        <item>Helwan</item>
+        <item>Nasr City 1</item>
+        <item>Nasr City 2</item>
+        <item>Badr City</item>
+        <item>Heliopolis</item>
+        <item>Old Cairo</item>
+        <item>Manshiyat Naser</item>
+        <item>Qasr El Nil</item>
+        <item>Rod El Farag</item>
+        <item>Shubra</item>
+        <item>Tura</item>
+    </string-array>
+
+    <string-array name="Alexandria_Cities">
+        <item>Port Alexandria Police Dept</item>
+        <item>Dekhela</item>
+        <item>Amreya 1</item>
+        <item>Amreya 2</item>
+        <item>Ataren</item>
+        <item>Gomrok</item>
+        <item>Labban</item>
+        <item>Mansheya</item>
+        <item>Montaza 1</item>
+        <item>Montaza 2</item>
+        <item>El Raml 1</item>
+        <item>El Raml 2</item>
+        <item>North Coast</item>
+        <item>Bab Sharqi</item>
+        <item>Borg El Arab</item>
+        <item>Karmouz</item>
+        <item>New Borg El Arab</item>
+        <item>Port al-Basal</item>
+        <item>Moharam Bek</item>
+        <item>Sidi Gaber</item>
+    </string-array>
+
+    <string-array name="Qalyubia_Cities">
+        <item>El Qanater El Khayreya</item>
+        <item>Khanka</item>
+        <item>Khusus</item>
+        <item>El Ubour</item>
+        <item>Banha</item>
+        <item>Banha 1</item>
+        <item>Banha 2</item>
+        <item>Kafr Shukr</item>
+        <item>Qaha</item>
+        <item>Qalyub</item>
+        <item>Shubra El Kheima 1</item>
+        <item>Shubra El Kheima 2</item>
+        <item>Shibin El Qanater</item>
+        <item>Tukh</item>
+    </string-array>
+
+    <string-array name="Giza_Cities">
+        <item>Dokki</item>
+        <item>Pyramids</item>
+        <item>Agouza</item>
+        <item>El Ayyat</item>
+        <item>El Badrashein</item>
+        <item>El Hawamdeya</item>
+        <item>Giza</item>
+        <item>El Omraniya</item>
+        <item>El Wahat El Bahariya</item>
+        <item>El Warraq</item>
+        <item>Sheikh Zayed City</item>
+        <item>El Saff</item>
+        <item>Atfeh</item>
+        <item>Talbia</item>
+        <item>Ossim</item>
+        <item>Bulaq</item>
+        <item>Imbaba</item>
+        <item>Imbaba</item>
+        <item>Kerdasa</item>
+        <item>6th of October City (1)</item>
+        <item>6th of October City (2)</item>
+        <item>6th of October City (3)</item>
+    </string-array>
+</resources>

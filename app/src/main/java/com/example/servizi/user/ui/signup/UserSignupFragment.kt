@@ -6,10 +6,13 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.servizi.R
 import com.example.servizi.databinding.FragmentUserSignUpBinding
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
@@ -44,16 +47,96 @@ class UserSignupFragment : Fragment() {
         viewModel = ViewModelProvider(this)[UserSignUpViewModel::class.java]
         val loadingProgressBar = binding.loading
 
+        val governorates =
+            requireContext().resources.getStringArray(R.array.Governorate_List)
+        val suez =
+            requireContext().resources.getStringArray(R.array.Suez_Cities)
+        val cairo =
+            requireContext().resources.getStringArray(R.array.Cairo_Cities)
+        val alexandria =
+            requireContext().resources.getStringArray(R.array.Alexandria_Cities)
+        val qalyubia =
+            requireContext().resources.getStringArray(R.array.Qalyubia_Cities)
+        val giza =
+            requireContext().resources.getStringArray(R.array.Giza_Cities)
+
+        val arrayAdapterGov = ArrayAdapter(
+            requireContext(),
+            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+            governorates
+        )
+        binding.yourGovernorate.adapter = arrayAdapterGov
+
+        val arrayAdapterCities = ArrayAdapter(
+            requireContext(),
+            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+            suez
+        )
+        binding.yourCity.adapter = arrayAdapterCities
+
+        binding.yourGovernorate.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                    val arrayAdapterCity: ArrayAdapter<String>
+                    when (p2) {
+                        0 -> {
+                            arrayAdapterCity = ArrayAdapter(
+                                requireContext(),
+                                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                                suez
+                            )
+                            binding.yourCity.adapter = arrayAdapterCity
+                        }
+                        1 -> {
+                            arrayAdapterCity = ArrayAdapter(
+                                requireContext(),
+                                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                                cairo
+                            )
+                            binding.yourCity.adapter = arrayAdapterCity
+                        }
+                        2 -> {
+                            arrayAdapterCity = ArrayAdapter(
+                                requireContext(),
+                                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                                alexandria
+                            )
+                            binding.yourCity.adapter = arrayAdapterCity
+                        }
+                        3 -> {
+                            arrayAdapterCity = ArrayAdapter(
+                                requireContext(),
+                                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                                qalyubia
+                            )
+                            binding.yourCity.adapter = arrayAdapterCity
+                        }
+                        4 -> {
+                            arrayAdapterCity = ArrayAdapter(
+                                requireContext(),
+                                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                                giza
+                            )
+                            binding.yourCity.adapter = arrayAdapterCity
+                        }
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+
+                }
+            }
+
         binding.yourBtnRegister.setOnClickListener {
 
             val userData = UserData(
-                binding.yourFirstName.text.toString(),
-                binding.yourLastName.text.toString(),
-                binding.yourEmail.text.toString(),
-                binding.yourPhone.text.toString(),
-                binding.yourCity.selectedItem.toString(),
-                binding.yourGovernorate.selectedItem.toString(),
-                binding.createYourPassword.text.toString()
+                binding.yourFirstName.text.toString().trim(),
+                binding.yourLastName.text.toString().trim(),
+                binding.yourEmail.text.toString().trim(),
+                binding.yourPhone.text.toString().trim(),
+                binding.yourCity.selectedItem.toString().trim(),
+                binding.yourGovernorate.selectedItem.toString().trim(),
+                binding.createYourPassword.text.toString().trim()
             )
 
             Log.d("Test_SignUp", userData.toString())
