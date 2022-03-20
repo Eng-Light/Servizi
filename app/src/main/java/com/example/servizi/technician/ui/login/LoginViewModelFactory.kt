@@ -2,7 +2,7 @@ package com.example.servizi.technician.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.servizi.technician.model.login.data.LoginDataSource
+import com.example.servizi.technician.model.login.data.BaseRepository
 import com.example.servizi.technician.model.login.data.LoginRepository
 
 /**
@@ -16,7 +16,7 @@ class LoginViewModelFactory : ViewModelProvider.Factory {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(
                 loginRepository = LoginRepository(
-                    dataSource = LoginDataSource()
+                    dataSource = BaseRepository()
                 )
             ) as T
         }

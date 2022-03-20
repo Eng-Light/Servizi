@@ -7,9 +7,9 @@ import retrofit2.HttpException
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
-class LoginDataSource {
+open class BaseRepository {
 
-    suspend fun <T> login(
+    suspend fun <T> safeApiCall(
         apiCall: suspend () -> T
     ): Result<T> {
         return withContext(Dispatchers.IO) {

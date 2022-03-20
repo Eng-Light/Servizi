@@ -5,13 +5,13 @@
     android:id="@+id/user_home_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.ui.login_signup_pager.UserPagerFragment">
+    tools:context=".user.ui.home.UserHomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/user_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.Servizi.AppBarOverlay"
+        android:theme="@style/Theme.Servizi.NoActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                app:cardBackgroundColor="@color/secondaryTextColor"
+                android:background="@drawable/dark_background"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -109,8 +109,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="10dp"
                         android:text="@string/carpenter"
-                        android:textColor="#B7000000"
-                        android:textSize="25sp" />
+                        style="@style/Theme.Servizi.TextView"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -120,7 +120,7 @@
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
                 android:elevation="8dp"
-                app:cardBackgroundColor="@color/secondaryTextColor"
+                android:background="@drawable/dark_background"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -144,8 +144,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="10dp"
                         android:text="@string/plumber"
-                        android:textColor="#B7000000"
-                        android:textSize="25sp" />
+                        style="@style/Theme.Servizi.TextView"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                app:cardBackgroundColor="@color/secondaryTextColor"
+                android:background="@drawable/dark_background"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -178,8 +178,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="10dp"
                         android:text="@string/air_conditioning"
-                        android:textColor="#B7000000"
-                        android:textSize="25sp" />
+                        style="@style/Theme.Servizi.TextView"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -188,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                app:cardBackgroundColor="@color/secondaryTextColor"
+                android:background="@drawable/dark_background"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -212,8 +212,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="10dp"
                         android:text="@string/electrician"
-                        android:textColor="#B7000000"
-                        android:textSize="25sp" />
+                        style="@style/Theme.Servizi.TextView"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -222,7 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                app:cardBackgroundColor="@color/secondaryTextColor"
+                android:background="@drawable/dark_background"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -246,8 +246,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="10dp"
                         android:text="@string/painting_work"
-                        android:textColor="#B7000000"
-                        android:textSize="25sp" />
+                        style="@style/Theme.Servizi.TextView"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -256,7 +256,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                app:cardBackgroundColor="@color/secondaryTextColor"
+                android:background="@drawable/dark_background"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
@@ -280,8 +280,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="10dp"
                         android:text="@string/car_mechanic"
-                        android:textColor="#B7000000"
-                        android:textSize="25sp" />
+                        style="@style/Theme.Servizi.TextView"
+                        android:textSize="20sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
