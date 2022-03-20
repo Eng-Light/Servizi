@@ -9,7 +9,7 @@ import com.example.servizi.user.network.UserApi
  * maintains an in-memory cache of login status and user credentials information.
  */
 
-class LoginRepository(val dataSource: LoginDataSource) {
+class LoginRepository(val dataSource: BaseRepository) {
 
     // in-memory cache of the loggedInUser object
     var user: LoggedInUser? = null
@@ -32,14 +32,14 @@ class LoginRepository(val dataSource: LoginDataSource) {
     suspend fun loginTech(
         userPhone: String,
         password: String
-    ) = dataSource.login{
+    ) = dataSource.safeApiCall{
         TechApi.techRetrofitService.techSignInRequestAsync(LoginData(userPhone, password))
     }
 
     suspend fun loginUser(
         userPhone: String,
         password: String
-    ) = dataSource.login{
+    ) = dataSource.safeApiCall{
         UserApi.UserRetrofitService.userSignInRequestAsync(LoginData(userPhone, password))
     }
 

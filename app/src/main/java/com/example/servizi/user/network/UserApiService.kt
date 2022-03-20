@@ -2,6 +2,7 @@ package com.example.servizi.user.network
 
 import com.example.servizi.technician.model.login.data.LoginData
 import com.example.servizi.technician.model.login.data.LoginResponseData
+import com.example.servizi.user.model.TechniciansResponse
 import com.example.servizi.user.model.UserData
 import com.example.servizi.user.model.UserSignUpResponseData
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -13,7 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.*
 
-private const val BASE_URL = "https://servizi.seifahmed.com/auth/user/"
+private const val BASE_URL = "https://servizi.seifahmed.com"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -26,10 +27,14 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface UserApiService {
-    @POST("signup")
+
+    @GET("/user/alltechnicians")
+    suspend fun getTechniciansAsync(@Query(value = "profession") profession: String): TechniciansResponse
+
+    @POST("/auth/user/signup")
     fun userSignUpRequestAsync(@Body userSignUpData: UserData): Deferred<Response<UserSignUpResponseData>>
 
-    @POST("signin")
+    @POST("/auth/user/signin")
     suspend fun userSignInRequestAsync(@Body loginData: LoginData): LoginResponseData
 
 }
