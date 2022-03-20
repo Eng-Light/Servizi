@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.asLiveData
+import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.databinding.UserHomeFragmentBinding
 import com.example.servizi.technician.model.login.data.Result
@@ -15,15 +16,8 @@ import com.example.servizi.user.network.UserApiService
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, TechRepository>() {
-
-    private fun updateUI(data: TechniciansResponse) {
-        Toast.makeText(
-            requireContext(),
-            "UserHomeFragment : " + data.technicians.toString(),
-            Toast.LENGTH_LONG
-        ).show()
-    }
+class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, TechRepository>(),
+    View.OnClickListener {
 
     override fun getViewModel() = HomeViewModel::class.java
 
@@ -42,19 +36,67 @@ class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, Te
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getTechs("carpenter")
-
         viewModel.user.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Success -> {
-                    updateUI(it.data)
+                    sendData(it.data)
                 }
-                is Result.Loading ->
+                is Result.Loading -> {
                     Toast.makeText(
                         requireContext(),
-                        "UserHomeFragment : Loading",
+                        "Loading ...",
                         Toast.LENGTH_LONG
                     ).show()
+                }
+                is Result.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Error :( ",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
+
+        binding.carpenterCrdV.setOnClickListener(this)
+        binding.plumberCrdV.setOnClickListener(this)
+        binding.airConditioningCrdV.setOnClickListener(this)
+        binding.electricianCrdV.setOnClickListener(this)
+        binding.paintingWorkCrdV.setOnClickListener(this)
+        binding.carMechanicCrdV.setOnClickListener(this)
+    }
+
+    private fun sendData(data: TechniciansResponse) {
+        Toast.makeText(
+            requireContext(),
+            "Success :) " + data.technicians,
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun getTechs(prof: String) {
+        viewModel.getTechs(prof)
+    }
+
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+            R.id.carpenterCrdV -> {
+                getTechs("carpenter")
+            }
+            R.id.plumberCrdV -> {
+                getTechs("plumber")
+            }
+            R.id.air_conditioningCrdV -> {
+                getTechs("air conditioning")
+            }
+            R.id.electricianCrdV -> {
+                getTechs("electrician")
+            }
+            R.id.painting_workCrdV -> {
+                getTechs("painting")
+            }
+            R.id.car_mechanicCrdV -> {
+                getTechs("mechanic")
             }
         }
     }
