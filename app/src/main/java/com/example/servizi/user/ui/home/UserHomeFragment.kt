@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.asLiveData
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.databinding.UserHomeFragmentBinding
@@ -13,11 +14,14 @@ import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.user.model.TechRepository
 import com.example.servizi.user.model.TechniciansResponse
 import com.example.servizi.user.network.UserApiService
+import com.example.servizi.user.ui.technicians.TechniciansViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, TechRepository>(),
     View.OnClickListener {
+
+    private val viewModel2: TechniciansViewModel by activityViewModels()
 
     override fun getViewModel() = HomeViewModel::class.java
 
@@ -36,10 +40,12 @@ class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, Te
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.user.observe(viewLifecycleOwner) {
+        viewModel.techs.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Success -> {
                     sendData(it.data)
+                    viewModel2._technicians.value = it.data.technicians
+                    findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
                 }
                 is Result.Loading -> {
                     Toast.makeText(

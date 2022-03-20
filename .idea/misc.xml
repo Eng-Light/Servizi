@@ -15,13 +15,6 @@
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_pager.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up_view_model.xml" value="0.21784420289855072" />
-        <entry key="..\:/Servizi/app/src/main/res/drawable-night/top_rounded_background.xml" value="0.1" />
-        <entry key="..\:/Servizi/app/src/main/res/layout/activity_main.xml" value="0.21784420289855072" />
-        <entry key="..\:/Servizi/app/src/main/res/layout/all_technicians_fragment.xml" value="0.264" />
-        <entry key="..\:/Servizi/app/src/main/res/layout/item_view.xml" value="0.264" />
-        <entry key="..\:/Servizi/app/src/main/res/layout/technicians_fragment.xml" value="0.176" />
-        <entry key="..\:/Servizi/app/src/main/res/layout/user_home_fragment.xml" value="0.264" />
-        <entry key="..\:/Servizi/app/src/main/res/layout/user_main_fragment.xml" value="0.1" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/already_background.xml" value="0.222" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/dark_background.xml" value="0.218" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-notnight/already_background.xml" value="0.222" />
@@ -52,18 +45,20 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_main.xml" value="0.2756756756756757" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_pager.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_sign_up.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technicians.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_main.xml" value="0.2756756756756757" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_pager.xml" value="0.19324324324324324" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/home_fragment.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/home_page_fragment.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_view.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/my_orders_fragment.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/settings_fragment.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/sign_up_fragment.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/tech_home_fragment.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/user_home_fragment.xml" value="0.2905405405405405" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/user_main_fragment.xml" value="0.25" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/user_main_fragment.xml" value="0.16936936936936936" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/menu/bottom_nav_menu_user.xml" value="0.11486486486486487" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.218" />

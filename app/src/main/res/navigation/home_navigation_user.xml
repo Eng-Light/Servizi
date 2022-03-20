@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_my_order"
             app:destination="@id/navigation_my_orders" />
+        <action
+            android:id="@+id/action_navigation_home_to_techniciansFragment"
+            app:destination="@id/techniciansFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_my_orders"
@@ -27,4 +30,8 @@
         android:name="com.example.servizi.user.ui.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/settings_fragment" />
+    <fragment
+        android:id="@+id/techniciansFragment"
+        android:name="com.example.servizi.user.ui.technicians.TechniciansFragment"
+        android:label="TechniciansFragment" />
 </navigation>
