@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="profession_list">
+        <item>Carpenter</item>
+        <item>Plumber</item>
+        <item>Air Conditioning</item>
+        <item>Electrician</item>
+        <item>Painter</item>
+        <item>Mechanic</item>
+    </string-array>
     <string-array name="Governorate_List">
         <item>Suez</item>
         <item>Cairo</item>

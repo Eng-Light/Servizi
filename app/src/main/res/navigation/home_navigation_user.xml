@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/navigation_home">
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.servizi.user.ui.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/user_home_fragment" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_my_order"
+            app:destination="@id/navigation_my_orders" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_my_orders"
+        android:name="com.example.servizi.user.ui.my_orders.MyOrdersFragment"
+        android:label="MyOrders"
+        tools:layout="@layout/my_orders_fragment" >
+        <action
+            android:id="@+id/action_navigation_my_order_to_navigation_setting"
+            app:destination="@id/navigation_setting" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.example.servizi.user.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/settings_fragment" />
+</navigation>
