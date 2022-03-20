@@ -71,4 +71,5 @@
     <string name="settings">Settings</string>
     <string name="orders">Orders</string>
     <string name="book">Book</string>
+    <string name="technician_name">Technician Name</string>
 </resources>
