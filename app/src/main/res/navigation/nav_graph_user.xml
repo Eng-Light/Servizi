@@ -16,7 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/UserHomeFragment"
-        android:name="com.example.servizi.user.ui.home.UserHomeFragment"
+        android:name="com.example.servizi.user.ui.main.UserMainFragment"
         android:label="User Home"
-        tools:layout="@layout/user_home_fragment" />
+        tools:layout="@layout/user_main_fragment" />
+    <fragment
+        android:id="@+id/myOrdersFragment"
+        android:name="com.example.servizi.user.ui.my_orders.MyOrdersFragment"
+        android:label="my_orders_fragment"
+        tools:layout="@layout/my_orders_fragment" />
 </navigation>

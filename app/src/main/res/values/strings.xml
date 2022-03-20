@@ -28,7 +28,6 @@
     <string name="age">Age</string>
     <string name="best_solution_for_every_house_problems">Best solution for every house problems</string>
     <string name="national_id">National ID</string>
-    <string name="profession">Profession</string>
     <string name="already_have_an_account">Already have an account? \t<b><u>LOGIN</u></b> </string>
     <string name="register">Register</string>
     <string name="CairoString">Cairo</string>
@@ -60,4 +59,14 @@
     <string name="servizi">Servizi</string>
     <string name="sign_up_as">Register As</string>
     <string name="or">Or</string>
+    <string name="carpenter">Carpenter</string>
+    <string name="plumber">Plumber</string>
+    <string name="air_conditioning">Air Conditioning</string>
+    <string name="electrician">Electrician</string>
+    <string name="painting_work">Painting Work</string>
+    <string name="car_mechanic">Car Mechanic</string>
+    <string name="profession">Profession</string>
+    <string name="home">Home</string>
+    <string name="my_orders">My Orders</string>
+    <string name="settings">Settings</string>
 </resources>

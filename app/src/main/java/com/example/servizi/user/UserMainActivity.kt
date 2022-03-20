@@ -43,6 +43,10 @@ class UserMainActivity : AppCompatActivity() {
                     supportActionBar?.hide()
                     binding.toolbar2.visibility = View.GONE
                 }
+                R.id.UserHomeFragment -> {
+                    supportActionBar?.hide()
+                    binding.toolbar2.visibility = View.GONE
+                }
                 else -> {
                     supportActionBar?.show()
                     binding.toolbar2.visibility = View.VISIBLE

@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
         val exD = Calendar.getInstance()
         exD.time = sdf.parse(exDate!!)!!
         val curD = Calendar.getInstance()
-        return curD < exD
+        return curD <= exD
     }
 
     //Fun to Hide Status Bar At The Top of The Screen

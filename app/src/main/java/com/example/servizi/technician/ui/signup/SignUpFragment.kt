@@ -145,7 +145,7 @@ class SignUpFragment : Fragment() {
                 binding.yourCity.selectedItem.toString().trim(),
                 binding.yourGovernorate.selectedItem.toString().trim(),
                 binding.nationalId.text.toString().trim(),
-                binding.profession.text.toString().trim(),
+                binding.professionS.selectedItem.toString().trim(),
                 binding.birthDate.text.toString().trim(),
                 binding.createPassword.text.toString().trim()
             )
@@ -208,7 +208,6 @@ class SignUpFragment : Fragment() {
         binding.email.text = null
         binding.phone.text = null
         binding.nationalId.text = null
-        binding.profession.text = null
         binding.birthDate.text = null
         binding.createPassword.text = null
         binding.repeatPassword.text = null
@@ -258,10 +257,6 @@ class SignUpFragment : Fragment() {
         }
         if (!nationalIdValidator(tech.natinalId)) {
             binding.nationalId.error = "Not Valid National Id"
-            valid = false
-        }
-        if (!stringValidator(tech.profession)) {
-            binding.profession.error = "Not Valid Profession"
             valid = false
         }
         if (!birthDateValidator(tech.birthDate)) {
