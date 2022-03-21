@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.servizi.R
 import com.example.servizi.databinding.ItemViewBinding
 import com.example.servizi.user.model.Technician
 
@@ -17,10 +18,8 @@ class TechsAdapter : ListAdapter<Technician,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bind(tech: Technician) {
+        fun bind(tech: Technician?) {
             binding.tech = tech
-            binding.tvItemName.text = (tech.firstName + " " + tech.lastName)
-
             binding.executePendingBindings()
         }
     }
@@ -39,7 +38,7 @@ class TechsAdapter : ListAdapter<Technician,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TechsViewHolder {
         return TechsViewHolder(
             ItemViewBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }

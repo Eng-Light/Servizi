@@ -1,6 +1,6 @@
 package com.example.servizi.user.model
 
-import com.example.servizi.technician.model.login.data.BaseRepository
+import com.example.servizi.application.BaseRepository
 import com.example.servizi.user.network.UserApiService
 
 class TechRepository(

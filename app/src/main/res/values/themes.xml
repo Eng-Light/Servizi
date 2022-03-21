@@ -14,6 +14,11 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="RatingBar" parent="Theme.Servizi">
+        <item name="colorControlNormal">@color/primaryLightColor</item>
+        <item name="colorControlActivated">@color/primaryColor</item>
+    </style>
+
     <style name="Theme.Servizi.NoActionBar" parent="Theme.Servizi">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

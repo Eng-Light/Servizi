@@ -1,5 +1,6 @@
 package com.example.servizi.technician.model.login.data
 
+import com.example.servizi.application.BaseRepository
 import com.example.servizi.technician.model.login.LoggedInUser
 import com.example.servizi.technician.network.TechApi
 import com.example.servizi.user.network.UserApi

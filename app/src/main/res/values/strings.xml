@@ -72,4 +72,8 @@
     <string name="orders">Orders</string>
     <string name="book">Book</string>
     <string name="technician_name">Technician Name</string>
+    <string name="rating">Rating</string>
+    <string name="location">Location</string>
+    <string name="no_technicians_found">No Technicians Found</string>
+    <string name="logout">Logout</string>
 </resources>

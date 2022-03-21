@@ -6,6 +6,7 @@
     app:layout_constrainedWidth="true">
 
     <data>
+
         <variable
             name="tech"
             type="com.example.servizi.user.model.Technician" />
@@ -14,69 +15,85 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="8dp"
-        app:cardPreventCornerOverlap="true">
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/dark_background"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp">
 
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv_item_userImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:padding="5dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/img" />
-
 
             <TextView
                 android:id="@+id/tv_item_Name"
+                style="@style/Theme.Servizi.TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:layout_toEndOf="@id/iv_item_userImage"
                 android:drawablePadding="5dp"
                 android:text="@string/technician_name"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:taskTitle="@{tech.firstName + tech.lastName}" />
+                app:layout_constraintStart_toEndOf="@id/iv_item_userImage"
+                app:layout_constraintTop_toTopOf="parent"
+                app:taskTitle="@{tech.firstName + ' ' + tech.lastName}" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/rating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:numStars="5"
+                android:rating="3.5"
+                android:stepSize="0.5"
+                android:theme="@style/RatingBar"
+                app:layout_constraintBottom_toBottomOf="@id/iv_item_userImage"
+                app:layout_constraintStart_toEndOf="@id/iv_item_userImage"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_Name" />
 
             <TextView
                 android:id="@+id/idTVCourseRating"
-                android:layout_width="101dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_item_Name"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginStart="5dp"
                 android:layout_toEndOf="@id/iv_item_userImage"
                 android:drawablePadding="2dp"
-                android:text="Text"
+                android:text="@string/rating"
+                app:layout_constraintStart_toEndOf="@id/rating"
+                app:layout_constraintTop_toTopOf="@id/rating"
+                app:layout_constraintBottom_toBottomOf="@id/rating"
                 tools:ignore="UnknownId" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
-                android:layout_width="89dp"
-                android:layout_height="26dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="49dp"
-                android:layout_marginEnd="23dp"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_toEndOf="@id/tv_item_Name"
-                android:background="@drawable/main_background"
+                android:background="@drawable/rounded_background"
+                android:padding="0dp"
                 android:text="@string/book"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.615"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="301dp" />
-        </RelativeLayout>
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_item_userImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_item_userImage" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

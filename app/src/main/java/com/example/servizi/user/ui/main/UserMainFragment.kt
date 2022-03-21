@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.servizi.R
 import com.example.servizi.databinding.FragmentTechnicianSignUpBinding
@@ -59,12 +60,31 @@ class UserMainFragment : Fragment() {
         val navHostFragment =
             childFragmentManager.findFragmentById(R.id.nav_host_fragment_main) as NavHostFragment
 
+        /*val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.user_home_fragment, R.id.techniciansFragment,R.id.UserHomeFragment
+            )
+        )*/
         val navController = navHostFragment.navController
         navView.setupWithNavController(navController)
 
+        /*(navHostFragment.requireActivity() as AppCompatActivity).setupActionBarWithNavController(
+            navController,
+            appBarConfiguration
+        )*/
+
         // hide action bar
         (navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.hide()
-
+        /*navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.techniciansFragment -> {
+                    (navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.show()
+                    //(navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.title = "Carpenter"
+                }
+                else -> {
+                    (navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.hide()
+                }
+            }
+        }*/
     }
-
 }
