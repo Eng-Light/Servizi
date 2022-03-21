@@ -6,24 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.databinding.UserHomeFragmentBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.user.model.TechRepository
-import com.example.servizi.user.model.TechniciansResponse
+import com.example.servizi.user.model.Technician
 import com.example.servizi.user.network.UserApiService
 import com.example.servizi.user.ui.technicians.TechniciansViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, TechRepository>(),
+class UserHomeFragment : BaseFragment<UserHomeViewModel, UserHomeFragmentBinding, TechRepository>(),
     View.OnClickListener {
 
-    private val viewModel2: TechniciansViewModel by activityViewModels()
+    private val viewModel2: UserHomeViewModel by activityViewModels()
 
-    override fun getViewModel() = HomeViewModel::class.java
+    override fun getViewModel() = UserHomeViewModel::class.java
 
     override fun getFragmentRepository(): TechRepository {
 
@@ -40,30 +41,6 @@ class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, Te
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.techs.observe(viewLifecycleOwner) {
-            when (it) {
-                is Result.Success -> {
-                    sendData(it.data)
-                    viewModel2._technicians.value = it.data.technicians
-                    findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
-                }
-                is Result.Loading -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Loading ...",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                is Result.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Error :( ",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-        }
-
         binding.carpenterCrdV.setOnClickListener(this)
         binding.plumberCrdV.setOnClickListener(this)
         binding.airConditioningCrdV.setOnClickListener(this)
@@ -72,37 +49,31 @@ class UserHomeFragment : BaseFragment<HomeViewModel, UserHomeFragmentBinding, Te
         binding.carMechanicCrdV.setOnClickListener(this)
     }
 
-    private fun sendData(data: TechniciansResponse) {
-        Toast.makeText(
-            requireContext(),
-            "Success :) " + data.technicians,
-            Toast.LENGTH_LONG
-        ).show()
-    }
-
-    private fun getTechs(prof: String) {
-        viewModel.getTechs(prof)
-    }
-
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.carpenterCrdV -> {
-                getTechs("carpenter")
+                viewModel2._techProf.value = "carpenter"
+                findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.plumberCrdV -> {
-                getTechs("plumber")
+                viewModel2._techProf.value = "plumber"
+                findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.air_conditioningCrdV -> {
-                getTechs("air conditioning")
+                viewModel2._techProf.value = "air conditioning"
+                findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.electricianCrdV -> {
-                getTechs("electrician")
+                viewModel2._techProf.value = "electrician"
+                findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.painting_workCrdV -> {
-                getTechs("painting")
+                viewModel2._techProf.value = "painting"
+                findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.car_mechanicCrdV -> {
-                getTechs("mechanic")
+                viewModel2._techProf.value = "mechanic"
+                findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
         }
     }

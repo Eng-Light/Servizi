@@ -2,7 +2,7 @@ package com.example.servizi.technician.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.servizi.technician.model.login.data.BaseRepository
+import com.example.servizi.application.BaseRepository
 import com.example.servizi.technician.model.login.data.LoginRepository
 
 /**

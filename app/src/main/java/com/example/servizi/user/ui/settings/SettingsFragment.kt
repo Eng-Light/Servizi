@@ -1,32 +1,35 @@
 package com.example.servizi.user.ui.settings
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.servizi.R
+import com.example.servizi.application.BaseFragment
+import com.example.servizi.databinding.SettingsFragmentBinding
+import com.example.servizi.user.model.TechRepository
+import com.example.servizi.user.network.UserApiService
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
-class SettingsFragment : Fragment() {
+class SettingsFragment :
+    BaseFragment<SettingsViewModel, SettingsFragmentBinding, TechRepository>() {
+    override fun getViewModel() = SettingsViewModel::class.java
 
-    companion object {
-        fun newInstance() = SettingsFragment()
+    override fun getFragmentRepository(): TechRepository {
+        val token = ""
+        val api = remoteDataSource.buildApi(UserApiService::class.java, token)
+        return TechRepository(api)
     }
 
-    private lateinit var viewModel: SettingsViewModel
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = SettingsFragmentBinding.inflate(inflater, container, false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.settings_fragment, container, false)
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.btnLogout.setOnClickListener { logout() }
     }
 
 }

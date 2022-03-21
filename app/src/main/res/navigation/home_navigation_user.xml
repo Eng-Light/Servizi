@@ -8,22 +8,35 @@
         android:id="@+id/navigation_home"
         android:name="com.example.servizi.user.ui.home.UserHomeFragment"
         android:label="Home"
-        tools:layout="@layout/user_home_fragment" >
+        tools:layout="@layout/user_home_fragment">
         <action
             android:id="@+id/action_navigation_home_to_navigation_my_order"
-            app:destination="@id/navigation_my_orders" />
+            app:destination="@id/navigation_my_orders"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_navigation_home_to_techniciansFragment"
-            app:destination="@id/techniciansFragment" />
+            app:destination="@id/techniciansFragment"
+            app:popUpTo="@id/navigation_home"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/slide_out_top"
+            app:popEnterAnim="@anim/slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
     </fragment>
     <fragment
         android:id="@+id/navigation_my_orders"
         android:name="com.example.servizi.user.ui.my_orders.MyOrdersFragment"
         android:label="MyOrders"
-        tools:layout="@layout/my_orders_fragment" >
+        tools:layout="@layout/my_orders_fragment">
         <action
             android:id="@+id/action_navigation_my_order_to_navigation_setting"
-            app:destination="@id/navigation_setting" />
+            app:destination="@id/navigation_setting"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/navigation_setting"
@@ -33,5 +46,5 @@
     <fragment
         android:id="@+id/techniciansFragment"
         android:name="com.example.servizi.user.ui.technicians.TechniciansFragment"
-        android:label="TechniciansFragment" />
+        android:label="Technicians"></fragment>
 </navigation>

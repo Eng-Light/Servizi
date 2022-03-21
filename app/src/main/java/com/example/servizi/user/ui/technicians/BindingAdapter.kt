@@ -10,7 +10,17 @@ when a View item has the imageUrl attribute.*/
 @BindingAdapter("listData")
 fun bindRecyclerView(
     recyclerView: RecyclerView,
-    data: List<Technician>?
+    data: List<Technician>? = listOf(
+        Technician(
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        )
+    )
 ) {
     val adapter = recyclerView.adapter as TechsAdapter
     adapter.submitList(data)
@@ -19,7 +29,23 @@ fun bindRecyclerView(
 @BindingAdapter("taskTitle")
 fun bindTextView(
     textView: TextView,
-    tv_task: String?
+    tv_task: String? = ""
+) {
+    textView.text = tv_task
+}
+
+@BindingAdapter("profession")
+fun bindTvProf(
+    textView: TextView,
+    tv_task: String? = ""
+) {
+    textView.text = tv_task
+}
+
+@BindingAdapter("location")
+fun bindTvLoc(
+    textView: TextView,
+    tv_task: String? = ""
 ) {
     textView.text = tv_task
 }

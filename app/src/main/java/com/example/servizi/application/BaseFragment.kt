@@ -9,14 +9,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
-import com.example.servizi.technician.model.login.data.BaseRepository
+import com.example.servizi.MainActivity
+import com.example.servizi.application.BaseRepository
 import com.example.servizi.technician.model.login.data.UserPreferences
+import com.example.servizi.technician.ui.login.startNewActivity
 import com.example.servizi.user.network.RemoteDataSource
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 
-abstract class BaseFragment<VM :ViewModel, B : ViewBinding,R: BaseRepository>: Fragment() {
+abstract class BaseFragment<VM : ViewModel, B : ViewBinding, R : BaseRepository> : Fragment() {
     protected lateinit var userPreferences: UserPreferences
     protected lateinit var binding: B
     protected lateinit var viewModel: VM
@@ -28,13 +30,18 @@ abstract class BaseFragment<VM :ViewModel, B : ViewBinding,R: BaseRepository>: F
         savedInstanceState: Bundle?
     ): View? {
         userPreferences = UserPreferences(requireContext())
-        binding = getFragmentBinding(inflater,container)
+        binding = getFragmentBinding(inflater, container)
         val factory = ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory)[getViewModel()]
 
-        lifecycleScope.launch { userPreferences.accessToken.first()}
+        lifecycleScope.launch { userPreferences.accessToken.first() }
 
         return binding.root
+    }
+
+    fun logout() = lifecycleScope.launch {
+        userPreferences.clear()
+        requireActivity().startNewActivity(MainActivity::class.java)
     }
 
     abstract fun getViewModel(): Class<VM>

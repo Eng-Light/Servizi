@@ -1,5 +1,6 @@
-package com.example.servizi.technician.model.login.data
+package com.example.servizi.application
 
+import com.example.servizi.technician.model.login.data.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

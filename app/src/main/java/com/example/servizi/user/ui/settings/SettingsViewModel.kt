@@ -1,7 +1,8 @@
 package com.example.servizi.user.ui.settings
 
-import androidx.lifecycle.ViewModel
+import com.example.servizi.application.BaseRepository
+import com.example.servizi.application.BaseViewModel
 
-class SettingsViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class SettingsViewModel(repository: BaseRepository) : BaseViewModel(repository) {
+
 }

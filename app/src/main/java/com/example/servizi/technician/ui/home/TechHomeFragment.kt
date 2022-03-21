@@ -12,10 +12,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class TechHomeFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = TechHomeFragment()
-    }
-
     private lateinit var viewModel: TechHomeViewModel
 
     override fun onCreateView(
