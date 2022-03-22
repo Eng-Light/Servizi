@@ -1,25 +1,19 @@
 package com.example.servizi.user.ui.main
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.servizi.R
-import com.example.servizi.databinding.FragmentTechnicianSignUpBinding
 import com.example.servizi.databinding.UserMainFragmentBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 class UserMainFragment : Fragment() {
@@ -39,16 +33,29 @@ class UserMainFragment : Fragment() {
 
         // This callback will only be called when MyFragment is at least Started.
         val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            // Handle the back button event
-            Snackbar.make(requireView(), "Confirm Exit App ?", Snackbar.LENGTH_SHORT)
-                .setAction("EXIT") {
-                    activity?.moveTaskToBack(true);
-                    activity?.finish();
-                }.show()
+            showAlertDialog()
         }
         callback.isEnabled = true
 
         return binding.root
+    }
+
+    private fun showAlertDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Servizi")
+            .setMessage("Confirm Exit Application ?")
+            .setPositiveButton(
+                "Yes"
+            ) { _, _ ->
+                activity?.moveTaskToBack(true)
+                activity?.finish()
+            }
+            .setNegativeButton(
+                "Cancel"
+            ) { _, _ ->
+                Snackbar.make(requireView(), "Canceled", Snackbar.LENGTH_SHORT)
+                    .show()
+            }.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
