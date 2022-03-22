@@ -1,6 +1,5 @@
 package com.example.servizi.user.ui.main
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -48,7 +47,7 @@ class UserMainFragment : Fragment() {
             .setPositiveButton(
                 "Yes"
             ) { _, _ ->
-                activity?.moveTaskToBack(true);
+                activity?.moveTaskToBack(true)
                 activity?.finish()
             }
             .setNegativeButton(
