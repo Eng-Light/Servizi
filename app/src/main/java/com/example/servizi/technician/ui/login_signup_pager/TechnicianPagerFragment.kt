@@ -11,9 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.servizi.databinding.FragmentTechnicianPagerBinding
 import com.example.servizi.technician.ui.signup.SignUpFragment
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -35,11 +37,13 @@ class TechnicianPagerFragment : Fragment() {
         _binding = FragmentTechnicianPagerBinding.inflate(inflater, container, false)
 
         val fMr = parentFragmentManager
-        val sectionsPagerAdapter = TechnicianSectionsPagerAdapter(this, fMr)
-        val viewPager: ViewPager = binding.technicianViewPager
+        val sectionsPagerAdapter = TechnicianSectionsPagerAdapter(fMr, lifecycle)
+        val viewPager: ViewPager2 = binding.technicianViewPager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.technicianTabs
-        tabs.setupWithViewPager(viewPager)
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = context?.resources?.getString(sectionsPagerAdapter.titles[position])
+        }.attach()
 
         return binding.root
     }

@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
 import com.example.servizi.databinding.FragmentTechniciansBinding
-import com.example.servizi.databinding.TechHomeFragmentBinding
-import com.example.servizi.databinding.UserHomeFragmentBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.ui.login.visible

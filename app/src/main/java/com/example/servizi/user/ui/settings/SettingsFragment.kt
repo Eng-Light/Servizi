@@ -6,16 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.servizi.application.BaseFragment
-import com.example.servizi.databinding.SettingsFragmentBinding
+import com.example.servizi.databinding.FragmentUserSettingsBinding
 import com.example.servizi.user.model.TechRepository
 import com.example.servizi.user.network.UserApiService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
 
 class SettingsFragment :
-    BaseFragment<SettingsViewModel, SettingsFragmentBinding, TechRepository>() {
+    BaseFragment<SettingsViewModel, FragmentUserSettingsBinding, TechRepository>() {
     override fun getViewModel() = SettingsViewModel::class.java
 
     override fun getFragmentRepository(): TechRepository {
@@ -27,7 +24,7 @@ class SettingsFragment :
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = SettingsFragmentBinding.inflate(inflater, container, false)
+    ) = FragmentUserSettingsBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

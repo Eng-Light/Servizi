@@ -17,7 +17,7 @@
     <string name="title_activity_technician_main">TechnicianMainActivity</string>
     <string name="todo">TODO</string>
     <string name="tab_text_1">Login</string>
-    <string name="tab_text_2">SignUp</string>
+    <string name="tab_text_2">Register</string>
     <string name="register_as_a_technician">Register as a Technician</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>

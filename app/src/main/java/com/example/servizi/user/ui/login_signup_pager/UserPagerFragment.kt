@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.servizi.databinding.FragmentUserPagerBinding
 import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 /** A simple [Fragment] subclass as the default destination in the navigation.*/
 
@@ -31,13 +33,13 @@ class UserPagerFragment : Fragment() {
         _binding = FragmentUserPagerBinding.inflate(inflater, container, false)
 
         val fMr = parentFragmentManager
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, fMr)
-        val viewPager: ViewPager = binding.userViewPager
+        val sectionsPagerAdapter = SectionsPagerAdapter(fMr, lifecycle)
+        val viewPager: ViewPager2 = binding.userViewPager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.userTabs
-        tabs.setupWithViewPager(viewPager)
-        
-        
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = context?.resources?.getString(sectionsPagerAdapter.titles[position])
+        }.attach()
 
         return binding.root
     }
