@@ -4,22 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
-import com.example.servizi.databinding.UserHomeFragmentBinding
-import com.example.servizi.technician.model.login.data.Result
+import com.example.servizi.databinding.FragmentUserHomeBinding
 import com.example.servizi.user.model.TechRepository
-import com.example.servizi.user.model.Technician
 import com.example.servizi.user.network.UserApiService
-import com.example.servizi.user.ui.technicians.TechniciansViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class UserHomeFragment : BaseFragment<UserHomeViewModel, UserHomeFragmentBinding, TechRepository>(),
+class UserHomeFragment : BaseFragment<UserHomeViewModel, FragmentUserHomeBinding, TechRepository>(),
     View.OnClickListener {
 
     private val viewModel2: UserHomeViewModel by activityViewModels()
@@ -36,7 +31,7 @@ class UserHomeFragment : BaseFragment<UserHomeViewModel, UserHomeFragmentBinding
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = UserHomeFragmentBinding.inflate(inflater, container, false)
+    ) = FragmentUserHomeBinding.inflate(inflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

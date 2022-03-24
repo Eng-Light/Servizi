@@ -17,6 +17,6 @@
         android:id="@+id/techHomeFragment"
         android:name="com.example.servizi.technician.ui.home.TechHomeFragment"
         android:label="Tech Home"
-        tools:layout="@layout/tech_home_fragment"
+        tools:layout="@layout/fragment_tech_home"
         />
 </navigation>

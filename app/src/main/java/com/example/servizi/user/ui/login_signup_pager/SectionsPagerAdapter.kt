@@ -2,27 +2,29 @@ package com.example.servizi.user.ui.login_signup_pager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.Lifecycle
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.servizi.R
 import com.example.servizi.signup_login_pager.PlaceholderFragment
 import com.example.servizi.technician.ui.login.LoginFragment
 
 import  com.example.servizi.user.ui.signup.UserSignupFragment
+
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
     R.string.tab_text_2
 )
 
 /**
- * A [FragmentPagerAdapter] that returns a fragment corresponding to
+ * A [FragmentStateAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.*/
 
 
-class SectionsPagerAdapter(private val context: UserPagerFragment, fm: FragmentManager) :
-    FragmentPagerAdapter(fm) {
+class SectionsPagerAdapter(fm: FragmentManager, lifecycle: Lifecycle) :
+    FragmentStateAdapter(fm, lifecycle) {
+    val titles = TAB_TITLES
 
-
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
         return when (position) {
@@ -32,11 +34,7 @@ class SectionsPagerAdapter(private val context: UserPagerFragment, fm: FragmentM
         }
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TAB_TITLES[position])
-    }
-
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         // Show 2 total pages.
         return 2
     }

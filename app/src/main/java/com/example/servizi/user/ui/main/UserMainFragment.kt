@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.servizi.R
-import com.example.servizi.databinding.UserMainFragmentBinding
+import com.example.servizi.databinding.FragmentUserMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 class UserMainFragment : Fragment() {
 
     private lateinit var viewModel: UserMainViewModel
-    private var _binding: UserMainFragmentBinding? = null
+    private var _binding: FragmentUserMainBinding? = null
 
     private val binding get() = _binding!!
 
@@ -28,7 +28,7 @@ class UserMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = UserMainFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentUserMainBinding.inflate(inflater, container, false)
 
 
         // This callback will only be called when MyFragment is at least Started.

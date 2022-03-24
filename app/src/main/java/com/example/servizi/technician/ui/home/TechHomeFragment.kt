@@ -23,13 +23,13 @@ class TechHomeFragment : Fragment() {
             // Handle the back button event
             Snackbar.make(requireView(), "Confirm Exit App ?", Snackbar.LENGTH_SHORT)
                 .setAction("EXIT") {
-                    activity?.moveTaskToBack(true);
-                    activity?.finish();
+                    activity?.moveTaskToBack(true)
+                    activity?.finish()
                 }.show()
         }
         callback.isEnabled = true
 
-        return inflater.inflate(R.layout.tech_home_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_tech_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
