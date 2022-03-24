@@ -45,13 +45,13 @@ class UserMainFragment : Fragment() {
             .setTitle("Servizi")
             .setMessage("Confirm Exit Application ?")
             .setPositiveButton(
-                "Yes"
+                "Exit"
             ) { _, _ ->
                 activity?.moveTaskToBack(true)
                 activity?.finish()
             }
             .setNegativeButton(
-                "Cancel"
+                "Stay"
             ) { _, _ ->
                 Snackbar.make(requireView(), "Canceled", Snackbar.LENGTH_SHORT)
                     .show()

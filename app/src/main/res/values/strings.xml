@@ -76,4 +76,7 @@
     <string name="location">Location</string>
     <string name="no_technicians_found">No Technicians Found</string>
     <string name="logout">Logout</string>
+    <string name="my_account">My Account</string>
+    <string name="log_out">Log out</string>
+    <string name="version">V 1.0.0</string>
 </resources>

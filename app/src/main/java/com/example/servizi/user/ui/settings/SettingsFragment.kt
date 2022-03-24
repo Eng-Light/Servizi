@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.databinding.SettingsFragmentBinding
 import com.example.servizi.user.model.TechRepository
 import com.example.servizi.user.network.UserApiService
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -29,7 +32,22 @@ class SettingsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnLogout.setOnClickListener { logout() }
+        binding.logoutCrdV.setOnClickListener { showAlertDialog() }
     }
 
+    private fun showAlertDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Servizi")
+            .setMessage("Confirm logout ?")
+            .setPositiveButton(
+                "Logout"
+            ) { _, _ ->
+                logout()
+            }
+            .setNegativeButton(
+                "Stay"
+            ) { _, _ ->
+                Toast.makeText(requireContext(), "Nice Choice !", Toast.LENGTH_SHORT).show()
+            }.show()
+    }
 }

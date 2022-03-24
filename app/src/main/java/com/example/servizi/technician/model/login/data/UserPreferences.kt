@@ -35,7 +35,7 @@ object TokenSerializer : Serializer<LoginTokens> {
 private val Context.loginDataStore: DataStore<LoginTokens> by dataStore(
     fileName = "LOGIN_DATA_STORE",
     serializer = TokenSerializer,
-)//preferencesDataStore(name = "login_data_store")
+)
 
 class UserPreferences(
     context: Context
@@ -66,6 +66,14 @@ class UserPreferences(
         appContext.loginDataStore.updateData {
             it.toBuilder()
                 .setUserType(userType)
+                .build()
+        }
+    }
+
+    suspend fun saveUserId(userId: String?) {
+        appContext.loginDataStore.updateData {
+            it.toBuilder()
+                .setId(userId)
                 .build()
         }
     }
