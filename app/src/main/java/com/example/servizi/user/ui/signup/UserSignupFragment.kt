@@ -20,7 +20,6 @@ import com.example.servizi.user.model.UserData
 import com.google.android.material.snackbar.Snackbar
 import java.util.regex.Pattern
 
-
 class UserSignupFragment : Fragment() {
     private lateinit var viewModel: UserSignUpViewModel
     private val signUpPagerViewModel: PagerViewModel by activityViewModels()
@@ -39,7 +38,6 @@ class UserSignupFragment : Fragment() {
 
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -211,7 +209,6 @@ class UserSignupFragment : Fragment() {
             binding.yourPhone.error = "Not Valid Phone"
             valid = false
         }
-
         if (!passwordValidation(user.password)) {
             binding.createYourPassword.error = "Not Valid Password"
             valid = false
@@ -240,7 +237,7 @@ class UserSignupFragment : Fragment() {
     }
 
     private fun phoneValidator(_phone: String): Boolean {
-        return if (_phone.isEmpty() || _phone.length < 11) {
+        return if (_phone.isEmpty() || _phone.length != 11) {
             false
         } else {
             Patterns.PHONE.matcher(_phone).matches()

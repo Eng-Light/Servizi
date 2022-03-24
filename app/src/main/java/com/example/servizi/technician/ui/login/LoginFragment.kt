@@ -87,8 +87,12 @@ class LoginFragment : Fragment() {
 
                     lifecycleScope.launch {
                         userPreferences.saveAccessToken(it.data.userToken)
-                        userPreferences.saveTokenExpire(expiration =  getExDate(it.data.userExpiresIn?.toIntOrNull())!!)
-                        Log.d("Login_UserType_ex2", getExDate(it.data.userExpiresIn?.toIntOrNull())!!)
+                        userPreferences.saveTokenExpire(expiration = getExDate(it.data.userExpiresIn?.toIntOrNull())!!)
+                        userPreferences.saveUserId(it.data.userId.toString())
+                        Log.d(
+                            "Login_UserType_ex2",
+                            getExDate(it.data.userExpiresIn?.toIntOrNull())!!
+                        )
                     }
                     Log.d("Login_UserType", "UnDefined")
 
