@@ -36,7 +36,7 @@ class TechnicianPagerFragment : Fragment() {
 
         _binding = FragmentTechnicianPagerBinding.inflate(inflater, container, false)
 
-        val fMr = parentFragmentManager
+        val fMr = childFragmentManager
         val sectionsPagerAdapter = TechnicianSectionsPagerAdapter(fMr, lifecycle)
         val viewPager: ViewPager2 = binding.technicianViewPager
         viewPager.adapter = sectionsPagerAdapter

@@ -9,23 +9,23 @@ import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.databinding.FragmentUserHomeBinding
-import com.example.servizi.user.model.TechRepository
+import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class UserHomeFragment : BaseFragment<UserHomeViewModel, FragmentUserHomeBinding, TechRepository>(),
+class UserHomeFragment : BaseFragment<UserHomeViewModel, FragmentUserHomeBinding, UserRepository>(),
     View.OnClickListener {
 
     private val viewModel2: UserHomeViewModel by activityViewModels()
 
     override fun getViewModel() = UserHomeViewModel::class.java
 
-    override fun getFragmentRepository(): TechRepository {
+    override fun getFragmentRepository(): UserRepository {
 
         val token = runBlocking { userPreferences.accessToken.first().toString() }
         val api = remoteDataSource.buildApi(UserApiService::class.java, token)
-        return TechRepository(api)
+        return UserRepository(api)
     }
 
     override fun getFragmentBinding(

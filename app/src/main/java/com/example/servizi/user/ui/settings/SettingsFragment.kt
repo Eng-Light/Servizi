@@ -7,18 +7,18 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.databinding.FragmentUserSettingsBinding
-import com.example.servizi.user.model.TechRepository
+import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class SettingsFragment :
-    BaseFragment<SettingsViewModel, FragmentUserSettingsBinding, TechRepository>() {
+    BaseFragment<SettingsViewModel, FragmentUserSettingsBinding, UserRepository>() {
     override fun getViewModel() = SettingsViewModel::class.java
 
-    override fun getFragmentRepository(): TechRepository {
+    override fun getFragmentRepository(): UserRepository {
         val token = ""
         val api = remoteDataSource.buildApi(UserApiService::class.java, token)
-        return TechRepository(api)
+        return UserRepository(api)
     }
 
     override fun getFragmentBinding(
