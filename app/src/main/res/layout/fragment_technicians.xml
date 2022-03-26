@@ -36,7 +36,7 @@
                 <TextView
                     android:id="@+id/tv_Profession"
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                    profession="@{viewModel.technicians[0].profession}"
+                    profession="@{viewModel.profession}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -44,7 +44,7 @@
 
                 <TextView
                     android:id="@+id/tv_Location"
-                    location="@{viewModel.technicians[0].city}"
+                    location="@{viewModel.location.city}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center"

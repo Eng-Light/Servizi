@@ -43,7 +43,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         }
     }
 
-
     fun loginDataChanged(userPhone: String, password: String) {
         if (!isUserNameValid(userPhone)) {
             _loginForm.value = LoginFormState(userPhoneError = R.string.invalid_userPhone)
@@ -53,7 +52,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _loginForm.value = LoginFormState(isDataValid = true)
         }
     }
-
 
     // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {

@@ -53,6 +53,16 @@ class UserPreferences(
         it.expiresIn
     }
 
+    //get governorate
+    val governorate: Flow<String?> = appContext.loginDataStore.data.map {
+        it.governorate
+    }
+
+    //get city
+    val city: Flow<String?> = appContext.loginDataStore.data.map {
+        it.city
+    }
+
     //get UserID
     val userId: Flow<String?> = appContext.loginDataStore.data.map {
         it.id
@@ -60,6 +70,22 @@ class UserPreferences(
 
     val usertype: Flow<String?> = appContext.loginDataStore.data.map {
         it.userType
+    }
+
+    suspend fun saveUserGovernorate(userGovernorate: String?) {
+        appContext.loginDataStore.updateData {
+            it.toBuilder()
+                .setGovernorate(userGovernorate)
+                .build()
+        }
+    }
+
+    suspend fun saveUserCity(userCity: String?) {
+        appContext.loginDataStore.updateData {
+            it.toBuilder()
+                .setCity(userCity)
+                .build()
+        }
     }
 
     suspend fun saveUserType(userType: String?) {

@@ -89,6 +89,8 @@ class LoginFragment : Fragment() {
                         userPreferences.saveAccessToken(it.data.userToken)
                         userPreferences.saveTokenExpire(expiration = getExDate(it.data.userExpiresIn?.toIntOrNull())!!)
                         userPreferences.saveUserId(it.data.userId.toString())
+                        userPreferences.saveUserGovernorate(it.data.governorate)
+                        userPreferences.saveUserCity(it.data.city)
                         Log.d(
                             "Login_UserType_ex2",
                             getExDate(it.data.userExpiresIn?.toIntOrNull())!!

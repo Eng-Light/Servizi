@@ -14,6 +14,7 @@ import android.widget.PopupWindow
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
@@ -31,6 +32,7 @@ import com.example.servizi.user.network.UserApiService
 import com.example.servizi.user.ui.home.UserHomeViewModel
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -40,6 +42,7 @@ class TechniciansFragment :
 
     private var filterPopup: PopupWindow? = null
     private var _popBinding: PopupUpdateLocationBinding? = null
+    private var newLocation: NewLocation? = null
     private val popBinding get() = _popBinding!!
 
     private val viewModel1: UserHomeViewModel by activityViewModels()
@@ -81,8 +84,17 @@ class TechniciansFragment :
 
         val loadingProgressBar = binding.loading
         val tvError = binding.tvError
-
+        val nLocation = NewLocation("", "")
+        lifecycleScope.launch {
+            userPreferences.city.asLiveData().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    nLocation.city = it
+                }
+                viewModel.setLocation(nLocation)
+            }
+        }
         viewModel1.techProf.observe(viewLifecycleOwner) {
+            viewModel.setProfession(it)
             viewModel.getTechs(it)
         }
 
@@ -108,11 +120,15 @@ class TechniciansFragment :
         }
 
         viewModel.updateResponse.observe(viewLifecycleOwner) {
-            Log.d("TechFragmentD", it.toString())
             when (it) {
                 is Result.Success -> {
                     loadingProgressBar.visible(false)
                     viewModel1.techProf.value?.let { it1 -> viewModel.getTechs(it1) }
+                    lifecycleScope.launch {
+                        userPreferences.saveUserGovernorate(newLocation?.governorate)
+                        userPreferences.saveUserCity(newLocation?.city)
+                    }
+
                 }
                 is Result.Loading -> {
                     loadingProgressBar.visible(true)
@@ -222,12 +238,11 @@ class TechniciansFragment :
             }
 
         popBinding.yourBtnUpdate.setOnClickListener {
-            val newLocation = NewLocation(
+            newLocation = NewLocation(
                 popBinding.yourGovernorate.selectedItem.toString().trim(),
                 popBinding.yourCity.selectedItem.toString().trim()
             )
-            Log.d("TechFragmentD", newLocation.toString())
-            viewModel.updateLoc(newLocation)
+            viewModel.updateLoc(newLocation!!)
             dismissPopup()
         }
 
