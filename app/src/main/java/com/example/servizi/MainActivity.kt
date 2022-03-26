@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
             Handler().postDelayed({
                 flag = false
-            },1000)
+            }, 1000)
 
             flag
         }
@@ -103,6 +103,9 @@ class MainActivity : AppCompatActivity() {
                                 finish()
                             }
                         }
+                    } else {
+                        lifecycleScope.launch { userPreferences.clear() }
+                        binding.MainActivity.visible(true)
                     }
                 }
             }
