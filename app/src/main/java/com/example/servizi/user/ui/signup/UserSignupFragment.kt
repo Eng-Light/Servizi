@@ -143,7 +143,6 @@ class UserSignupFragment : Fragment() {
 
                 viewModel.setUserData(userData)
                 viewModel.userSignUpData.value?.let { it1 -> viewModel.signUpUser(it1) }
-                swipeToLoginFragment(0)
 
             } else {
                 Snackbar.make(view, "Please Chick SignUp Data", Snackbar.LENGTH_SHORT)
@@ -153,8 +152,6 @@ class UserSignupFragment : Fragment() {
         binding.login.setOnClickListener {
             swipeToLoginFragment(0)
         }
-
-
 
         viewModel.userSignUpLoadingStatus.observe(viewLifecycleOwner) {
             id.let {
@@ -171,7 +168,7 @@ class UserSignupFragment : Fragment() {
                             viewModel.userSignUpResponseData.value?.msg.toString(),
                             Toast.LENGTH_LONG
                         ).show()
-
+                        swipeToLoginFragment(0)
                     }
                     UserSignUpApiStatus.ERROR -> {
 
