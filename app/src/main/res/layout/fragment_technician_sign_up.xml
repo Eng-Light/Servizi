@@ -45,8 +45,7 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/first_name"
-                    android:orientation="vertical"
-                    android:textColorHint="#5B5C58">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/first_name"
@@ -55,8 +54,7 @@
                         android:background="@drawable/rounded_text_input"
                         android:inputType="textPersonName"
                         android:lines="1"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,8 +64,7 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/last_name"
-                    android:orientation="vertical"
-                    android:textColorHint="#5B5C58">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/last_name"
@@ -75,8 +72,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,8 +82,7 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/e_mail"
-                    android:orientation="vertical"
-                    android:textColorHint="#5B5C58">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/email"
@@ -95,8 +90,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="textEmailAddress"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,11 +101,9 @@
                     android:layout_marginTop="20dp"
                     android:hint="@string/create_password"
                     android:orientation="vertical"
-                    android:textColorHint="#5B5C58"
                     app:endIconCheckable="true"
                     app:endIconDrawable="@drawable/ic_visibility_24"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="#5B5C58">
+                    app:endIconMode="password_toggle">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/create_password"
@@ -119,8 +111,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,11 +122,9 @@
                     android:layout_marginTop="20dp"
                     android:hint="@string/repeat_password"
                     android:orientation="vertical"
-                    android:textColorHint="#5B5C58"
                     app:endIconCheckable="true"
                     app:endIconDrawable="@drawable/ic_visibility_24"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="#5B5C58">
+                    app:endIconMode="password_toggle">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/repeat_password"
@@ -143,8 +132,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,8 +142,7 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/phone"
-                    android:orientation="vertical"
-                    android:textColorHint="#5B5C58">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/phone"
@@ -163,8 +150,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="number"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,8 +160,7 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/birth_date"
-                    android:orientation="vertical"
-                    android:textColorHint="#5B5C58">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/birthDate"
@@ -183,8 +168,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="text"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -207,7 +191,7 @@
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:text="@string/governorate"
-                        android:textColor="@color/black"
+                        style="@style/Theme.Servizi.TextView"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -247,7 +231,7 @@
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:text="@string/city"
-                        android:textColor="@color/black"
+                        style="@style/Theme.Servizi.TextView"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -275,8 +259,7 @@
                     android:layout_height="60dp"
                     android:layout_marginTop="20dp"
                     android:hint="@string/national_id"
-                    android:orientation="vertical"
-                    android:textColorHint="#5B5C58">
+                    android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/national_id"
@@ -284,8 +267,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="number"
-                        android:maxLines="1"
-                        android:textColor="@color/black" />
+                        android:maxLines="1"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -308,7 +290,7 @@
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:text="@string/profession"
-                        android:textColor="@color/black"
+                        style="@style/Theme.Servizi.TextView"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

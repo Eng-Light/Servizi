@@ -2,9 +2,7 @@ package com.example.servizi.user.network
 
 import com.example.servizi.technician.model.login.data.LoginData
 import com.example.servizi.technician.model.login.data.LoginResponseData
-import com.example.servizi.user.model.TechniciansResponse
-import com.example.servizi.user.model.UserData
-import com.example.servizi.user.model.UserSignUpResponseData
+import com.example.servizi.user.model.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -30,6 +28,9 @@ interface UserApiService {
 
     @GET("/user/alltechnicians")
     suspend fun getTechniciansAsync(@Query(value = "profession") profession: String): TechniciansResponse
+
+    @PUT("/auth/user/locupdate")
+    suspend fun updateLoc(@Body newLoc: NewLocation): LocUpdateResponse
 
     @POST("/auth/user/signup")
     fun userSignUpRequestAsync(@Body userSignUpData: UserData): Deferred<Response<UserSignUpResponseData>>

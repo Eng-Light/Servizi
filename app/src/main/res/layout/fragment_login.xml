@@ -22,7 +22,6 @@
         android:layout_marginEnd="24dp"
         android:hint="@string/phone_number"
         android:orientation="vertical"
-        android:textColorHint="#5B5C58"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,8 +32,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/rounded_text_input"
             android:inputType="phone"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/black" />
+            android:selectAllOnFocus="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +45,6 @@
         android:layout_marginEnd="24dp"
         android:hint="@string/prompt_password"
         android:orientation="vertical"
-        android:textColorHint="#5B5C58"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameT">
@@ -60,8 +57,7 @@
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            android:textColor="@color/black" />
+            android:selectAllOnFocus="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 

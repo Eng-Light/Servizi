@@ -50,7 +50,8 @@
                     android:layout_gravity="end|center"
                     android:layout_marginHorizontal="15dp"
                     android:text="@string/location"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:drawableRightCompat="@drawable/ic_arrow_down_24" />
                 <!--location="@{viewModel.technicians.get(0).city}"-->
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
