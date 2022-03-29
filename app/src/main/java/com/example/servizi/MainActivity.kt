@@ -71,6 +71,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         //check Token
+        checkToken(userPreferences)
+    }
+
+    private fun checkToken(userPreferences: UserPreferences) {
         userPreferences.accessToken.asLiveData().observe(this) {
             if (it == "") {
                 binding.MainActivity.visible(true)
@@ -105,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     } else {
                         lifecycleScope.launch { userPreferences.clear() }
-                        binding.MainActivity.visible(true)
+                        checkToken(userPreferences)
                     }
                 }
             }

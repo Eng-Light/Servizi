@@ -14,12 +14,12 @@ import com.example.servizi.user.network.UserApiService
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
-class UserHomeFragment : BaseFragment<UserHomeViewModel, FragmentUserHomeBinding, UserRepository>(),
+class UserHomeFragment : BaseFragment<UserSharedViewModel, FragmentUserHomeBinding, UserRepository>(),
     View.OnClickListener {
 
-    private val viewModel2: UserHomeViewModel by activityViewModels()
+    private val userSharedModel1: UserSharedViewModel by activityViewModels()
 
-    override fun getViewModel() = UserHomeViewModel::class.java
+    override fun getViewModel() = UserSharedViewModel::class.java
 
     override fun getFragmentRepository(): UserRepository {
 
@@ -47,27 +47,27 @@ class UserHomeFragment : BaseFragment<UserHomeViewModel, FragmentUserHomeBinding
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.carpenterCrdV -> {
-                viewModel2._techProf.value = "carpenter"
+                userSharedModel1._techProf.value = "carpenter"
                 findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.plumberCrdV -> {
-                viewModel2._techProf.value = "plumber"
+                userSharedModel1._techProf.value = "plumber"
                 findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.air_conditioningCrdV -> {
-                viewModel2._techProf.value = "air conditioning"
+                userSharedModel1._techProf.value = "air conditioning"
                 findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.electricianCrdV -> {
-                viewModel2._techProf.value = "electrician"
+                userSharedModel1._techProf.value = "electrician"
                 findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.painting_workCrdV -> {
-                viewModel2._techProf.value = "painting"
+                userSharedModel1._techProf.value = "painting"
                 findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
             R.id.car_mechanicCrdV -> {
-                viewModel2._techProf.value = "mechanic"
+                userSharedModel1._techProf.value = "mechanic"
                 findNavController().navigate(R.id.action_navigation_home_to_techniciansFragment)
             }
         }

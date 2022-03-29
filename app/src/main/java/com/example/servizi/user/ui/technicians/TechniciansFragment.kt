@@ -4,14 +4,12 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.PopupWindow
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -27,12 +25,8 @@ import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.model.NewLocation
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.model.Technician
-import com.example.servizi.user.model.UserData
 import com.example.servizi.user.network.UserApiService
-import com.example.servizi.user.ui.home.UserHomeViewModel
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.flow.collect
+import com.example.servizi.user.ui.home.UserSharedViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -40,12 +34,12 @@ import kotlinx.coroutines.runBlocking
 class TechniciansFragment :
     BaseFragment<TechniciansViewModel, FragmentTechniciansBinding, UserRepository>() {
 
-    private var filterPopup: PopupWindow? = null
+    private var popupWindow: PopupWindow? = null
     private var _popBinding: PopupUpdateLocationBinding? = null
     private var newLocation: NewLocation? = null
     private val popBinding get() = _popBinding!!
 
-    private val viewModel1: UserHomeViewModel by activityViewModels()
+    private val userSharedModel: UserSharedViewModel by activityViewModels()
 
     override fun getViewModel() = TechniciansViewModel::class.java
 
@@ -93,7 +87,7 @@ class TechniciansFragment :
                 viewModel.setLocation(nLocation)
             }
         }
-        viewModel1.techProf.observe(viewLifecycleOwner) {
+        userSharedModel.techProf.observe(viewLifecycleOwner) {
             viewModel.setProfession(it)
             viewModel.getTechs(it)
         }
@@ -123,7 +117,7 @@ class TechniciansFragment :
             when (it) {
                 is Result.Success -> {
                     loadingProgressBar.visible(false)
-                    viewModel1.techProf.value?.let { it1 -> viewModel.getTechs(it1) }
+                    userSharedModel.techProf.value?.let { it1 -> viewModel.getTechs(it1) }
                     lifecycleScope.launch {
                         userPreferences.saveUserGovernorate(newLocation?.governorate)
                         userPreferences.saveUserCity(newLocation?.city)
@@ -141,11 +135,11 @@ class TechniciansFragment :
 
         binding.tvLocation.setOnClickListener {
             dismissPopup()
-            filterPopup = showPopUpUpdateLoc()
-            filterPopup?.isOutsideTouchable = true
-            filterPopup?.isFocusable = true
-            filterPopup?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            filterPopup?.showAsDropDown(binding.appBarLayout)
+            popupWindow = showPopUpUpdateLoc()
+            popupWindow?.isOutsideTouchable = true
+            popupWindow?.isFocusable = true
+            popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            popupWindow?.showAsDropDown(binding.appBarLayout)
         }
 
 
@@ -254,11 +248,11 @@ class TechniciansFragment :
     }
 
     private fun dismissPopup() {
-        filterPopup?.let {
+        popupWindow?.let {
             if (it.isShowing) {
                 it.dismiss()
             }
-            filterPopup = null
+            popupWindow = null
         }
     }
 
