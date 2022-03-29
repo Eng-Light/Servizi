@@ -4,16 +4,15 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.PopupWindow
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
@@ -26,11 +25,8 @@ import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.model.NewLocation
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.model.Technician
-import com.example.servizi.user.model.UserData
 import com.example.servizi.user.network.UserApiService
-import com.example.servizi.user.ui.home.UserHomeViewModel
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
+import com.example.servizi.user.ui.home.UserSharedViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -38,11 +34,12 @@ import kotlinx.coroutines.runBlocking
 class TechniciansFragment :
     BaseFragment<TechniciansViewModel, FragmentTechniciansBinding, UserRepository>() {
 
-    private var filterPopup: PopupWindow? = null
+    private var popupWindow: PopupWindow? = null
     private var _popBinding: PopupUpdateLocationBinding? = null
+    private var newLocation: NewLocation? = null
     private val popBinding get() = _popBinding!!
 
-    private val viewModel1: UserHomeViewModel by activityViewModels()
+    private val userSharedModel: UserSharedViewModel by activityViewModels()
 
     override fun getViewModel() = TechniciansViewModel::class.java
 
@@ -81,8 +78,17 @@ class TechniciansFragment :
 
         val loadingProgressBar = binding.loading
         val tvError = binding.tvError
-
-        viewModel1.techProf.observe(viewLifecycleOwner) {
+        val nLocation = NewLocation("", "")
+        lifecycleScope.launch {
+            userPreferences.city.asLiveData().observe(viewLifecycleOwner) {
+                if (it != null) {
+                    nLocation.city = it
+                }
+                viewModel.setLocation(nLocation)
+            }
+        }
+        userSharedModel.techProf.observe(viewLifecycleOwner) {
+            viewModel.setProfession(it)
             viewModel.getTechs(it)
         }
 
@@ -108,11 +114,15 @@ class TechniciansFragment :
         }
 
         viewModel.updateResponse.observe(viewLifecycleOwner) {
-            Log.d("TechFragmentD", it.toString())
             when (it) {
                 is Result.Success -> {
                     loadingProgressBar.visible(false)
-                    viewModel1.techProf.value?.let { it1 -> viewModel.getTechs(it1) }
+                    userSharedModel.techProf.value?.let { it1 -> viewModel.getTechs(it1) }
+                    lifecycleScope.launch {
+                        userPreferences.saveUserGovernorate(newLocation?.governorate)
+                        userPreferences.saveUserCity(newLocation?.city)
+                    }
+
                 }
                 is Result.Loading -> {
                     loadingProgressBar.visible(true)
@@ -125,11 +135,11 @@ class TechniciansFragment :
 
         binding.tvLocation.setOnClickListener {
             dismissPopup()
-            filterPopup = showPopUpUpdateLoc()
-            filterPopup?.isOutsideTouchable = true
-            filterPopup?.isFocusable = true
-            filterPopup?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            filterPopup?.showAsDropDown(binding.appBarLayout)
+            popupWindow = showPopUpUpdateLoc()
+            popupWindow?.isOutsideTouchable = true
+            popupWindow?.isFocusable = true
+            popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            popupWindow?.showAsDropDown(binding.appBarLayout)
         }
 
 
@@ -222,12 +232,11 @@ class TechniciansFragment :
             }
 
         popBinding.yourBtnUpdate.setOnClickListener {
-            val newLocation = NewLocation(
+            newLocation = NewLocation(
                 popBinding.yourGovernorate.selectedItem.toString().trim(),
                 popBinding.yourCity.selectedItem.toString().trim()
             )
-            Log.d("TechFragmentD", newLocation.toString())
-            viewModel.updateLoc(newLocation)
+            viewModel.updateLoc(newLocation!!)
             dismissPopup()
         }
 
@@ -239,11 +248,11 @@ class TechniciansFragment :
     }
 
     private fun dismissPopup() {
-        filterPopup?.let {
+        popupWindow?.let {
             if (it.isShowing) {
                 it.dismiss()
             }
-            filterPopup = null
+            popupWindow = null
         }
     }
 

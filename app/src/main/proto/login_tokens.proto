@@ -8,4 +8,6 @@ message LoginTokens {
   string expiresIn = 2;
   string id = 3;
   string userType = 4;
+  string governorate = 5;
+  string city = 6;
 }
