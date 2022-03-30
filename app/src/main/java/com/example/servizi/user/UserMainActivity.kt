@@ -27,12 +27,12 @@ class UserMainActivity : AppCompatActivity() {
         val loggedIn = intent.extras
         if (loggedIn != null) {
             if (loggedIn.getBoolean("LoggedIn")) {
-                navController.navigate(R.id.UserHomeFragment)
+                navController.navigate(R.id.action_UserPagerFragment_to_UserMainFragment)
             }
         }
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.UserHomeFragment,
+                R.id.UserMainFragment,
                 R.id.UserPagerFragment
             )
         )
@@ -43,7 +43,7 @@ class UserMainActivity : AppCompatActivity() {
                     supportActionBar?.hide()
                     binding.toolbar2.visibility = View.GONE
                 }
-                R.id.UserHomeFragment -> {
+                R.id.UserMainFragment -> {
                     supportActionBar?.hide()
                     binding.toolbar2.visibility = View.GONE
                 }

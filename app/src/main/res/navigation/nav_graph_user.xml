@@ -9,19 +9,15 @@
         android:id="@+id/UserPagerFragment"
         android:name="com.example.servizi.user.ui.login_signup_pager.UserPagerFragment"
         android:label="Servizi"
-        tools:layout="@layout/fragment_user_pager" >
+        tools:layout="@layout/fragment_user_pager">
         <action
-            android:id="@+id/action_UserPagerFragment_to_UserHomeFragment"
-            app:destination="@id/UserHomeFragment" />
+            android:id="@+id/action_UserPagerFragment_to_UserMainFragment"
+            app:destination="@id/UserMainFragment" />
     </fragment>
     <fragment
-        android:id="@+id/UserHomeFragment"
+        android:id="@+id/UserMainFragment"
         android:name="com.example.servizi.user.ui.main.UserMainFragment"
         android:label="User Home"
         tools:layout="@layout/fragment_user_main" />
-    <fragment
-        android:id="@+id/myOrdersFragment"
-        android:name="com.example.servizi.user.ui.my_orders.MyOrdersFragment"
-        android:label="my_orders_fragment"
-        tools:layout="@layout/fragment_user_my_orders" />
+    <include app:graph="@navigation/nav_graph_user_home" />
 </navigation>

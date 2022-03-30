@@ -111,7 +111,7 @@ class LoginFragment : Fragment() {
                     userPreferences.usertype.asLiveData().observe(viewLifecycleOwner) { it1 ->
                         if (it1 == "User") {
                             Log.d("Login_UserType", "User")
-                            findNavController().navigate(R.id.UserHomeFragment)
+                            findNavController().navigate(R.id.UserMainFragment)
                         } else if (it1 == "Tech") {
                             Log.d("Login_UserType", "Tech")
                             findNavController().navigate(R.id.techHomeFragment)
