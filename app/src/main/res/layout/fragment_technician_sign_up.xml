@@ -293,7 +293,7 @@
                         tools:ignore="RtlSymmetry" />
 
                     <Spinner
-                        android:id="@+id/professionS"
+                        android:id="@+id/professions"
                         android:layout_width="170dp"
                         android:layout_height="match_parent"
                         android:autofillHints="postalAddress"
