@@ -1,20 +1,26 @@
 package com.example.servizi.technician.ui.signup
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.servizi.R
 import com.example.servizi.databinding.FragmentTechnicianSignUpBinding
+import com.example.servizi.databinding.PopupEnterDateBinding
 import com.example.servizi.technician.model.signup.TechnicianData
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
@@ -32,6 +38,9 @@ class SignUpFragment : Fragment() {
     private lateinit var viewModel: SignUpViewModel
     private val signUpPagerViewModel: PagerViewModel by activityViewModels()
     private var _binding: FragmentTechnicianSignUpBinding? = null
+    private var popupWindow: PopupWindow? = null
+    private var _popBinding: PopupEnterDateBinding? = null
+    private val popBinding get() = _popBinding!!
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -137,18 +146,34 @@ class SignUpFragment : Fragment() {
 
         binding.btnRegister.setOnClickListener {
 
-            val techData = TechnicianData(
-                binding.firstName.text.toString().trim(),
-                binding.lastName.text.toString().trim(),
-                binding.email.text.toString().trim(),
-                binding.phone.text.toString().trim(),
-                binding.yourCity.selectedItem.toString().trim(),
-                binding.yourGovernorate.selectedItem.toString().trim(),
-                binding.nationalId.text.toString().trim(),
-                binding.professionS.selectedItem.toString().trim(),
-                binding.birthDate.text.toString().trim(),
-                binding.createPassword.text.toString().trim()
-            )
+            val techData: TechnicianData
+            if (viewModel.birthDate.value != null) {
+                techData = TechnicianData(
+                    binding.firstName.text.toString().trim(),
+                    binding.lastName.text.toString().trim(),
+                    binding.email.text.toString().trim(),
+                    binding.phone.text.toString().trim(),
+                    binding.yourCity.selectedItem.toString().trim(),
+                    binding.yourGovernorate.selectedItem.toString().trim(),
+                    binding.nationalId.text.toString().trim(),
+                    binding.professionS.selectedItem.toString().trim(),
+                    viewModel.birthDate.value!!,
+                    binding.createPassword.text.toString().trim()
+                )
+            } else {
+                techData = TechnicianData(
+                    binding.firstName.text.toString().trim(),
+                    binding.lastName.text.toString().trim(),
+                    binding.email.text.toString().trim(),
+                    binding.phone.text.toString().trim(),
+                    binding.yourCity.selectedItem.toString().trim(),
+                    binding.yourGovernorate.selectedItem.toString().trim(),
+                    binding.nationalId.text.toString().trim(),
+                    binding.professionS.selectedItem.toString().trim(),
+                    "2000/16/12",
+                    binding.createPassword.text.toString().trim()
+                )
+            }
 
             Log.d("Test_SignUp", techData.toString())
             if (validate(techData)) {
@@ -182,7 +207,6 @@ class SignUpFragment : Fragment() {
                             viewModel.signUpResponseData.value?.msg.toString(),
                             Toast.LENGTH_LONG
                         ).show()
-
                     }
                     TechSignUpApiStatus.ERROR -> {
 
@@ -199,6 +223,15 @@ class SignUpFragment : Fragment() {
                 //loadingProgressBar.visible(false)
             }
         }
+
+        binding.birthDate.setOnClickListener {
+            showPopUpUpdateLoc()
+            popupWindow = showPopUpUpdateLoc()
+            popupWindow?.isOutsideTouchable = true
+            popupWindow?.isFocusable = true
+            popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            popupWindow?.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+        }
     }
 
 
@@ -212,28 +245,6 @@ class SignUpFragment : Fragment() {
         binding.createPassword.text = null
         binding.repeatPassword.text = null
     }
-
-    /**companion object {
-
-     * The fragment argument representing the section number for this
-     * fragment.
-
-    private const val ARG_SECTION_NUMBER = "section_number"
-
-
-     * Returns a new instance of this fragment for the given section
-     * number.
-
-    @JvmStatic
-    fun newInstance(sectionNumber: Int): PlaceholderFragment {
-    return PlaceholderFragment().apply {
-    arguments = Bundle().apply {
-    putInt(ARG_SECTION_NUMBER, sectionNumber)
-    }
-    }
-    }
-    }**/
-
 
     //https://stackoverflow.com/questions/41649074/how-do-i-set-onclick-validation-for-registration-form-in-android-studio
     private fun validate(tech: TechnicianData): Boolean {
@@ -256,7 +267,7 @@ class SignUpFragment : Fragment() {
             valid = false
         }
         if (!nationalIdValidator(tech.natinalId)) {
-            binding.nationalId.error = "Not Valid National Id"
+            binding.nationalId.error = "Not Valid National Id /n Should be 14 Digits"
             valid = false
         }
         if (!birthDateValidator(tech.birthDate)) {
@@ -304,7 +315,7 @@ class SignUpFragment : Fragment() {
     }
 
     private fun nationalIdValidator(_nationalId: String): Boolean {
-        return !(_nationalId.isEmpty() || _nationalId.length < 10 || _nationalId.length > 13)
+        return !(_nationalId.isEmpty() || _nationalId.length != 14)
     }
 
 
@@ -341,5 +352,38 @@ class SignUpFragment : Fragment() {
     private fun swipeToLoginFragment(item: Int) {
         signUpPagerViewModel.setPagerSelectedItem(item)
         //(Fragment() as TechnicianPagerFragment).setCurrentItem(0)
+    }
+
+    private fun showPopUpUpdateLoc(): PopupWindow {
+        val inflater =
+            requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view = inflater.inflate(R.layout.popup_enter_date, null)
+        _popBinding = PopupEnterDateBinding.bind(view)
+
+        popBinding.btnEnter.setOnClickListener {
+            birthDateValidator(popBinding.datePicker.maxDate.toString())
+            viewModel.setBirthDate(
+                popBinding.datePicker.year,
+                popBinding.datePicker.month,
+                popBinding.datePicker.dayOfMonth
+            )
+            binding.birthDate.text = viewModel.birthDate.value
+            dismissPopup()
+        }
+
+        return PopupWindow(
+            popBinding.root,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+    }
+
+    private fun dismissPopup() {
+        popupWindow?.let {
+            if (it.isShowing) {
+                it.dismiss()
+            }
+            popupWindow = null
+        }
     }
 }

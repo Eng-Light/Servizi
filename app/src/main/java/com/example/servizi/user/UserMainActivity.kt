@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.servizi.R
 import com.example.servizi.databinding.ActivityUserMainBinding
+import com.example.servizi.user.ui.main.UserMainFragment
 
 class UserMainActivity : AppCompatActivity() {
 
@@ -27,7 +28,8 @@ class UserMainActivity : AppCompatActivity() {
         val loggedIn = intent.extras
         if (loggedIn != null) {
             if (loggedIn.getBoolean("LoggedIn")) {
-                navController.navigate(R.id.action_UserPagerFragment_to_UserMainFragment)
+                if (navController.currentDestination != navController.findDestination(R.id.UserMainFragment))
+                    navController.navigate(R.id.action_UserPagerFragment_to_UserMainFragment)
             }
         }
         appBarConfiguration = AppBarConfiguration(
