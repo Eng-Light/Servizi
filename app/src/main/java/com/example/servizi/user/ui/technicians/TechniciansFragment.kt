@@ -139,10 +139,8 @@ class TechniciansFragment :
             popupWindow?.isOutsideTouchable = true
             popupWindow?.isFocusable = true
             popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            popupWindow?.showAsDropDown(binding.appBarLayout)
+            popupWindow?.showAsDropDown(binding.tvLocation)
         }
-
-
     }
 
     private fun showPopUpUpdateLoc(): PopupWindow {

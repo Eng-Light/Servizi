@@ -147,7 +147,7 @@ class SignUpFragment : Fragment() {
         binding.btnRegister.setOnClickListener {
 
             val techData: TechnicianData
-            if (viewModel.birthDate.value != null) {
+            if (binding.birthDate.text != null) {
                 techData = TechnicianData(
                     binding.firstName.text.toString().trim(),
                     binding.lastName.text.toString().trim(),
@@ -156,8 +156,8 @@ class SignUpFragment : Fragment() {
                     binding.yourCity.selectedItem.toString().trim(),
                     binding.yourGovernorate.selectedItem.toString().trim(),
                     binding.nationalId.text.toString().trim(),
-                    binding.professionS.selectedItem.toString().trim(),
-                    viewModel.birthDate.value!!,
+                    binding.professions.selectedItem.toString().trim(),
+                    binding.birthDate.text.toString().trim(),
                     binding.createPassword.text.toString().trim()
                 )
             } else {
@@ -169,7 +169,7 @@ class SignUpFragment : Fragment() {
                     binding.yourCity.selectedItem.toString().trim(),
                     binding.yourGovernorate.selectedItem.toString().trim(),
                     binding.nationalId.text.toString().trim(),
-                    binding.professionS.selectedItem.toString().trim(),
+                    binding.professions.selectedItem.toString().trim(),
                     "2000/16/12",
                     binding.createPassword.text.toString().trim()
                 )
@@ -273,6 +273,8 @@ class SignUpFragment : Fragment() {
         if (!birthDateValidator(tech.birthDate)) {
             binding.birthDate.error = "Not Valid BirthDate"
             valid = false
+        } else {
+            binding.birthDate.error = null
         }
         if (!passwordValidation(tech.password)) {
             binding.createPassword.error = "Not Valid Password"

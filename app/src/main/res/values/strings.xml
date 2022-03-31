@@ -81,4 +81,5 @@
     <string name="version">V 1.0.0</string>
     <string name="update_location">Update Location</string>
     <string name="enter">Enter</string>
+    <string name="edit_address">Edit Address</string>
 </resources>
