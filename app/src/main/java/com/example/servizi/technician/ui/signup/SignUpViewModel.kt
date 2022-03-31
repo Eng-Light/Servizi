@@ -13,6 +13,8 @@ import com.example.servizi.technician.network.TechApi
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 enum class TechSignUpApiStatus { LOADING, ERROR, DONE }
 
@@ -24,6 +26,7 @@ class SignUpViewModel : ViewModel() {
     private val _signUpResponseData = MutableLiveData<TechSignUpResponseData>()
     private val _errorCode = MutableLiveData<Int?>()
     private val _errorMessage = MutableLiveData<TechSignUpResponseFail>()
+    private val _birthDate = MutableLiveData<String>()
 
     //The external immutable LiveData for the request status
     val signUpLoadingStatus: LiveData<TechSignUpApiStatus> = _signUpLoadingStatus
@@ -31,6 +34,7 @@ class SignUpViewModel : ViewModel() {
     val signUpResponseData: LiveData<TechSignUpResponseData> = _signUpResponseData
     val errorCode: LiveData<Int?> = _errorCode
     val errorMessage: LiveData<TechSignUpResponseFail> = _errorMessage
+    val birthDate: LiveData<String> = _birthDate
 
 
     //Send SignUp Request
@@ -60,9 +64,11 @@ class SignUpViewModel : ViewModel() {
                 //Toast.makeText(coroutineContext,errorMessage.value,Toast.LENGTH_SHORT).show()
             } catch (e: Exception) {
                 Log.d("Test_SignUp_4", e.toString())
-                _errorMessage.value = TechSignUpResponseFail("Check Internet Connection", listOf(
-                    SignUpResponseFail("","","","")
-                ))
+                _errorMessage.value = TechSignUpResponseFail(
+                    "Check Internet Connection", listOf(
+                        SignUpResponseFail("", "", "", "")
+                    )
+                )
                 _signUpLoadingStatus.value = TechSignUpApiStatus.ERROR
                 _signUpResponseData.value = TechSignUpResponseData("", "")
             }
@@ -74,10 +80,19 @@ class SignUpViewModel : ViewModel() {
         _signUpData.value = techData
     }
 
+    fun setBirthDate(year: Int, month: Int, day: Int) {
+        val date = Calendar.getInstance()
+        date.set(year,month,day)
+        val df = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        df.isLenient = false
+        _birthDate.value = df.format(date.time).toString()
+    }
+
     fun signUp(data: TechnicianData) {
         signUpApiRequest(data)
     }
-    private fun resetStatus(){
+
+    private fun resetStatus() {
         _signUpLoadingStatus.value?.declaringClass
     }
 }

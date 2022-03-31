@@ -154,23 +154,18 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Theme.Servizi.TextView"
+                    android:id="@+id/birthDate"
                     android:layout_width="320dp"
-                    android:layout_height="60dp"
+                    android:layout_height="55dp"
                     android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_text_input"
+                    android:drawableEnd="@drawable/ic_arrow_down_24"
                     android:hint="@string/birth_date"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/birthDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rounded_text_input"
-                        android:inputType="text"
-                        android:maxLines="1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:orientation="vertical"
+                    android:padding="14dp"
+                    android:textSize="18sp" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -184,6 +179,7 @@
 
                     <TextView
                         android:id="@+id/governorate"
+                        style="@style/Theme.Servizi.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -191,7 +187,6 @@
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:text="@string/governorate"
-                        style="@style/Theme.Servizi.TextView"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -224,6 +219,7 @@
                     android:textColorHint="#5B5C58">
 
                     <TextView
+                        style="@style/Theme.Servizi.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -231,7 +227,6 @@
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:text="@string/city"
-                        style="@style/Theme.Servizi.TextView"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -267,7 +262,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/rounded_text_input"
                         android:inputType="number"
-                        android:maxLines="1"/>
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -283,6 +278,7 @@
 
                     <TextView
                         android:id="@+id/professionT"
+                        style="@style/Theme.Servizi.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -290,7 +286,6 @@
                         android:gravity="center"
                         android:paddingStart="10dp"
                         android:text="@string/profession"
-                        style="@style/Theme.Servizi.TextView"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
