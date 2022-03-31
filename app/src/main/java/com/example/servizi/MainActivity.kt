@@ -17,6 +17,7 @@ import com.example.servizi.technician.TechnicianMainActivity
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.UserMainActivity
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -80,36 +81,45 @@ class MainActivity : AppCompatActivity() {
                 binding.MainActivity.visible(true)
             } else {
                 userPreferences.expiration.asLiveData().observe(this) { it1 ->
-                    if (validateDate(it1)) {
-                        userPreferences.usertype.asLiveData().observe(this) { userType ->
-                            if (userType == "User") {
-                                val intent = Intent(this@MainActivity, UserMainActivity::class.java)
-                                Toast.makeText(
-                                    this@MainActivity,
-                                    "Opining User App",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-                                intent.putExtra("LoggedIn", true)
-                                startActivity(intent)
-                                finish()
-                            } else if (userType == "Tech") {
-                                val intent =
-                                    Intent(this@MainActivity, TechnicianMainActivity::class.java)
-                                Toast.makeText(
-                                    this@MainActivity,
-                                    "Opining Technician App",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-                                intent.putExtra("LoggedIn", true)
-                                startActivity(intent)
-                                finish()
+                    if (it1 == "") {
+                        checkToken(userPreferences)
+                    } else {
+                        if (validateDate(it1)) {
+                            userPreferences.usertype.asLiveData().observe(this) { userType ->
+                                if (userType == "User") {
+                                    val intent =
+                                        Intent(this@MainActivity, UserMainActivity::class.java)
+                                    Toast.makeText(
+                                        this@MainActivity,
+                                        "Opining User App",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                    intent.putExtra("LoggedIn", true)
+                                    startActivity(intent)
+                                    finish()
+                                } else if (userType == "Tech") {
+                                    val intent =
+                                        Intent(
+                                            this@MainActivity,
+                                            TechnicianMainActivity::class.java
+                                        )
+                                    Toast.makeText(
+                                        this@MainActivity,
+                                        "Opining Technician App",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                    intent.putExtra("LoggedIn", true)
+                                    startActivity(intent)
+                                    finish()
+                                }
+                            }
+                        } else {
+                            lifecycleScope.launch {
+                                userPreferences.clear()
                             }
                         }
-                    } else {
-                        lifecycleScope.launch { userPreferences.clear() }
-                        checkToken(userPreferences)
                     }
                 }
             }
