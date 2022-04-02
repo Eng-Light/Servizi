@@ -21,6 +21,7 @@ import com.example.servizi.databinding.FragmentUserSettingsBinding
 import com.example.servizi.databinding.PopupUpdateLocationBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
+import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.model.NewLocation
 import com.example.servizi.user.model.UserRepository
@@ -100,6 +101,9 @@ class SettingsFragment :
                         loadingProgressBar.visible(true)
                     }
                     is Result.Error -> {
+                        handleApiError(it) {
+                            viewModel.updateLoc(newLocation!!)
+                        }
                         loadingProgressBar.visible(false)
                     }
                 }

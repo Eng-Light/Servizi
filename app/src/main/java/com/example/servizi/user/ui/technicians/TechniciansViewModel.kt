@@ -21,8 +21,8 @@ class TechniciansViewModel(private val userRepository: UserRepository) :
     private val _profession: MutableLiveData<String> = MutableLiveData()
     val profession: LiveData<String> = _profession
 
-    private val _techs: MutableLiveData<Result<TechniciansResponse>> = MutableLiveData()
-    val techs: LiveData<Result<TechniciansResponse>> = _techs
+    private val _techs: MutableLiveData<Result<TechsResponse>> = MutableLiveData()
+    val techs: LiveData<Result<TechsResponse>> = _techs
 
     private val _updateResponse: MutableLiveData<Result<LocUpdateResponse>> = MutableLiveData()
     val updateResponse: LiveData<Result<LocUpdateResponse>> = _updateResponse
