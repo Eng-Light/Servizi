@@ -14,4 +14,14 @@ class UserRepository(
     suspend fun updateLoc(
         newLocation: NewLocation
     ) = safeApiCall { dataSource.updateLoc(newLocation) }
+
+    suspend fun bookApp(
+        bookAppRequestData: BookAppRequestData
+    ) = safeApiCall { dataSource.bookAppAsync(bookAppRequestData) }
+
+    suspend fun getTechsRe(
+        id: Int
+    ) = safeApiCall { dataSource.getTechniciansReAsync(id) }
+
+    suspend fun getAppointments() = safeApiCall { dataSource.getAppointmentsAsync() }
 }

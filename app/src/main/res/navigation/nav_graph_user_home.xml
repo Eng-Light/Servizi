@@ -42,6 +42,6 @@
             android:id="@+id/techniciansFragment"
             android:name="com.example.servizi.user.ui.technicians.TechniciansFragment"
             android:label="Technicians"
-            tools:layout="@layout/fragment_technicians" />
+            tools:layout="@layout/fragment_user_technicians" />
     </navigation>
 </navigation>

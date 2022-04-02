@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.servizi.technician.TechnicianMainActivity
 import com.example.servizi.technician.model.login.data.Result
+import com.example.servizi.technician.ui.signup.SignUpFragment
+import com.example.servizi.user.ui.technicians.TechniciansFragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
@@ -52,10 +54,10 @@ fun Fragment.handleApiError(
             retry
         )
         failure.errorCode == 401 -> {
-            if (this is LoginFragment) {
-                requireView().snackbar("You've entered incorrect email or password")
-            } else {
-                //logout()
+            when (this) {
+                is LoginFragment -> {
+                    requireView().snackbar("You've entered incorrect email or password")
+                }
             }
         }
         else -> {

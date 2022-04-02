@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
@@ -17,14 +18,15 @@ import androidx.lifecycle.lifecycleScope
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
-import com.example.servizi.databinding.FragmentTechniciansBinding
+import com.example.servizi.databinding.FragmentUserTechniciansBinding
 import com.example.servizi.databinding.PopupUpdateLocationBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
+import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.model.NewLocation
-import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.model.Technician
+import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
 import com.example.servizi.user.ui.home.UserSharedViewModel
 import kotlinx.coroutines.flow.first
@@ -32,7 +34,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class TechniciansFragment :
-    BaseFragment<TechniciansViewModel, FragmentTechniciansBinding, UserRepository>() {
+    BaseFragment<TechniciansViewModel, FragmentUserTechniciansBinding, UserRepository>() {
 
     private var popupWindow: PopupWindow? = null
     private var _popBinding: PopupUpdateLocationBinding? = null
@@ -52,7 +54,7 @@ class TechniciansFragment :
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentTechniciansBinding.inflate(inflater, container, false)
+    ) = FragmentUserTechniciansBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,6 +72,7 @@ class TechniciansFragment :
         binding.viewModel = viewModel
         binding.rvShowData.adapter = TechsAdapter()
 
+        refreshApp()
         return binding.root
     }
 
@@ -79,6 +82,7 @@ class TechniciansFragment :
         val loadingProgressBar = binding.loading
         val tvError = binding.tvError
         val nLocation = NewLocation("", "")
+
         lifecycleScope.launch {
             userPreferences.city.asLiveData().observe(viewLifecycleOwner) {
                 if (it != null) {
@@ -87,6 +91,7 @@ class TechniciansFragment :
                 viewModel.setLocation(nLocation)
             }
         }
+
         userSharedModel.techProf.observe(viewLifecycleOwner) {
             viewModel.setProfession(it)
             viewModel.getTechs(it)
@@ -99,6 +104,9 @@ class TechniciansFragment :
 
                     if (it.data.technicians == listOf<Technician>()) {
                         tvError.visible(true)
+                        binding.rvShowData.visible(false)
+                    } else {
+                        binding.rvShowData.visible(true)
                     }
                     loadingProgressBar.visible(false)
                 }
@@ -107,6 +115,8 @@ class TechniciansFragment :
                     tvError.visible(false)
                 }
                 is Result.Error -> {
+                    handleApiError(it)
+                    binding.rvShowData.visible(false)
                     tvError.visible(true)
                     loadingProgressBar.visible(false)
                 }
@@ -117,17 +127,21 @@ class TechniciansFragment :
             when (it) {
                 is Result.Success -> {
                     loadingProgressBar.visible(false)
+                    Toast.makeText(requireContext(), "Address Updated", Toast.LENGTH_SHORT)
+                        .show()
                     userSharedModel.techProf.value?.let { it1 -> viewModel.getTechs(it1) }
                     lifecycleScope.launch {
                         userPreferences.saveUserGovernorate(newLocation?.governorate)
                         userPreferences.saveUserCity(newLocation?.city)
                     }
-
                 }
                 is Result.Loading -> {
                     loadingProgressBar.visible(true)
                 }
                 is Result.Error -> {
+                    handleApiError(it) {
+                        viewModel.updateLoc(newLocation!!)
+                    }
                     loadingProgressBar.visible(false)
                 }
             }
@@ -254,5 +268,10 @@ class TechniciansFragment :
         }
     }
 
-
+    private fun refreshApp() {
+        binding.swipeToRefresh.setOnRefreshListener {
+            userSharedModel.techProf.value?.let { it -> viewModel.getTechs(it) }
+            binding.swipeToRefresh.isRefreshing = false
+        }
+    }
 }
