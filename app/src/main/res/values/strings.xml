@@ -82,4 +82,8 @@
     <string name="update_location">Update Location</string>
     <string name="enter">Enter</string>
     <string name="edit_address">Edit Address</string>
+    <string name="clint_name">Clint Name</string>
+    <string name="clint">Clint</string>
+    <string name="comment">No Comment</string>
+<string name="date">Date</string>
 </resources>

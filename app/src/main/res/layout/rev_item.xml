@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    app:layout_constrainedWidth="true">
+
+    <data>
+
+        <variable
+            name="tech"
+            type="com.example.servizi.user.model.Technician" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        android:background="@drawable/dark_background"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/clint_item_Name"
+            style="@style/Theme.Servizi.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="5dp"
+            android:text="@string/clint_name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="6dp" />
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/clint_rating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="4dp"
+            android:numStars="5"
+            android:rating="3.5"
+            android:stepSize="0.5"
+            android:theme="@style/RatingBar"
+            app:layout_constraintTop_toBottomOf="@id/clint_item_Name"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="6dp" />
+        <TextView
+            android:id="@+id/clintCourseRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/clint_item_Name"
+            android:layout_marginStart="5dp"
+            android:drawablePadding="2dp"
+            android:text="@string/rating"
+            app:layout_constraintBottom_toBottomOf="@id/clint_rating"
+            app:layout_constraintStart_toEndOf="@id/clint_rating"
+            app:layout_constraintTop_toTopOf="@id/clint_rating"
+            tools:ignore="UnknownId" />
+      <TextView
+            android:id="@+id/clint_item"
+            style="@style/Theme.Servizi.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="5dp"
+            android:text="@string/clint"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/clint_item_Name"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/comment_item"
+            style="@style/Theme.Servizi.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="40dp"
+            android:drawablePadding="5dp"
+            android:text="@string/comment"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/clint_item_Name"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/date_time"
+            style="@style/Theme.Servizi.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="5dp"
+            android:text="@string/date"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/clint_item_Name"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
