@@ -18,15 +18,15 @@ import androidx.lifecycle.lifecycleScope
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
-import com.example.servizi.databinding.FragmentTechniciansBinding
+import com.example.servizi.databinding.FragmentUserTechniciansBinding
 import com.example.servizi.databinding.PopupUpdateLocationBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.model.NewLocation
-import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.model.Technician
+import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
 import com.example.servizi.user.ui.home.UserSharedViewModel
 import kotlinx.coroutines.flow.first
@@ -34,7 +34,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class TechniciansFragment :
-    BaseFragment<TechniciansViewModel, FragmentTechniciansBinding, UserRepository>() {
+    BaseFragment<TechniciansViewModel, FragmentUserTechniciansBinding, UserRepository>() {
 
     private var popupWindow: PopupWindow? = null
     private var _popBinding: PopupUpdateLocationBinding? = null
@@ -54,7 +54,7 @@ class TechniciansFragment :
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentTechniciansBinding.inflate(inflater, container, false)
+    ) = FragmentUserTechniciansBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater,

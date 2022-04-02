@@ -177,7 +177,7 @@ class LoginFragment : Fragment() {
     private fun getExDate(interval: Int?): String? {
         val cal = Calendar.getInstance()
         if (interval != null) {
-            cal.add(Calendar.HOUR_OF_DAY, interval)
+            cal.add(Calendar.SECOND, interval)
         }
         return sdf.format(cal.time).toString()
     }

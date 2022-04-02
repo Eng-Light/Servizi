@@ -27,7 +27,13 @@ private val retrofit = Retrofit.Builder()
 interface UserApiService {
 
     @GET("/user/alltechnicians")
-    suspend fun getTechniciansAsync(@Query(value = "profession") profession: String): TechniciansResponse
+    suspend fun getTechniciansAsync(@Query(value = "profession") profession: String): TechsResponse
+
+    @GET("/user/gettechnician")
+    suspend fun getTechniciansReAsync(@Query(value = "id") id: Int): TechsReResponse
+
+    @GET("/user/allappointments")
+    suspend fun getAppointmentsAsync(): AppointmentsResponse
 
     @PUT("/auth/user/locupdate")
     suspend fun updateLoc(@Body newLoc: NewLocation): LocUpdateResponse
@@ -35,7 +41,7 @@ interface UserApiService {
     @POST("/auth/user/signup")
     fun userSignUpRequestAsync(@Body userSignUpData: UserData): Deferred<Response<UserSignUpResponseData>>
 
-    @PUT("/user/createapp")
+    @POST("/user/createapp")
     suspend fun bookAppAsync(@Body bookAppRequestData: BookAppRequestData): BookAppResponse
 
     @POST("/auth/user/signin")

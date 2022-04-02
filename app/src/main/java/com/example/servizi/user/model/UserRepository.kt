@@ -18,4 +18,10 @@ class UserRepository(
     suspend fun bookApp(
         bookAppRequestData: BookAppRequestData
     ) = safeApiCall { dataSource.bookAppAsync(bookAppRequestData) }
+
+    suspend fun getTechsRe(
+        id: Int
+    ) = safeApiCall { dataSource.getTechniciansReAsync(id) }
+
+    suspend fun getAppointments() = safeApiCall { dataSource.getAppointmentsAsync() }
 }
