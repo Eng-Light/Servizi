@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
             Handler().postDelayed({
                 flag = false
-            }, 1000)
+            }, 2000)
 
             flag
         }
