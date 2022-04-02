@@ -35,6 +35,9 @@ interface UserApiService {
     @POST("/auth/user/signup")
     fun userSignUpRequestAsync(@Body userSignUpData: UserData): Deferred<Response<UserSignUpResponseData>>
 
+    @PUT("/user/createapp")
+    suspend fun bookAppAsync(@Body bookAppRequestData: BookAppRequestData): BookAppResponse
+
     @POST("/auth/user/signin")
     suspend fun userSignInRequestAsync(@Body loginData: LoginData): LoginResponseData
 

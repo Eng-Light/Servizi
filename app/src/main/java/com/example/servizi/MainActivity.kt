@@ -116,14 +116,16 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                         } else {
-                            lifecycleScope.launch {
-                                userPreferences.clear()
-                            }
+                            performLogout(userPreferences)
                         }
                     }
                 }
             }
         }
+    }
+
+    fun performLogout(userPreferences: UserPreferences) = lifecycleScope.launch {
+        userPreferences.clear()
     }
 
     private fun validateDate(exDate: String?): Boolean {

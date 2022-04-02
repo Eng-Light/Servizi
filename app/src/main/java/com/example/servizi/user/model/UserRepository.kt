@@ -14,4 +14,8 @@ class UserRepository(
     suspend fun updateLoc(
         newLocation: NewLocation
     ) = safeApiCall { dataSource.updateLoc(newLocation) }
+
+    suspend fun bookApp(
+        bookAppRequestData: BookAppRequestData
+    ) = safeApiCall { dataSource.bookAppAsync(bookAppRequestData) }
 }

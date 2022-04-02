@@ -130,7 +130,6 @@ class LoginFragment : Fragment() {
                             userPhoneEditText.text.toString().trim(),
                             passwordEditText.text.toString().trim()
                         )
-
                     }
                     //updateUiWithUser()
                 }
