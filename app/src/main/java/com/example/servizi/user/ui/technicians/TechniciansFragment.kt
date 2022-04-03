@@ -15,6 +15,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
@@ -63,13 +65,18 @@ class TechniciansFragment :
     ): View? {
 
         userPreferences = UserPreferences(requireContext())
+
         binding = getFragmentBinding(inflater, container)
+
         val factory = ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory)[getViewModel()]
+
         lifecycleScope.launch { userPreferences.accessToken.first() }
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
+        binding.sharedViewModel = userSharedModel
+
         binding.rvShowData.adapter = TechsAdapter()
 
         refreshApp()
@@ -88,12 +95,21 @@ class TechniciansFragment :
                 if (it != null) {
                     nLocation.city = it
                 }
-                viewModel.setLocation(nLocation)
+                userSharedModel.setLocation(nLocation)
             }
         }
 
+        val adapter = binding.rvShowData.adapter as TechsAdapter
+        adapter.onIvtItemClick = {
+            findNavController().navigate(R.id.action_techniciansFragment_to_reviewsFragment)
+        }
+        adapter.onBtntItemClick = {
+            userSharedModel.setTechId(it)
+            findNavController().navigate(R.id.action_techniciansFragment_to_bookFragment)
+        }
+
         userSharedModel.techProf.observe(viewLifecycleOwner) {
-            viewModel.setProfession(it)
+            userSharedModel.setProfession(it)
             viewModel.getTechs(it)
         }
 
@@ -101,7 +117,6 @@ class TechniciansFragment :
             when (it) {
                 is Result.Success -> {
                     viewModel._technicians.value = it.data.technicians
-
                     if (it.data.technicians == listOf<Technician>()) {
                         tvError.visible(true)
                         binding.rvShowData.visible(false)

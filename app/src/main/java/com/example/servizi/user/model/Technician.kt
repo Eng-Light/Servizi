@@ -1,6 +1,7 @@
 package com.example.servizi.user.model
 
 data class Technician(
+    val id:Int,
     val firstName: String,
     val lastName: String,
     val email: String?,

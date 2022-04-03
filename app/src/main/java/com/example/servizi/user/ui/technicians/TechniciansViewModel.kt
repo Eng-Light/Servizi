@@ -15,12 +15,6 @@ class TechniciansViewModel(private val userRepository: UserRepository) :
     val _technicians: MutableLiveData<List<Technician>> = MutableLiveData()
     val technicians: LiveData<List<Technician>> = _technicians
 
-    private val _location: MutableLiveData<NewLocation> = MutableLiveData()
-    val location: LiveData<NewLocation> = _location
-
-    private val _profession: MutableLiveData<String> = MutableLiveData()
-    val profession: LiveData<String> = _profession
-
     private val _techs: MutableLiveData<Result<TechsResponse>> = MutableLiveData()
     val techs: LiveData<Result<TechsResponse>> = _techs
 
@@ -35,14 +29,5 @@ class TechniciansViewModel(private val userRepository: UserRepository) :
     fun updateLoc(newLocation: NewLocation) = viewModelScope.launch {
         _updateResponse.value = Result.Loading
         _updateResponse.value = userRepository.updateLoc(newLocation)
-    }
-
-    fun setLocation(newLocation: NewLocation) {
-        _location.value = newLocation
-    }
-
-    fun setProfession(profession: String) {
-        _profession.value =
-            profession.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
     }
 }

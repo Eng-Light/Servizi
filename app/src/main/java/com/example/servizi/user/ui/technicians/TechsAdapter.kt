@@ -12,10 +12,20 @@ import com.example.servizi.user.model.Technician
 
 class TechsAdapter : ListAdapter<Technician,
         TechsAdapter.TechsViewHolder>(DiffCallback) {
+    var onIvtItemClick: (() -> Unit)? = null
+    var onBtntItemClick: ((Int) -> Unit)? = null
 
     inner class TechsViewHolder(
         private var binding: ItemViewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.ivItemUserImage.setOnClickListener {
+                onIvtItemClick?.invoke()
+            }
+            binding.button.setOnClickListener {
+                onBtntItemClick?.invoke(binding.tech!!.id)
+            }
+        }
 
         @SuppressLint("SetTextI18n")
         fun bind(tech: Technician?) {
