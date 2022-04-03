@@ -42,6 +42,23 @@
             android:id="@+id/techniciansFragment"
             android:name="com.example.servizi.user.ui.technicians.TechniciansFragment"
             android:label="Technicians"
-            tools:layout="@layout/fragment_user_technicians" />
+            tools:layout="@layout/fragment_user_technicians" >
+            <action
+                android:id="@+id/action_techniciansFragment_to_reviewsFragment"
+                app:destination="@id/reviewsFragment" />
+            <action
+                android:id="@+id/action_techniciansFragment_to_bookFragment"
+                app:destination="@id/bookFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/reviewsFragment"
+            android:name="com.example.servizi.user.ui.reviews.ReviewsFragment"
+            android:label="fragment_user_reviews"
+            tools:layout="@layout/fragment_user_reviews" />
+        <fragment
+            android:id="@+id/bookFragment"
+            android:name="com.example.servizi.user.ui.booking.BookFragment"
+            android:label="fragment_user_book"
+            tools:layout="@layout/fragment_user_book" />
     </navigation>
 </navigation>

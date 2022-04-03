@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
+    android:background="@drawable/dark_background"
+    app:layout_constrainedWidth="true"
+    app:layout_constraintEnd_toEndOf="parent">
+
+    <data>
+
+        <variable
+            name="sharedViewModel"
+            type="com.example.servizi.user.ui.home.UserSharedViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/FR_Tech"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.servizi.user.ui.technicians.TechniciansFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.Servizi.AppBarOverlay"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/dark_background"
+                app:popupTheme="@style/Theme.Servizi.PopupOverlay">
+
+                <TextView
+                    android:id="@+id/tv_Profession"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    profession="@{sharedViewModel.profession}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:text="@string/technician" />
+
+                <TextView
+                    android:id="@+id/tv_Location"
+                    location="@{sharedViewModel.location.city}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center"
+                    android:layout_marginHorizontal="15dp"
+                    android:text="@string/location"
+                    android:textSize="16sp"
+                    app:drawableRightCompat="@drawable/ic_arrow_down_24" />
+                <!--location="@{viewModel.technicians.get(0).city}"-->
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_tech"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dark_background"
+            android:fitsSystemWindows="true"
+            app:layout_collapseMode="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:id="@+id/item_userImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="8dp"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/img" />
+
+                <TextView
+                    android:id="@+id/item_Name"
+                    style="@style/Theme.Servizi.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/technician_name"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/rating2"
+                    app:layout_constraintStart_toEndOf="@id/item_userImage"
+                    app:layout_constraintTop_toTopOf="@id/item_userImage" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/rating2"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:numStars="5"
+                    android:rating="3.5"
+                    android:stepSize="0.5"
+                    android:theme="@style/RatingBar"
+                    app:layout_constraintBottom_toBottomOf="@id/item_userImage"
+                    app:layout_constraintStart_toStartOf="@id/item_Name"
+                    app:layout_constraintTop_toBottomOf="@id/item_Name"
+                    app:layout_constraintVertical_bias="0.52" />
+
+                <TextView
+                    android:id="@+id/TVCourseRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_Name"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/item_userImage"
+                    android:drawablePadding="2dp"
+                    android:text="@string/rating"
+                    app:layout_constraintBottom_toBottomOf="@id/rating2"
+                    app:layout_constraintStart_toEndOf="@id/rating2"
+                    app:layout_constraintTop_toTopOf="@id/rating2"
+                    tools:ignore="UnknownId" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_visit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/dark_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toTopOf="@id/ti_description1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    android:id="@+id/tv_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_date_and_time_of_the_visit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_date"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="8dp"
+                    android:hint="@string/date"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_select" />
+
+                <Spinner
+                    android:id="@+id/sp_time"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:dropDownWidth="150dp"
+                    android:entries="@array/timeArray"
+                    android:spinnerMode="dropdown"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_select" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_description1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:hint="@string/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/cv_book"
+            app:layout_constraintTop_toBottomOf="@id/cv_tech">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ti_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName"
+                android:maxLines="10" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_book"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/dark_background"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingVertical="8dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_book"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/rounded_background"
+                    android:text="@string/book"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/bt_cancel"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_cancel"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/dark_background"
+                    android:text="@string/cancel"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/bt_book"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_technicians_found"
+            android:textSize="30sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

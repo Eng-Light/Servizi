@@ -183,7 +183,7 @@ class SignUpFragment : Fragment() {
                 swipeToLoginFragment(0)
 
             } else {
-                Snackbar.make(view, "Please Chick SignUp Data", Snackbar.LENGTH_SHORT)
+                Snackbar.make(view, "Please Check SignUp Data", Snackbar.LENGTH_SHORT)
                     .show()
             }
         }
