@@ -6,5 +6,5 @@ data class BookAppRequestData(
     @Json(name = "date") val date: String,
     @Json(name = "duration") val duration: String,
     @Json(name = "description") val description: String,
-    @Json(name = "technicianId") val technicianId: Number
+    @Json(name = "technicianId") val technicianId: Int
 )

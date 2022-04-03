@@ -2,6 +2,7 @@ package com.example.servizi.user.ui.technicians
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.user.model.Technician
 
@@ -12,6 +13,7 @@ fun bindRecyclerView(
     recyclerView: RecyclerView,
     data: List<Technician>? = listOf(
         Technician(
+            0,
             "",
             "",
             "",

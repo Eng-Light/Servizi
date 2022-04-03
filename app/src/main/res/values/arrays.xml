@@ -134,4 +134,10 @@
         <item>6th of October City (2)</item>
         <item>6th of October City (3)</item>
     </string-array>
+
+    <string-array name="timeArray">
+        <item>9-12</item>
+        <item>1-4</item>
+        <item>5-8</item>
+    </string-array>
 </resources>
