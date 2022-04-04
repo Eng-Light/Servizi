@@ -2,7 +2,6 @@ package com.example.servizi.user.ui.technicians
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.user.model.Technician
 
@@ -34,6 +33,14 @@ fun bindTextView(
     tv_task: String? = ""
 ) {
     textView.text = tv_task
+}
+
+@BindingAdapter("name")
+fun bindName(
+    textView: TextView,
+    tv_name: String? = ""
+) {
+    textView.text = tv_name
 }
 
 @BindingAdapter("profession")
