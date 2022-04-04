@@ -3,17 +3,16 @@ package com.example.servizi.user.ui.technicians
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.servizi.R
 import com.example.servizi.databinding.ItemViewBinding
 import com.example.servizi.user.model.Technician
 
 class TechsAdapter : ListAdapter<Technician,
         TechsAdapter.TechsViewHolder>(DiffCallback) {
     var onIvtItemClick: (() -> Unit)? = null
-    var onBtntItemClick: ((Int) -> Unit)? = null
+    var onBtntItemClick: ((Int, String, String) -> Unit)? = null
 
     inner class TechsViewHolder(
         private var binding: ItemViewBinding
@@ -23,7 +22,11 @@ class TechsAdapter : ListAdapter<Technician,
                 onIvtItemClick?.invoke()
             }
             binding.button.setOnClickListener {
-                onBtntItemClick?.invoke(binding.tech!!.id)
+                onBtntItemClick?.invoke(
+                    binding.tech!!.id,
+                    binding.tech!!.firstName,
+                    binding.tech!!.lastName
+                )
             }
         }
 
