@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_marginHorizontal="1dp"
+    android:layout_marginVertical="7dp"
+    android:background="@drawable/dark_background"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/t_item_userImage"
+            android:layout_width="94dp"
+            android:layout_height="94dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/t_item_Name"
+            style="@style/Theme.Servizi.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="5dp"
+            android:text="@string/technician_name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/t_item_userImage"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="19dp"
+            android:layout_height="23dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/t_item_userImage"
+            app:layout_constraintStart_toEndOf="@id/t_item_userImage"
+            app:layout_constraintTop_toBottomOf="@id/t_item_Name"
+            app:layout_constraintVertical_bias="0.191"
+            app:srcCompat="@drawable/ic_location_on_24"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_item_Name"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@id/t_item_userImage"
+            android:drawablePadding="2dp"
+            android:text="@string/location"
+            app:layout_constraintBottom_toBottomOf="@id/floatingActionButton"
+            app:layout_constraintStart_toEndOf="@id/floatingActionButton"
+            app:layout_constraintTop_toTopOf="@id/floatingActionButton"
+            tools:ignore="UnknownId" />
+
+        <TextView
+            android:id="@+id/cancel_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/t_item_userImage"
+            app:layout_constraintVertical_bias="0.602"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/cancel_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t_item_Name"
+            android:layout_marginStart="40dp"
+            android:layout_toEndOf="@id/t_item_userImage"
+            android:drawablePadding="2dp"
+            android:text="@string/time"
+            app:layout_constraintBottom_toBottomOf="@id/cancel_date"
+            app:layout_constraintStart_toEndOf="@id/cancel_date"
+            app:layout_constraintTop_toTopOf="@id/cancel_date"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="UnknownId" />
+
+        <TextView
+            android:id="@+id/id"
+            style="@style/Theme.Servizi.TextView"
+            android:layout_width="99dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/t_item_Name"
+            android:layout_marginStart="36dp"
+            android:layout_toEndOf="@id/t_item_userImage"
+            android:text="@string/id"
+            app:layout_constraintBottom_toBottomOf="@id/t_item_Name"
+            app:layout_constraintStart_toEndOf="@id/t_item_Name"
+            app:layout_constraintTop_toTopOf="@id/t_item_Name"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/status_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/status"
+            android:textAlignment="center"
+            android:textColor="?attr/colorSecondary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="153dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

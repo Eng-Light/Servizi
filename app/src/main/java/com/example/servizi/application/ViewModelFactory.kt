@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.ui.booking.BookViewModel
 import com.example.servizi.user.ui.home.UserSharedViewModel
+import com.example.servizi.user.ui.my_orders.MyOrdersViewModel
 import com.example.servizi.user.ui.reviews.ReviewsViewModel
 import com.example.servizi.user.ui.settings.SettingsViewModel
 import com.example.servizi.user.ui.technicians.TechniciansViewModel
@@ -26,6 +27,7 @@ class ViewModelFactory(private val repository: BaseRepository) :
             modelClass.isAssignableFrom(BookViewModel::class.java) -> BookViewModel(
                 repository as UserRepository
             ) as T
+            modelClass.isAssignableFrom(MyOrdersViewModel::class.java) -> MyOrdersViewModel() as T
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }

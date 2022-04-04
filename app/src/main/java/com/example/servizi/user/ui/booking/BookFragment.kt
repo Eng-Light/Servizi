@@ -41,7 +41,7 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
     private var popupWindow: PopupWindow? = null
     private var _popBinding: PopupEnterDateBinding? = null
     private val popBinding get() = _popBinding!!
-    var newApp: BookAppRequestData? = null
+    private var newApp: BookAppRequestData? = null
 
     override fun getViewModel() = BookViewModel::class.java
 
@@ -92,6 +92,7 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
             newApp = if (binding.tvDate.text != null) {
                 BookAppRequestData(
                     binding.tvDate.text.toString().trim(),
+                    binding.tiAddress.text.toString().trim(),
                     binding.spTime.selectedItem.toString().trim(),
                     binding.tiDescription.text.toString().trim(),
                     userSharedModel.techId.value!!
@@ -99,13 +100,14 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
             } else {
                 BookAppRequestData(
                     "2022/16/12",
+                    binding.tiAddress.text.toString().trim(),
                     binding.spTime.selectedItem.toString().trim(),
                     binding.tiDescription.text.toString().trim(),
                     userSharedModel.techId.value!!
                 )
             }
 
-            if (validate(newApp!!.date, newApp!!.description)) {
+            if (validate(newApp!!.date, newApp!!.description, newApp!!.address)) {
                 viewModel.bookApp(newApp!!)
             } else {
                 Snackbar.make(view, "Please Check Booking Data", Snackbar.LENGTH_SHORT)
@@ -165,11 +167,16 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
         }
     }
 
-    private fun validate(date: String, description: String): Boolean {
+    private fun validate(date: String, description: String, address: String): Boolean {
         var valid = true
 
         if (!stringValidator(description)) {
             binding.tiDescription.error = "Description must be more than 10 Char"
+            valid = false
+        }
+
+        if (!addressValidator(address)) {
+            binding.tiAddress.error = "Address must be more than 3 Char"
             valid = false
         }
 
@@ -201,5 +208,9 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
 
     private fun stringValidator(_name: String): Boolean {
         return !(_name.isEmpty() || _name.length < 11)
+    }
+
+    private fun addressValidator(_name: String): Boolean {
+        return !(_name.isEmpty() || _name.length < 3)
     }
 }
