@@ -91,4 +91,7 @@
     <string name="cancel">Cancel</string>
     <string name="time">Time</string>
     <string name="description">Description</string>
+    <string name="id">Id</string>
+    <string name="status">Status</string>
+    <string name="address">Address</string>
 </resources>
