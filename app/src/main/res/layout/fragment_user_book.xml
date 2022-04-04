@@ -95,6 +95,7 @@
                     android:text="@string/technician_name"
                     android:textSize="18sp"
                     android:textStyle="bold"
+                    app:name="@{sharedViewModel.techName}"
                     app:layout_constraintBottom_toTopOf="@id/rating2"
                     app:layout_constraintStart_toEndOf="@id/item_userImage"
                     app:layout_constraintTop_toTopOf="@id/item_userImage" />

@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
@@ -103,8 +102,9 @@ class TechniciansFragment :
         adapter.onIvtItemClick = {
             findNavController().navigate(R.id.action_techniciansFragment_to_reviewsFragment)
         }
-        adapter.onBtntItemClick = {
-            userSharedModel.setTechId(it)
+        adapter.onBtntItemClick = { id, firstName, lastname ->
+            userSharedModel.setTechId(id)
+            userSharedModel.setTechName("$firstName $lastname")
             findNavController().navigate(R.id.action_techniciansFragment_to_bookFragment)
         }
 

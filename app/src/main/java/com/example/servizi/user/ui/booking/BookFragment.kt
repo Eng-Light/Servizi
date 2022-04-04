@@ -1,12 +1,10 @@
 package com.example.servizi.user.ui.booking
 
 import android.annotation.SuppressLint
-import android.content.ClipDescription
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -23,10 +21,8 @@ import com.example.servizi.databinding.FragmentUserBookBinding
 import com.example.servizi.databinding.PopupEnterDateBinding
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
-import com.example.servizi.technician.model.signup.TechnicianData
 import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
-import com.example.servizi.user.model.Appointments
 import com.example.servizi.user.model.BookAppRequestData
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
@@ -38,7 +34,6 @@ import kotlinx.coroutines.runBlocking
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.regex.Pattern
 
 class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRepository>() {
 
@@ -179,7 +174,7 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
         }
 
         if (!dateValidator(date)) {
-            binding.tvDate.error = "Not Valid BirthDate"
+            binding.tvDate.error = "Not Valid Date"
             valid = false
         } else {
             binding.tvDate.error = null
@@ -205,13 +200,6 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
     }
 
     private fun stringValidator(_name: String): Boolean {
-        return if (_name.isEmpty() || _name.length < 11) {
-            false
-        } else {
-            val pattern: Pattern
-            val name = "^[a-zA-Z\\\\\\\\s]+"
-            pattern = Pattern.compile(name)
-            _name.split(" ").all { pattern.matcher(it).matches() }
-        }
+        return !(_name.isEmpty() || _name.length < 11)
     }
 }

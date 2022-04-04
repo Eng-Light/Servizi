@@ -19,6 +19,9 @@ class UserSharedViewModel : ViewModel() {
     private val _techId: MutableLiveData<Int> = MutableLiveData()
     val techId: LiveData<Int> = _techId
 
+    private val _techName: MutableLiveData<String> = MutableLiveData()
+    val techName: LiveData<String> = _techName
+
     fun setLocation(newLocation: NewLocation) {
         _location.value = newLocation
     }
@@ -30,5 +33,9 @@ class UserSharedViewModel : ViewModel() {
 
     fun setTechId(id:Int){
         _techId.value = id
+    }
+
+    fun setTechName(name:String){
+        _techName.value = name
     }
 }
