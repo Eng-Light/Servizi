@@ -27,7 +27,9 @@ class ViewModelFactory(private val repository: BaseRepository) :
             modelClass.isAssignableFrom(BookViewModel::class.java) -> BookViewModel(
                 repository as UserRepository
             ) as T
-            modelClass.isAssignableFrom(MyOrdersViewModel::class.java) -> MyOrdersViewModel() as T
+            modelClass.isAssignableFrom(MyOrdersViewModel::class.java) -> MyOrdersViewModel(
+                repository as UserRepository
+            ) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }

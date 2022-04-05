@@ -23,5 +23,9 @@ class UserRepository(
         id: Int
     ) = safeApiCall { dataSource.getTechniciansReAsync(id) }
 
+    suspend fun cancelApp(
+        id: Int
+    ) = safeApiCall { dataSource.cancelAppointment(id) }
+
     suspend fun getAppointments() = safeApiCall { dataSource.getAppointmentsAsync() }
 }

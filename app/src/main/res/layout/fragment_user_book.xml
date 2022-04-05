@@ -37,7 +37,7 @@
                 <TextView
                     android:id="@+id/tv_Profession"
                     style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                    profession="@{sharedViewModel.profession}"
+                    Text="@{sharedViewModel.profession}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -45,7 +45,7 @@
 
                 <TextView
                     android:id="@+id/tv_Location"
-                    location="@{sharedViewModel.location.city}"
+                    Text="@{sharedViewModel.location.city}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center"
@@ -107,7 +107,7 @@
                             app:layout_constraintBottom_toTopOf="@id/rating2"
                             app:layout_constraintStart_toEndOf="@id/item_userImage"
                             app:layout_constraintTop_toTopOf="@id/item_userImage"
-                            app:name="@{sharedViewModel.techName}" />
+                            app:Text="@{sharedViewModel.techName}" />
 
                         <androidx.appcompat.widget.AppCompatRatingBar
                             android:id="@+id/rating2"
