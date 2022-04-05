@@ -36,6 +36,7 @@ class MyOrdersFragment :
     private var popupWindow: PopupWindow? = null
     private var _popBinding: PopupCancelOrderBinding? = null
     private var appointment: Appointment? = null
+    private var selectedStatus: Int? = 0
     private val popBinding get() = _popBinding!!
 
     override fun getViewModel() = MyOrdersViewModel::class.java
@@ -91,13 +92,14 @@ class MyOrdersFragment :
         }
 
         viewModel.ordersResponse.observe(viewLifecycleOwner) {
-            binding.loading.visible(false)
+            binding.loading.visible(true)
 
             when (it) {
                 is Result.Success -> {
                     binding.loading.visible(false)
                     viewModel.setOrdersData(it.data)
                     viewModel.sortOrders()
+                    viewModel.setSortedOrders(selectedStatus!!)
                 }
                 is Result.Loading -> {
                     binding.loading.visible(true)
@@ -112,11 +114,12 @@ class MyOrdersFragment :
         }
 
         viewModel.cancelResponse.observe(viewLifecycleOwner) {
-            binding.loading.visible(false)
+            binding.loading.visible(true)
 
             when (it) {
                 is Result.Success -> {
                     binding.loading.visible(false)
+                    viewModel.gerOrders()
                 }
                 is Result.Loading -> {
                     binding.loading.visible(true)
@@ -136,7 +139,10 @@ class MyOrdersFragment :
                 "inprogress", "accepted", "rejected", "cancelled", "completed"
             )
         )
-        adapter.onItemClick = { viewModel.setSortedOrders(it) }
+        adapter.onItemClick = {
+            selectedStatus = it
+            viewModel.setSortedOrders(selectedStatus!!)
+        }
         binding.rvStatus.adapter = adapter
         viewModel = ViewModelProvider(this)[MyOrdersViewModel::class.java]
 

@@ -78,7 +78,6 @@ class MyOrdersViewModel(private val repository: UserRepository) : BaseViewModel(
         rejected.value = _rejected
         canceled.value = _canceled
         completed.value = _completed
-        sortedOrders.value = inProgress.value
     }
 
     fun setSortedOrders(position: Int) {
