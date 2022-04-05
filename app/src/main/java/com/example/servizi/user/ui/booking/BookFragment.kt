@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
@@ -121,6 +122,7 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
                 is Result.Success -> {
                     binding.loading.visible(false)
                     Toast.makeText(requireContext(), it.data.msg, Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.navigation_my_orders)
                 }
                 is Result.Loading -> {
                     binding.loading.visible(true)
