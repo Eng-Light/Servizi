@@ -49,6 +49,7 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_pager.xml" value="0.2604166666666667" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_sign_up.xml" value="0.14132340052585451" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_sign_up_technician.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_home.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_main.xml" value="0.2756756756756757" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_pager.xml" value="0.2905405405405405" />
@@ -59,7 +60,7 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_home.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_main.xml" value="0.2756756756756757" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_my_orders.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_my_orders.xml" value="0.2248062015503876" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_pager.xml" value="0.19324324324324324" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_reviews.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_settings.xml" value="0.2905405405405405" />
@@ -70,6 +71,8 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_my_order.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_view.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/my_orders_fragment.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/order_item_view.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_cancel_order.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_choose_time.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_enter_date.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_update_location.xml" value="0.2905405405405405" />

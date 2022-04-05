@@ -23,7 +23,7 @@ class TechsAdapter : ListAdapter<Technician,
             }
             binding.button.setOnClickListener {
                 onBtntItemClick?.invoke(
-                    binding.tech!!.id,
+                    binding.tech!!.id!!,
                     binding.tech!!.firstName,
                     binding.tech!!.lastName
                 )

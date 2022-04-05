@@ -78,7 +78,12 @@ class TechniciansFragment :
 
         binding.rvShowData.adapter = TechsAdapter()
 
+        if (viewModel.techs.value == null) {
+            userSharedModel.techProf.value?.let { it -> viewModel.getTechs(it) }
+        }
+
         refreshApp()
+
         return binding.root
     }
 
@@ -110,7 +115,9 @@ class TechniciansFragment :
 
         userSharedModel.techProf.observe(viewLifecycleOwner) {
             userSharedModel.setProfession(it)
-            viewModel.getTechs(it)
+            if (viewModel.techs.value == null) {
+                viewModel.getTechs(it)
+            }
         }
 
         viewModel.techs.observe(viewLifecycleOwner) {

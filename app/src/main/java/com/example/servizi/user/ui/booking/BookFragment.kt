@@ -115,7 +115,7 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
             }
         }
 
-        viewModel.bookResponse.observe(viewLifecycleOwner) {
+        viewModel.bookingResponse.observe(viewLifecycleOwner) {
             binding.loading.visible(true)
             when (it) {
                 is Result.Success -> {
