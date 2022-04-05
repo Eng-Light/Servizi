@@ -1,9 +1,14 @@
-package com.example.servizi.user.ui.technicians
+package com.example.servizi.user.ui
 
+import android.annotation.SuppressLint
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.servizi.user.model.Appointment
 import com.example.servizi.user.model.Technician
+import com.example.servizi.user.ui.my_orders.OrdersAdapter
+import com.example.servizi.user.ui.technicians.TechsAdapter
+import java.util.*
 
 /*The @BindingAdapter annotation tells data binding to execute this binding adapter
 when a View item has the imageUrl attribute.*/
@@ -27,6 +32,20 @@ fun bindRecyclerView(
     adapter.submitList(data)
 }
 
+@BindingAdapter("OrdersListData")
+fun bindOrdersRecyclerView(
+    recyclerView: RecyclerView,
+    data: List<Appointment>? = listOf(
+        Appointment(
+            0, "", "", "", "", 0, "",
+            Technician(0, "", "", "", "", "", "", "")
+        )
+    )
+) {
+    val adapter = recyclerView.adapter as OrdersAdapter
+    adapter.submitList(data)
+}
+
 @BindingAdapter("taskTitle")
 fun bindTextView(
     textView: TextView,
@@ -35,28 +54,37 @@ fun bindTextView(
     textView.text = tv_task
 }
 
-@BindingAdapter("name")
-fun bindName(
+@BindingAdapter("Text")
+fun bindText(
     textView: TextView,
     tv_name: String? = ""
 ) {
-    textView.text = tv_name
+    if (tv_name != null) {
+        textView.text = tv_name.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
+    }
 }
 
-@BindingAdapter("profession")
-fun bindTvProf(
+@SuppressLint("SetTextI18n")
+@BindingAdapter("Review")
+fun bindReview(
     textView: TextView,
-    tv_task: String? = ""
+    tv_status: Int? = 2
 ) {
-    textView.text = tv_task
+    when (tv_status) {
+        0 -> textView.text = "Pending Review"
+        1 -> textView.text = "Reviewed"
+    }
 }
 
-@BindingAdapter("location")
-fun bindTvLoc(
+@SuppressLint("SetTextI18n")
+@BindingAdapter("TextNumber")
+fun bindTextId(
     textView: TextView,
-    tv_task: String? = ""
+    tv_Id: Int? = 0
 ) {
-    textView.text = tv_task
+    textView.text = "ID: $tv_Id"
 }
 
 /*

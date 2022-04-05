@@ -32,6 +32,9 @@ interface UserApiService {
     @GET("/user/gettechnician")
     suspend fun getTechniciansReAsync(@Query(value = "id") id: Int): TechsReResponse
 
+    @PUT("/user/cancelappointment")
+    suspend fun cancelAppointment(@Query(value = "id") id: Int): CancelResponse
+
     @GET("/user/allappointments")
     suspend fun getAppointmentsAsync(): AppointmentsResponse
 

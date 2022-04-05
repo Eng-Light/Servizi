@@ -94,4 +94,13 @@
     <string name="id">Id</string>
     <string name="status">Status</string>
     <string name="address">Address</string>
+    <string name="ID">ID:</string>
+    <string name="Date">Date:</string>
+    <string name="duration">Duration:</string>
+    <string name="Description">Description:</string>
+    <string name="Address">Address:</string>
+    <string name="tru">True</string>
+    <string name="Reviewed">Reviewed:</string>
+    <string name="Status">Status:</string>
+    <string name="cancel_order">Cancel Order</string>
 </resources>
