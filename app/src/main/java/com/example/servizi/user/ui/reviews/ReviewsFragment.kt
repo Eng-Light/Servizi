@@ -1,5 +1,6 @@
 package com.example.servizi.user.ui.reviews
 
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
@@ -47,6 +48,7 @@ class ReviewsFragment :
     private var _pop: PopupEnterDateBinding? = null
     private val pop get() = _pop!!
     private var newApp: BookAppRequestData? = null
+
 
     override fun getViewModel() = ReviewsViewModel::class.java
 
@@ -232,3 +234,4 @@ class ReviewsFragment :
         return !(_name.isEmpty() || _name.length < 3)
     }
 }
+
