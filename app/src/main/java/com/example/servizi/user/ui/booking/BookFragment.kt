@@ -28,6 +28,7 @@ import com.example.servizi.user.model.BookAppRequestData
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
 import com.example.servizi.user.ui.home.UserSharedViewModel
+import com.example.servizi.user.ui.technicians.TechniciansViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -117,12 +118,12 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
         }
 
         viewModel.bookingResponse.observe(viewLifecycleOwner) {
-            binding.loading.visible(true)
             when (it) {
                 is Result.Success -> {
                     binding.loading.visible(false)
                     Toast.makeText(requireContext(), it.data.msg, Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.navigation_my_orders)
+                    viewModel._bookingResponse.value = null
                 }
                 is Result.Loading -> {
                     binding.loading.visible(true)
@@ -135,7 +136,6 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
                 }
             }
         }
-
     }
 
     private fun showPopUpUpdateLoc(): PopupWindow {
