@@ -15,6 +15,7 @@
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_pager.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up_view_model.xml" value="0.21784420289855072" />
+
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/already_background.xml" value="0.222" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/dark_background.xml" value="0.218" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/rounded_text_input.xml" value="0.185" />
@@ -71,8 +72,7 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_my_order.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_view.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/my_orders_fragment.xml" value="0.2905405405405405" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/order_item_view.xml" value="0.2905405405405405" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_cancel_order.xml" value="0.2905405405405405" />
+
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_choose_time.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_enter_date.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/popup_update_location.xml" value="0.2905405405405405" />
