@@ -16,7 +16,7 @@ class BookViewModel(private val repository: UserRepository) : BaseViewModel(repo
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
 
-    private val _bookingResponse = MutableLiveData<Result<BookAppResponse>>()
+    val _bookingResponse = MutableLiveData<Result<BookAppResponse>>()
     val bookingResponse: LiveData<Result<BookAppResponse>> = _bookingResponse
 
     fun bookApp(bookAppRequestData: BookAppRequestData) {

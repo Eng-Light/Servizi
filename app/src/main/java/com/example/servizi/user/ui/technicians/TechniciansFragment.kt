@@ -115,9 +115,9 @@ class TechniciansFragment :
 
         userSharedModel.techProf.observe(viewLifecycleOwner) {
             userSharedModel.setProfession(it)
-            if (viewModel.techs.value == null) {
+            /*if (viewModel.techs.value == null) {
                 viewModel.getTechs(it)
-            }
+            }*/
         }
 
         viewModel.techs.observe(viewLifecycleOwner) {
