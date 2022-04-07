@@ -77,7 +77,7 @@ class ReviewsFragment :
         lifecycleScope.launch { userPreferences.accessToken.first() }
 
         binding.bttBook.setOnClickListener() {
-            Log.d("ReviewsFragment","Clicked")
+            Log.d("ReviewsFragment", "Clicked")
             showPopBook()
             popupWindow = showPopBook()
             popupWindow?.isOutsideTouchable = true
@@ -132,8 +132,7 @@ class ReviewsFragment :
         val view = inflater.inflate(R.layout.popup_book_reviews, null)
         _popBinding = PopupBookReviewsBinding.bind(view)
 
-        popBinding.buttonBook.setOnClickListener {
-
+        popBinding.buttonBook.setOnClickListener() {
             newApp = if (popBinding.tDate.text != null) {
                 BookAppRequestData(
                     popBinding.tDate.text.toString().trim(),
@@ -158,21 +157,18 @@ class ReviewsFragment :
                 Snackbar.make(view, "Please Check Booking Data", Snackbar.LENGTH_SHORT)
                     .show()
             }
-        }
-
-        popBinding.buttonBook.setOnClickListener() {
-            viewModel.setDate(
+            /*viewModel.setDate(
                 pop.datePicker.month,
                 pop.datePicker.dayOfMonth
             )
             popBinding.tDate.text = viewModel.date.value
-            dismissPopup()
+            dismissPopup()*/
 
         }
         return PopupWindow(
-        popBinding.root,
-        ViewGroup.LayoutParams.WRAP_CONTENT,
-        ViewGroup.LayoutParams.WRAP_CONTENT
+            popBinding.root,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
         )
     }
 

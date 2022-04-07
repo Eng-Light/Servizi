@@ -23,7 +23,7 @@ class ViewModelFactory(private val repository: BaseRepository) :
             modelClass.isAssignableFrom(TechniciansViewModel::class.java) -> TechniciansViewModel(
                 repository as UserRepository
             ) as T
-            modelClass.isAssignableFrom(ReviewsViewModel::class.java) -> ReviewsViewModel() as T
+            modelClass.isAssignableFrom(ReviewsViewModel::class.java) -> ReviewsViewModel(repository as UserRepository) as T
             modelClass.isAssignableFrom(BookViewModel::class.java) -> BookViewModel(
                 repository as UserRepository
             ) as T
