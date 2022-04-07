@@ -11,7 +11,7 @@ import com.example.servizi.user.model.Technician
 
 class TechsAdapter : ListAdapter<Technician,
         TechsAdapter.TechsViewHolder>(DiffCallback) {
-    var onIvtItemClick: (() -> Unit)? = null
+    var onIvtItemClick: ((Int, String, String) -> Unit)? = null
     var onBtntItemClick: ((Int, String, String) -> Unit)? = null
 
     inner class TechsViewHolder(
@@ -19,7 +19,11 @@ class TechsAdapter : ListAdapter<Technician,
     ) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.ivItemUserImage.setOnClickListener {
-                onIvtItemClick?.invoke()
+                onIvtItemClick?.invoke(
+                    binding.tech!!.id!!,
+                    binding.tech!!.firstName,
+                    binding.tech!!.lastName
+                )
             }
             binding.button.setOnClickListener {
                 onBtntItemClick?.invoke(

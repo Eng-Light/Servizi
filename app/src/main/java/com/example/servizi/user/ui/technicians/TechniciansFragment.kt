@@ -104,7 +104,9 @@ class TechniciansFragment :
         }
 
         val adapter = binding.rvShowData.adapter as TechsAdapter
-        adapter.onIvtItemClick = {
+        adapter.onIvtItemClick = { id, firstName, lastname ->
+            userSharedModel.setTechId(id)
+            userSharedModel.setTechName("$firstName $lastname")
             findNavController().navigate(R.id.action_techniciansFragment_to_reviewsFragment)
         }
         adapter.onBtntItemClick = { id, firstName, lastname ->
