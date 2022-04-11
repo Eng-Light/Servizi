@@ -24,6 +24,14 @@
         <item name="colorOnSecondary">#fefefe</item>
     </style>
 
+    <style name="Theme.Servizi.CardView" parent="Theme.Servizi">
+        <item name="cardBackgroundColor">@color/primaryColor</item>
+    </style>
+
+    <style name="Theme.Servizi.CardViewD" parent="Theme.Servizi">
+        <item name="cardBackgroundColor">@color/primaryLightColor</item>
+    </style>
+
     <style name="TextLabel" parent="TextAppearance.AppCompat.Medium">
         <!-- Hint color and label color in FALSE state -->
         <item name="android:textColorHint">@color/black</item>
