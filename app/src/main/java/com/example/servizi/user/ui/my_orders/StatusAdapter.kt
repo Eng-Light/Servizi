@@ -1,7 +1,6 @@
 package com.example.servizi.user.ui.my_orders
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,8 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.R
 import com.example.servizi.databinding.ItemMyOrderBinding
-import com.example.servizi.databinding.RevItemBinding
-import okhttp3.internal.notifyAll
+import java.util.*
 
 class StatusAdapter : ListAdapter<String,
         StatusAdapter.StatusViewHolder>(DiffCallback) {
@@ -32,13 +30,29 @@ class StatusAdapter : ListAdapter<String,
 
         @SuppressLint("SetTextI18n")
         fun bind(status: String) {
-            binding.textView.text = status
+            binding.textView.text = status.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+            }
             //binding.executePendingBindings()
 
             if (itemPosition == adapterPosition) {
-                binding.cardV.setBackgroundResource(R.color.primaryColor)
+                binding.cardV.apply {
+                    setCardBackgroundColor(
+                        resources.getColor(
+                            R.color.primaryColor,
+                            context.theme
+                        )
+                    )
+                }
             } else {
-                binding.cardV.setBackgroundResource(R.drawable.dark_background)
+                binding.cardV.apply {
+                    setCardBackgroundColor(
+                        resources.getColor(
+                            R.color.primaryLightColor,
+                            context.theme
+                        )
+                    )
+                }
             }
         }
     }
