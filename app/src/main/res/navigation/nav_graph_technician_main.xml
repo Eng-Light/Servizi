@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_technician_main"
+    app:startDestination="@id/navigation_tech_profile">
+
+    <fragment
+        android:id="@+id/navigation_tech_settings"
+        android:name="com.example.servizi.technician.ui.settings.TechSettingsFragment"
+        android:label="fragment_tech_settings"
+        tools:layout="@layout/fragment_tech_settings" />
+    <fragment
+        android:id="@+id/navigation_tech_orders"
+        android:name="com.example.servizi.technician.ui.orders.TechOrdersFragment"
+        android:label="fragment_tech_orders"
+        tools:layout="@layout/fragment_tech_orders" />
+    <fragment
+        android:id="@+id/navigation_tech_profile"
+        android:name="com.example.servizi.technician.ui.profile.TechProfileFragment"
+        android:label="fragment_tech_profile"
+        tools:layout="@layout/fragment_tech_profile" />
+</navigation>

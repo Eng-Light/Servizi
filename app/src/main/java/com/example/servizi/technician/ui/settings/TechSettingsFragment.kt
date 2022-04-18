@@ -1,10 +1,9 @@
-package com.example.servizi.user.ui.settings
+package com.example.servizi.technician.ui.settings
 
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,41 +16,40 @@ import androidx.lifecycle.lifecycleScope
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
-import com.example.servizi.databinding.FragmentUserSettingsBinding
+import com.example.servizi.databinding.FragmentTechSettingsBinding
 import com.example.servizi.databinding.PopupUpdateLocationBinding
+import com.example.servizi.technician.model.TechRepository
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
+import com.example.servizi.technician.network.TechApiService
 import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.model.NewLocation
-import com.example.servizi.user.model.UserRepository
-import com.example.servizi.user.network.UserApiService
-import com.example.servizi.user.ui.technicians.TechsAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class SettingsFragment :
-    BaseFragment<SettingsViewModel, FragmentUserSettingsBinding, UserRepository>() {
+class TechSettingsFragment :
+    BaseFragment<TechSettingsViewModel, FragmentTechSettingsBinding, TechRepository>() {
 
     private var popupWindow: PopupWindow? = null
     private var _popBinding: PopupUpdateLocationBinding? = null
     private var newLocation: NewLocation? = null
     private val popBinding get() = _popBinding!!
 
-    override fun getViewModel() = SettingsViewModel::class.java
+    override fun getViewModel() = TechSettingsViewModel::class.java
 
-    override fun getFragmentRepository(): UserRepository {
+    override fun getFragmentRepository(): TechRepository {
         val token = runBlocking { userPreferences.accessToken.first().toString() }
-        val api = remoteDataSource.buildApi(UserApiService::class.java, token)
-        return UserRepository(api)
+        val api = remoteDataSource.buildApi(TechApiService::class.java, token)
+        return TechRepository(api)
     }
 
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentUserSettingsBinding.inflate(inflater, container, false)
+    ) = FragmentTechSettingsBinding.inflate(inflater, container, false)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -75,14 +73,14 @@ class SettingsFragment :
 
         binding.logoutCrdV.setOnClickListener { showAlertDialog() }
 
-        binding.changeLocCrdV.setOnClickListener {
+        /*binding.changeLocCrdV.setOnClickListener {
             showPopUpUpdateLoc()
             popupWindow = showPopUpUpdateLoc()
             popupWindow?.isOutsideTouchable = true
             popupWindow?.isFocusable = true
             popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             popupWindow?.showAsDropDown(binding.changeLocCrdV)
-        }
+        }*/
 
         viewModel.updateResponse.observe(viewLifecycleOwner) {
             if (it != null) {
@@ -237,4 +235,5 @@ class SettingsFragment :
                 Toast.makeText(requireContext(), "Nice Choice !", Toast.LENGTH_SHORT).show()
             }.show()
     }
+
 }

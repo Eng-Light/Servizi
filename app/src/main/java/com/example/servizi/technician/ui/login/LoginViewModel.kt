@@ -35,11 +35,11 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                     _loginResponse.value = loginRepository.loginUser(userPhone, password)
                 }
                 is TechnicianMainActivity -> {
-                    Log.d("Test_SignIn_1", _loginResponse.value.toString())
+                    Log.d("Test_SignIn_2", _loginResponse.value.toString())
                     _loginResponse.value = loginRepository.loginTech(userPhone, password)
                 }
             }
-            Log.d("Test_SignIn_1", _loginResponse.value.toString())
+            Log.d("Test_SignIn_2", _loginResponse.value.toString())
         }
     }
 

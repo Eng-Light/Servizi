@@ -1,32 +1,32 @@
-package com.example.servizi.user.ui.my_orders
+package com.example.servizi.technician.ui.orders
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.servizi.application.BaseViewModel
+import com.example.servizi.technician.model.TechRepository
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.user.model.Appointment
 import com.example.servizi.user.model.AppointmentsResponse
 import com.example.servizi.user.model.CancelResponse
-import com.example.servizi.user.model.UserRepository
 import kotlinx.coroutines.launch
 
-class MyOrdersViewModel(private val repository: UserRepository) : BaseViewModel(repository) {
+class TechOrdersViewModel(private val repository: TechRepository) : BaseViewModel(repository) {
 
     private val _ordersResponse = MutableLiveData<Result<AppointmentsResponse>>()
     val ordersResponse: LiveData<Result<AppointmentsResponse>> = _ordersResponse
 
     private val _ordersData = MutableLiveData<AppointmentsResponse>()
-    val ordersData: LiveData<AppointmentsResponse> = _ordersData
+    private val ordersData: LiveData<AppointmentsResponse> = _ordersData
 
     private val _cancelResponse = MutableLiveData<Result<CancelResponse>>()
     val cancelResponse: LiveData<Result<CancelResponse>> = _cancelResponse
 
-    val inProgress = MutableLiveData<MutableList<Appointment>>()
-    val accepted = MutableLiveData<MutableList<Appointment>>()
-    val rejected = MutableLiveData<MutableList<Appointment>>()
-    val canceled = MutableLiveData<MutableList<Appointment>>()
-    val completed = MutableLiveData<MutableList<Appointment>>()
+    private val inProgress = MutableLiveData<MutableList<Appointment>>()
+    private val accepted = MutableLiveData<MutableList<Appointment>>()
+    private val rejected = MutableLiveData<MutableList<Appointment>>()
+    private val canceled = MutableLiveData<MutableList<Appointment>>()
+    private val completed = MutableLiveData<MutableList<Appointment>>()
 
     val sortedOrders = MutableLiveData<MutableList<Appointment>>()
 
@@ -37,12 +37,12 @@ class MyOrdersViewModel(private val repository: UserRepository) : BaseViewModel(
         }
     }
 
-    fun cancelApp(id: Int) {
+    /*fun cancelApp(id: Int) {
         viewModelScope.launch {
             _cancelResponse.value = Result.Loading
             _cancelResponse.value = repository.cancelApp(id)
         }
-    }
+    }*/
 
     fun setOrdersData(orders: AppointmentsResponse) {
         _ordersData.value = orders
