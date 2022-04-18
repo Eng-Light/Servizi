@@ -27,8 +27,10 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1705" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_arrow_down_24.xml" value="0.185" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_account_24.xml" value="0.185" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.174" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_home_repair_service_24.xml" value="0.126" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.185" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.174" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_home.xml" value="0.226" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.204" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_location_on_24.xml" value="0.1835" />
@@ -47,9 +49,14 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_first.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_pager.xml" value="0.2604166666666667" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_scrolling.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_sign_up.xml" value="0.14132340052585451" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_sign_up_technician.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_home.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_main.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_orders.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_profile.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_settings.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_main.xml" value="0.2756756756756757" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_pager.xml" value="0.2905405405405405" />
@@ -87,7 +94,8 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/user_main_fragment.xml" value="0.16936936936936936" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/user_update_location_fragment.xml" value="0.17753623188405798" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2905405405405405" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/menu/bottom_nav_menu_user.xml" value="0.11486486486486487" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/menu/bottom_nav_menu_tech.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/menu/bottom_nav_menu_user.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.218" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.218" />
       </map>

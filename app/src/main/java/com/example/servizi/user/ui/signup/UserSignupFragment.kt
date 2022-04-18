@@ -198,7 +198,7 @@ class UserSignupFragment : Fragment() {
             binding.yourLastName.error = "Not Valid Name"
             valid = false
         }
-        if (!emailValidator(user.email)) {
+        if (!emailValidator(user.email!!)) {
             binding.yourEmail.error = "Not Valid E-Mail"
             valid = false
         }
@@ -206,7 +206,7 @@ class UserSignupFragment : Fragment() {
             binding.yourPhone.error = "Not Valid Phone"
             valid = false
         }
-        if (!passwordValidation(user.password)) {
+        if (!passwordValidation(user.password!!)) {
             binding.createYourPassword.error = "Not Valid Password"
             valid = false
         }

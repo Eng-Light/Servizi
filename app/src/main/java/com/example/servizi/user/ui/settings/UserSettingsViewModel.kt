@@ -11,7 +11,7 @@ import com.example.servizi.user.model.NewLocation
 import com.example.servizi.user.model.UserRepository
 import kotlinx.coroutines.launch
 
-class SettingsViewModel(private val repository: UserRepository) : BaseViewModel(repository) {
+class UserSettingsViewModel(private val repository: UserRepository) : BaseViewModel(repository) {
 
 
     val _updateResponse: MutableLiveData<Result<LocUpdateResponse>> = MutableLiveData()

@@ -1,9 +1,10 @@
-package com.example.servizi.user.ui
+package com.example.servizi
 
 import android.annotation.SuppressLint
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.servizi.technician.ui.orders.TechOrdersAdapter
 import com.example.servizi.user.model.Appointment
 import com.example.servizi.user.model.Technician
 import com.example.servizi.user.ui.my_orders.OrdersAdapter
@@ -43,6 +44,20 @@ fun bindOrdersRecyclerView(
     )
 ) {
     val adapter = recyclerView.adapter as OrdersAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("TechOrdersListData")
+fun bindTechOrdersRecyclerView(
+    recyclerView: RecyclerView,
+    data: List<Appointment>? = listOf(
+        Appointment(
+            0, "", "", "", "", 0, "",
+            Technician(0, "", "", "", "", "", "", "")
+        )
+    )
+) {
+    val adapter = recyclerView.adapter as TechOrdersAdapter
     adapter.submitList(data)
 }
 

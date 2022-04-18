@@ -15,8 +15,8 @@
     </fragment>
     <fragment
         android:id="@+id/techHomeFragment"
-        android:name="com.example.servizi.technician.ui.home.TechHomeFragment"
+        android:name="com.example.servizi.technician.ui.main.TechMainFragment"
         android:label="Tech Home"
-        tools:layout="@layout/fragment_tech_home"
-        />
+        tools:layout="@layout/fragment_tech_main" />
+    <include app:graph="@navigation/nav_graph_technician_main" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.servizi.user.ui.main
+package com.example.servizi.technician.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,15 +11,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.servizi.R
-import com.example.servizi.databinding.FragmentUserMainBinding
+import com.example.servizi.databinding.FragmentTechMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
-class UserMainFragment : Fragment() {
+class TechMainFragment : Fragment() {
 
-    private lateinit var viewModel: UserMainViewModel
-    private var _binding: FragmentUserMainBinding? = null
+    private lateinit var viewModel: TechMainViewModel
+    private var _binding: FragmentTechMainBinding? = null
 
     private val binding get() = _binding!!
 
@@ -27,12 +27,10 @@ class UserMainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentUserMainBinding.inflate(inflater, container, false)
-
-
+        _binding = FragmentTechMainBinding.inflate(inflater, container, false)
         // This callback will only be called when MyFragment is at least Started.
         val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            // Handle the back button event
             showAlertDialog()
         }
         callback.isEnabled = true
@@ -42,39 +40,17 @@ class UserMainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[UserMainViewModel::class.java]
-
+        viewModel = ViewModelProvider(this)[TechMainViewModel::class.java]
         val navView: BottomNavigationView = binding.navView
 
         val navHostFragment =
-            childFragmentManager.findFragmentById(R.id.nav_host_fragment_main) as NavHostFragment
+            childFragmentManager.findFragmentById(R.id.nav_host_fragment_tech_main) as NavHostFragment
 
-        /*val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.user_home_fragment, R.id.techniciansFragment,R.id.UserHomeFragment
-            )
-        )*/
         val navController = navHostFragment.navController
         navView.setupWithNavController(navController)
 
-        /*(navHostFragment.requireActivity() as AppCompatActivity).setupActionBarWithNavController(
-            navController,
-            appBarConfiguration
-        )*/
-
         // hide action bar
         (navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.hide()
-        /*navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.techniciansFragment -> {
-                    (navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.show()
-                    //(navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.title = "Carpenter"
-                }
-                else -> {
-                    (navHostFragment.requireActivity() as AppCompatActivity).supportActionBar?.hide()
-                }
-            }
-        }*/
     }
 
     private fun showAlertDialog() {
@@ -94,4 +70,5 @@ class UserMainFragment : Fragment() {
                     .show()
             }.show()
     }
+
 }
