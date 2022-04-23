@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.technician.ui.orders.TechOrdersAdapter
 import com.example.servizi.user.model.Appointment
 import com.example.servizi.user.model.Technician
+import com.example.servizi.user.model.UserData
 import com.example.servizi.user.ui.my_orders.OrdersAdapter
 import com.example.servizi.user.ui.technicians.TechsAdapter
 import java.util.*
@@ -50,10 +51,18 @@ fun bindOrdersRecyclerView(
 @BindingAdapter("TechOrdersListData")
 fun bindTechOrdersRecyclerView(
     recyclerView: RecyclerView,
-    data: List<Appointment>? = listOf(
-        Appointment(
+    data: List<com.example.servizi.technician.model.Appointment>? = listOf(
+        com.example.servizi.technician.model.Appointment(
             0, "", "", "", "", 0, "",
-            Technician(0, "", "", "", "", "", "", "")
+            UserData(
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            )
         )
     )
 ) {
@@ -67,6 +76,14 @@ fun bindTextView(
     tv_task: String? = ""
 ) {
     textView.text = tv_task
+}
+
+@BindingAdapter("PhoneNumber")
+fun bindTextViewPhone(
+    textView: TextView,
+    tv_task: Int? = 0
+) {
+    textView.text = tv_task.toString()
 }
 
 @BindingAdapter("Text")

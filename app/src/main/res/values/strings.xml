@@ -193,4 +193,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="profile">Profile</string>
+    <string name="accept_order">Accept Order</string>
+    <string name="reject_order">Reject Order</string>
+    <string name="mark_as_completed">Mark as completed</string>
 </resources>
