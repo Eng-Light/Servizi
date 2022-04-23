@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 abstract class BaseFragment<VM : ViewModel, B : ViewBinding, R : BaseRepository> : Fragment() {
     protected lateinit var userPreferences: UserPreferences
     protected lateinit var binding: B
-    protected lateinit var viewModel: VM
+    open lateinit var viewModel: VM
     protected val remoteDataSource = RemoteDataSource()
 
     override fun onCreateView(

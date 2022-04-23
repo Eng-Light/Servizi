@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.servizi.application.BaseViewModel
+import com.example.servizi.technician.model.Appointment
+import com.example.servizi.technician.model.AppointmentsResponse
 import com.example.servizi.technician.model.TechRepository
 import com.example.servizi.technician.model.login.data.Result
-import com.example.servizi.user.model.Appointment
-import com.example.servizi.user.model.AppointmentsResponse
-import com.example.servizi.user.model.CancelResponse
 import kotlinx.coroutines.launch
 
 class TechOrdersViewModel(private val repository: TechRepository) : BaseViewModel(repository) {
@@ -18,9 +17,6 @@ class TechOrdersViewModel(private val repository: TechRepository) : BaseViewMode
 
     private val _ordersData = MutableLiveData<AppointmentsResponse>()
     private val ordersData: LiveData<AppointmentsResponse> = _ordersData
-
-    private val _cancelResponse = MutableLiveData<Result<CancelResponse>>()
-    val cancelResponse: LiveData<Result<CancelResponse>> = _cancelResponse
 
     private val inProgress = MutableLiveData<MutableList<Appointment>>()
     private val accepted = MutableLiveData<MutableList<Appointment>>()
@@ -36,13 +32,6 @@ class TechOrdersViewModel(private val repository: TechRepository) : BaseViewMode
             _ordersResponse.value = repository.getAppointments()
         }
     }
-
-    /*fun cancelApp(id: Int) {
-        viewModelScope.launch {
-            _cancelResponse.value = Result.Loading
-            _cancelResponse.value = repository.cancelApp(id)
-        }
-    }*/
 
     fun setOrdersData(orders: AppointmentsResponse) {
         _ordersData.value = orders

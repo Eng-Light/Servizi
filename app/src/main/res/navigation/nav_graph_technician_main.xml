@@ -14,10 +14,23 @@
         android:id="@+id/navigation_tech_orders"
         android:name="com.example.servizi.technician.ui.orders.TechOrdersFragment"
         android:label="fragment_tech_orders"
-        tools:layout="@layout/fragment_tech_orders" />
+        tools:layout="@layout/fragment_tech_orders" >
+        <action
+            android:id="@+id/action_navigation_tech_orders_to_techOrdersBottomSheetFragment"
+            app:destination="@id/techOrdersBottomSheetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_tech_profile"
         android:name="com.example.servizi.technician.ui.profile.TechProfileFragment"
         android:label="fragment_tech_profile"
         tools:layout="@layout/fragment_tech_profile" />
+    <dialog
+        android:id="@+id/techOrdersBottomSheetFragment"
+        android:name="com.example.servizi.technician.ui.orders.TechOrdersBottomSheetFragment"
+        android:label="fragment_tech_orders_bottom_sheet"
+        tools:layout="@layout/fragment_tech_orders_bottom_sheet" >
+        <action
+            android:id="@+id/action_techOrdersBottomSheetFragment_to_navigation_tech_orders"
+            app:destination="@id/navigation_tech_orders" />
+    </dialog>
 </navigation>

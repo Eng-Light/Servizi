@@ -1,7 +1,10 @@
 package com.example.servizi.technician.model
 
+import android.os.Parcelable
 import com.example.servizi.user.model.UserData
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Appointment(
     val id: Int,
     val date: String,
@@ -11,4 +14,4 @@ data class Appointment(
     val reviewed: Int,
     val status: String,
     val user:UserData
-)
+): Parcelable
