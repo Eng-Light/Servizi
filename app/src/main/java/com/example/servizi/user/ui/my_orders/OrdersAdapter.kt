@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.databinding.OrderItemViewBinding
 import com.example.servizi.user.model.Appointment
 
-open class OrdersAdapter : ListAdapter<Appointment,
+class OrdersAdapter : ListAdapter<Appointment,
         OrdersAdapter.OrdersViewHolder>(DiffCallback) {
 
     var onItemClick: ((Appointment?) -> Unit)? = null
 
     inner class OrdersViewHolder(
-        var binding: OrderItemViewBinding
+        private var binding: OrderItemViewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")

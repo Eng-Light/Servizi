@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -71,8 +70,8 @@ class MyOrdersFragment :
         val ordersAdapter = OrdersAdapter()
         ordersAdapter.onItemClick = {
             appointment = it
-            showPopUpUpdateLoc()
-            popupWindow = showPopUpUpdateLoc()
+            showPopUpCancelOrder()
+            popupWindow = showPopUpCancelOrder()
             popupWindow?.isOutsideTouchable = true
             popupWindow?.isFocusable = true
             popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -155,7 +154,7 @@ class MyOrdersFragment :
         }
     }
 
-    private fun showPopUpUpdateLoc(): PopupWindow {
+    private fun showPopUpCancelOrder(): PopupWindow {
         val inflater =
             requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.popup_cancel_order, null)

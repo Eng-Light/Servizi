@@ -1,50 +1,33 @@
 package com.example.servizi.technician.ui.orders
 
-import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupWindow
-import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.BaseRepository
 import com.example.servizi.application.ViewModelFactory
 import com.example.servizi.databinding.FragmentTechOrdersBinding
-import com.example.servizi.databinding.FragmentUserMyOrdersBinding
-import com.example.servizi.databinding.PopupCancelOrderBinding
 import com.example.servizi.technician.model.TechRepository
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.network.TechApiService
 import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
-import com.example.servizi.user.model.Appointment
-import com.example.servizi.user.model.UserRepository
-import com.example.servizi.user.network.UserApiService
-import com.example.servizi.user.ui.my_orders.MyOrdersViewModel
-import com.example.servizi.user.ui.my_orders.OrdersAdapter
 import com.example.servizi.user.ui.my_orders.StatusAdapter
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.util.function.ToDoubleBiFunction
 
-class TechOrdersFragment : BaseFragment<TechOrdersViewModel,FragmentTechOrdersBinding,BaseRepository>() {
+class TechOrdersFragment :
+    BaseFragment<TechOrdersViewModel, FragmentTechOrdersBinding, BaseRepository>() {
 
-    private var popupWindow: PopupWindow? = null
-    private var _popBinding: PopupCancelOrderBinding? = null
-    private var appointment: Appointment? = null
     private var selectedStatus: Int? = 0
-    private val popBinding get() = _popBinding!!
 
     override fun getViewModel() = TechOrdersViewModel::class.java
 
@@ -77,13 +60,11 @@ class TechOrdersFragment : BaseFragment<TechOrdersViewModel,FragmentTechOrdersBi
         binding.ordersViewModel = viewModel
         val ordersAdapter = TechOrdersAdapter()
         ordersAdapter.onItemClick = {
-            appointment = it
-            showPopUpUpdateLoc()
-            popupWindow = showPopUpUpdateLoc()
-            popupWindow?.isOutsideTouchable = true
-            popupWindow?.isFocusable = true
-            popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            popupWindow?.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+            val bundle = bundleOf("order" to (it as Any))
+            findNavController().navigate(
+                R.id.action_navigation_tech_orders_to_techOrdersBottomSheetFragment,
+                bundle
+            )
         }
         binding.rvOrders.adapter = ordersAdapter
 
@@ -120,26 +101,6 @@ class TechOrdersFragment : BaseFragment<TechOrdersViewModel,FragmentTechOrdersBi
             }
         }
 
-        /*viewModel.cancelResponse.observe(viewLifecycleOwner) {
-            binding.loading.visible(true)
-
-            when (it) {
-                is Result.Success -> {
-                    binding.loading.visible(false)
-                    viewModel.gerOrders()
-                }
-                is Result.Loading -> {
-                    binding.loading.visible(true)
-                }
-                is Result.Error -> {
-                    binding.loading.visible(false)
-                    handleApiError(it) {
-                        viewModel.cancelApp(appointment!!.id)
-                    }
-                }
-            }
-        }*/
-
         val adapter = StatusAdapter()
         adapter.submitList(
             arrayListOf(
@@ -159,30 +120,6 @@ class TechOrdersFragment : BaseFragment<TechOrdersViewModel,FragmentTechOrdersBi
         binding.swipeToRefresh.setOnRefreshListener {
             viewModel.gerOrders()
             binding.swipeToRefresh.isRefreshing = false
-        }
-    }
-
-    private fun showPopUpUpdateLoc(): PopupWindow {
-        val inflater =
-            requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.popup_cancel_order, null)
-        _popBinding = PopupCancelOrderBinding.bind(view)
-        _popBinding!!.tech = appointment!!.technician
-        _popBinding!!.appointment = appointment!!
-
-        return PopupWindow(
-            popBinding.root,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-    }
-
-    private fun dismissPopup() {
-        popupWindow?.let {
-            if (it.isShowing) {
-                it.dismiss()
-            }
-            popupWindow = null
         }
     }
 }

@@ -35,7 +35,7 @@ interface TechApiService {
     suspend fun techSignInRequestAsync(@Body loginData: LoginData): LoginResponseData
 
     @GET("technician/allappointments")
-    suspend fun getAllAppointmentsAsync(): AppointmentsResponse
+    suspend fun getAllAppointmentsAsync(): com.example.servizi.technician.model.AppointmentsResponse
 }
 
 object TechApi {
