@@ -222,7 +222,7 @@
                         app:layout_constraintTop_toTopOf="@id/tv_status1" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/reject"
+                        android:id="@+id/btn_reject"
                         style="@style/Theme.Servizi.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -235,12 +235,12 @@
                         android:textSize="12sp"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/accept"
+                        app:layout_constraintEnd_toStartOf="@id/btn_accept"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_status1" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/accept"
+                        android:id="@+id/btn_accept"
                         style="@style/Theme.Servizi.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -250,27 +250,40 @@
                         android:text="@string/accept_order"
                         android:textSize="14sp"
                         android:textStyle="italic|bold"
-                        app:layout_constraintBottom_toBottomOf="@id/reject"
+                        app:layout_constraintBottom_toBottomOf="@id/btn_reject"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/reject"
-                        app:layout_constraintTop_toTopOf="@id/reject" />
+                        app:layout_constraintStart_toEndOf="@id/btn_reject"
+                        app:layout_constraintTop_toTopOf="@id/btn_reject" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/completed"
-                        android:visibility="invisible"
+                        android:id="@+id/btn_completed"
                         style="@style/Theme.Servizi.TextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="20dp"
                         android:background="@drawable/rounded_background"
                         android:padding="8dp"
                         android:text="@string/mark_as_completed"
                         android:textSize="14sp"
                         android:textStyle="italic|bold"
-                        app:layout_constraintBottom_toBottomOf="@id/reject"
+                        android:visibility="invisible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_status1"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <ProgressBar
+                        android:id="@+id/loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/reject" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </ScrollView>

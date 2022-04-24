@@ -58,6 +58,7 @@ class TechOrdersFragment :
 
         binding.lifecycleOwner = this
         binding.ordersViewModel = viewModel
+
         val ordersAdapter = TechOrdersAdapter()
         ordersAdapter.onItemClick = {
             val bundle = bundleOf("order" to (it as Any))
