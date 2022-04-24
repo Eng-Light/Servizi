@@ -9,4 +9,10 @@ class TechRepository(
 
     suspend fun getAppointments() = safeApiCall { dataSource.getAllAppointmentsAsync() }
 
+    suspend fun changeAppointmentStatus(id: Int, status: String) = safeApiCall {
+        dataSource.changeAppointmentStatusAsync(
+            ChangeStatusRequest(id, status)
+        )
+    }
+
 }
