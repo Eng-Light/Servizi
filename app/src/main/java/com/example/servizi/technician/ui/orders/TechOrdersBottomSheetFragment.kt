@@ -26,6 +26,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 class TechOrdersBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var userPreferences: UserPreferences
@@ -282,4 +284,5 @@ class TechOrdersBottomSheetFragment : BottomSheetDialogFragment() {
         viewModel.rejectResponse.removeObservers(this)
         viewModel.acceptResponse.removeObservers(this)
     }
+
 }

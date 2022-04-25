@@ -54,7 +54,21 @@
             android:id="@+id/reviewsFragment"
             android:name="com.example.servizi.user.ui.reviews.ReviewsFragment"
             android:label="fragment_user_reviews"
-            tools:layout="@layout/fragment_user_reviews" />
+            tools:layout="@layout/fragment_user_reviews" >
+           <action
+               android:id="@+id/action_reviewsFragment_to_bookbuttomsheets"
+               app:destination="@+id/bookbuttomsheets" />
+            <action
+                android:id="@+id/action_reviewsFragment_to_techniciansFragment"
+                app:destination="@+id/techniciansFragment" />
+        </fragment>
+        <dialog
+            android:id="@+id/bookbuttomsheets"
+            android:name="com.example.servizi.user.ui.book_sheets.BookButtomSheets"
+            android:label="fragment_user_book"
+            tools:layout="@layout/book_buttom_sheets_fragment" >
+
+        </dialog>
         <fragment
             android:id="@+id/bookFragment"
             android:name="com.example.servizi.user.ui.booking.BookFragment"
