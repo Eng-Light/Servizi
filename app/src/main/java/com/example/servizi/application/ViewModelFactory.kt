@@ -8,6 +8,7 @@ import com.example.servizi.technician.ui.orders.TechOrdersViewModel
 import com.example.servizi.technician.ui.profile.TechProfileViewModel
 import com.example.servizi.technician.ui.settings.TechSettingsViewModel
 import com.example.servizi.user.model.UserRepository
+import com.example.servizi.user.ui.book_sheets.BookButtomSheetsViewModel
 import com.example.servizi.user.ui.booking.BookViewModel
 import com.example.servizi.user.ui.home.UserSharedViewModel
 import com.example.servizi.user.ui.my_orders.MyOrdersViewModel
@@ -28,7 +29,9 @@ class ViewModelFactory(private val repository: BaseRepository) :
             modelClass.isAssignableFrom(TechniciansViewModel::class.java) -> TechniciansViewModel(
                 repository as UserRepository
             ) as T
-            modelClass.isAssignableFrom(ReviewsViewModel::class.java) -> ReviewsViewModel(repository as UserRepository) as T
+            modelClass.isAssignableFrom(ReviewsViewModel::class.java) -> ReviewsViewModel(
+                repository as UserRepository
+            ) as T
             modelClass.isAssignableFrom(BookViewModel::class.java) -> BookViewModel(
                 repository as UserRepository
             ) as T
@@ -43,6 +46,9 @@ class ViewModelFactory(private val repository: BaseRepository) :
             ) as T
             modelClass.isAssignableFrom(TechOrdersBottomSheetViewModel::class.java) -> TechOrdersBottomSheetViewModel(
                 repository as TechRepository
+            ) as T
+            modelClass.isAssignableFrom(BookButtomSheetsViewModel::class.java) -> BookButtomSheetsViewModel(
+                repository as UserRepository
             ) as T
             modelClass.isAssignableFrom(TechProfileViewModel::class.java) -> TechProfileViewModel(
                 repository as TechRepository

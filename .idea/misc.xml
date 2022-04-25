@@ -27,20 +27,16 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-notnight/rounded_dark_background.xml" value="0.1705" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-notnight/rounded_text_input.xml" value="0.185" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1705" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-v24/ic_phone.xml" value="0.1705" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_arrow_down_24.xml" value="0.185" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_account_24.xml" value="0.185" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.174" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_home_repair_service_24.xml" value="0.126" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.185" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1705" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.174" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_home.xml" value="0.226" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.204" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_location_on_24.xml" value="0.1835" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_mail_outline_24.xml" value="0.165" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_visibility_off_24.xml" value="0.222" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/item_divider.xml" value="0.165" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/rounded.xml" value="0.226" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/rounded_background.xml" value="0.2105" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/rounded_button.xml" value="0.1585" />
@@ -62,7 +58,7 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_main.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_orders.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_orders_bottom_sheet.xml" value="0.2905405405405405" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_profile.xml" value="0.28527131782945736" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_profile.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_settings.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_main.xml" value="0.2756756756756757" />
@@ -82,8 +78,6 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_user_technicians.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/home_fragment.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/home_page_fragment.xml" value="0.2905405405405405" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_divider.xml" value="0.2905405405405405" />
-        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_info.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_my_order.xml" value="0.25" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/item_view.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/my_orders_fragment.xml" value="0.2905405405405405" />
