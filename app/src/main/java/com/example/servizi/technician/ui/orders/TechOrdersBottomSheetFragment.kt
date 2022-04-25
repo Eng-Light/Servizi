@@ -206,7 +206,7 @@ class TechOrdersBottomSheetFragment : BottomSheetDialogFragment() {
                 is Result.Error -> {
                     binding.loading.visible(false)
                     handleApiError(it) {
-                        viewModel.acceptOrder(
+                        viewModel.completeOrder(
                             viewModel.ordersData.value?.id!!,
                             "completed"
                         )
