@@ -15,4 +15,6 @@ class TechRepository(
         )
     }
 
+    suspend fun getTechProfile() = safeApiCall { dataSource.getTechProfileAsync() }
+
 }

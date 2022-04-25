@@ -29,12 +29,8 @@
         <item name="colorOnSecondary">#B7000000</item>
     </style>
 
-    <style name="Theme.Servizi.CardViewB" parent="Theme.Servizi">
-        <item name="cardBackgroundColor">@color/primaryColor</item>
-    </style>
-
-    <style name="Theme.Servizi.CardViewD" parent="Theme.Servizi">
-        <item name="cardBackgroundColor">@color/primaryLightColor</item>
+    <style name="Theme.Servizi.CardView" parent="Theme.Servizi">
+        <item name="cardBackgroundColor">#fefefe</item>
     </style>
 
     <style name="Theme.Servizi.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

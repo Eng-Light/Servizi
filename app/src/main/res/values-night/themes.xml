@@ -25,11 +25,7 @@
     </style>
 
     <style name="Theme.Servizi.CardView" parent="Theme.Servizi">
-        <item name="cardBackgroundColor">@color/primaryColor</item>
-    </style>
-
-    <style name="Theme.Servizi.CardViewD" parent="Theme.Servizi">
-        <item name="cardBackgroundColor">@color/primaryLightColor</item>
+        <item name="cardBackgroundColor">#3A3C3D</item>
     </style>
 
     <style name="TextLabel" parent="TextAppearance.AppCompat.Medium">

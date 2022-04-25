@@ -1,32 +1,63 @@
 package com.example.servizi.technician.ui.profile
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.servizi.R
+import androidx.lifecycle.distinctUntilChanged
+import com.example.servizi.application.BaseFragment
+import com.example.servizi.databinding.FragmentTechProfileBinding
+import com.example.servizi.technician.model.TechRepository
+import com.example.servizi.technician.model.login.data.Result
+import com.example.servizi.technician.network.TechApiService
+import com.example.servizi.technician.ui.login.handleApiError
+import com.example.servizi.technician.ui.login.visible
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
-class TechProfileFragment : Fragment() {
+class TechProfileFragment :
+    BaseFragment<TechProfileViewModel, FragmentTechProfileBinding, TechRepository>() {
+    override fun getViewModel() = TechProfileViewModel::class.java
 
-    companion object {
-        fun newInstance() = TechProfileFragment()
+    override fun getFragmentRepository(): TechRepository {
+        val token = runBlocking { userPreferences.accessToken.first().toString() }
+        val api = remoteDataSource.buildApi(TechApiService::class.java, token)
+        return TechRepository(api)
     }
 
-    private lateinit var viewModel: TechProfileViewModel
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentTechProfileBinding.inflate(inflater, container, false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_tech_profile, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (viewModel.techProfileData.value == null) {
+            viewModel.getTechProfile()
+        }
+
+        viewModel.techProfile.observe(viewLifecycleOwner) {
+            when (it) {
+                is Result.Success -> {
+                    binding.loading.visible(false)
+                    binding.techProfileContainer.visible(true)
+                    viewModel.techProfileData.value = it.data.technician
+                    binding.techProfileData = viewModel.techProfileData.value
+                }
+                is Result.Loading -> {
+                    binding.loading.visible(true)
+                    binding.techProfileContainer.visible(false)
+                    viewModel.techProfileData.value = null
+                }
+                is Result.Error -> {
+                    binding.loading.visible(false)
+                    binding.techProfileContainer.visible(true)
+                    handleApiError(it) {
+                        viewModel.getTechProfile()
+                    }
+                }
+            }
+        }
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TechProfileViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

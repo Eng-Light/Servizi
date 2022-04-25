@@ -2,6 +2,7 @@ package com.example.servizi.technician.network
 
 import com.example.servizi.technician.model.ChangeStatusRequest
 import com.example.servizi.technician.model.ChangeStatusResponse
+import com.example.servizi.technician.model.GetTechResponse
 import com.example.servizi.technician.model.login.data.LoginData
 import com.example.servizi.technician.model.login.data.LoginResponseData
 import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
@@ -41,6 +42,9 @@ interface TechApiService {
 
     @PUT("technician/changestatus/")
     suspend fun changeAppointmentStatusAsync(@Body request: ChangeStatusRequest): ChangeStatusResponse
+
+    @GET("technician/profile")
+    suspend fun getTechProfileAsync(): GetTechResponse
 }
 
 object TechApi {

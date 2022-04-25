@@ -196,4 +196,10 @@
     <string name="accept_order">Accept Order</string>
     <string name="reject_order">Reject Order</string>
     <string name="mark_as_completed">Mark as completed</string>
+    <string name="my">My</string>
+    <string name="nour_elden_alaa">Nour Elden Alaa</string>
+    <string name="mobile">Mobile</string>
+    <string name="_02_01020506814">+02 01020506814</string>
+    <string name="nourelden515_gmail_com">nourelden515@gmail.com</string>
+    <string name="full_name">Full Name</string>
 </resources>
