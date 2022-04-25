@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.servizi.technician.model.TechRepository
 import com.example.servizi.technician.ui.orders.TechOrdersBottomSheetViewModel
 import com.example.servizi.technician.ui.orders.TechOrdersViewModel
+import com.example.servizi.technician.ui.profile.TechProfileViewModel
 import com.example.servizi.technician.ui.settings.TechSettingsViewModel
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.ui.booking.BookViewModel
@@ -41,6 +42,9 @@ class ViewModelFactory(private val repository: BaseRepository) :
                 repository as TechRepository
             ) as T
             modelClass.isAssignableFrom(TechOrdersBottomSheetViewModel::class.java) -> TechOrdersBottomSheetViewModel(
+                repository as TechRepository
+            ) as T
+            modelClass.isAssignableFrom(TechProfileViewModel::class.java) -> TechProfileViewModel(
                 repository as TechRepository
             ) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

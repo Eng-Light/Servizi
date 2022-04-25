@@ -1,7 +1,9 @@
 package com.example.servizi.technician.ui.orders
 
 import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -176,7 +178,7 @@ class TechOrdersBottomSheetFragment : BottomSheetDialogFragment() {
                 is Result.Error -> {
                     binding.loading.visible(false)
                     handleApiError(it) {
-                        viewModel.acceptOrder(
+                        viewModel.rejectOrder(
                             viewModel.ordersData.value?.id!!,
                             "rejected"
                         )
@@ -204,7 +206,7 @@ class TechOrdersBottomSheetFragment : BottomSheetDialogFragment() {
                 is Result.Error -> {
                     binding.loading.visible(false)
                     handleApiError(it) {
-                        viewModel.acceptOrder(
+                        viewModel.completeOrder(
                             viewModel.ordersData.value?.id!!,
                             "completed"
                         )
@@ -260,7 +262,7 @@ class TechOrdersBottomSheetFragment : BottomSheetDialogFragment() {
                 "Confirm"
             ) { _, _ ->
                 viewModel.ordersData.value?.let { it1 ->
-                    viewModel.rejectOrder(
+                    viewModel.acceptOrder(
                         it1.id,
                         "accepted"
                     )
@@ -271,5 +273,13 @@ class TechOrdersBottomSheetFragment : BottomSheetDialogFragment() {
             ) { _, _ ->
                 dismiss()
             }.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("onDestroy","onDestroy")
+        viewModel.completeResponse.removeObservers(this)
+        viewModel.rejectResponse.removeObservers(this)
+        viewModel.acceptResponse.removeObservers(this)
     }
 }
