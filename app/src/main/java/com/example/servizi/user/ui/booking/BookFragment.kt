@@ -89,6 +89,10 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
             popupWindow?.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
         }
 
+        binding.btCancel.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
         binding.btBook.setOnClickListener {
 
             newApp = if (binding.tvDate.text != null) {
@@ -122,7 +126,7 @@ class BookFragment : BaseFragment<BookViewModel, FragmentUserBookBinding, UserRe
                 is Result.Success -> {
                     binding.loading.visible(false)
                     Toast.makeText(requireContext(), it.data.msg, Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.navigation_my_orders)
+                    findNavController().navigate(R.id.action_bookFragment_to_ordersFragment)
                     viewModel._bookingResponse.value = null
                 }
                 is Result.Loading -> {

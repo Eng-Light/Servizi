@@ -80,9 +80,8 @@ class TechniciansFragment :
 
         if (viewModel.techs.value == null) {
             userSharedModel.techProf.value?.let { it -> viewModel.getTechs(it) }
+            refreshApp()
         }
-
-        refreshApp()
 
         return binding.root
     }

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BookButtomSheetsViewModel (private val repository: UserRepository) : BaseViewModel(repository) {
+class BookBottomSheetViewModel (private val repository: UserRepository) : BaseViewModel(repository) {
 
     private val _date = MutableLiveData<String>()
     val date: LiveData<String> = _date
