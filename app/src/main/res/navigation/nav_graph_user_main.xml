@@ -8,7 +8,7 @@
         android:id="@+id/navigation_my_orders"
         android:name="com.example.servizi.user.ui.my_orders.MyOrdersFragment"
         android:label="MyOrders"
-        tools:layout="@layout/fragment_user_my_orders"/>
+        tools:layout="@layout/fragment_user_my_orders" />
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.servizi.user.ui.settings.UserSettingsFragment"
@@ -42,7 +42,7 @@
             android:id="@+id/techniciansFragment"
             android:name="com.example.servizi.user.ui.technicians.TechniciansFragment"
             android:label="Technicians"
-            tools:layout="@layout/fragment_user_technicians" >
+            tools:layout="@layout/fragment_user_technicians">
             <action
                 android:id="@+id/action_techniciansFragment_to_reviewsFragment"
                 app:destination="@id/reviewsFragment" />
@@ -54,25 +54,30 @@
             android:id="@+id/reviewsFragment"
             android:name="com.example.servizi.user.ui.reviews.ReviewsFragment"
             android:label="fragment_user_reviews"
-            tools:layout="@layout/fragment_user_reviews" >
-           <action
-               android:id="@+id/action_reviewsFragment_to_bookbuttomsheets"
-               app:destination="@+id/bookbuttomsheets" />
+
+            tools:layout="@layout/fragment_user_reviews">
             <action
-                android:id="@+id/action_reviewsFragment_to_techniciansFragment"
-                app:destination="@+id/techniciansFragment" />
+                android:id="@+id/action_reviewsFragment_to_bookBottomSheetFragment"
+                app:destination="@+id/bookBottomSheetFragment"
+                app:popUpTo="@id/bookBottomSheetFragment"
+                app:popUpToInclusive="true" />
         </fragment>
         <dialog
-            android:id="@+id/bookbuttomsheets"
-            android:name="com.example.servizi.user.ui.book_sheets.BookButtomSheets"
+            android:id="@+id/bookBottomSheetFragment"
+            android:name="com.example.servizi.user.ui.book_sheets.BookBottomSheetFragment"
             android:label="fragment_user_book"
-            tools:layout="@layout/book_buttom_sheets_fragment" >
+            tools:layout="@layout/fragment_user_book_bottom_sheet">
 
         </dialog>
         <fragment
             android:id="@+id/bookFragment"
             android:name="com.example.servizi.user.ui.booking.BookFragment"
             android:label="fragment_user_book"
-            tools:layout="@layout/fragment_user_book" />
+            tools:layout="@layout/fragment_user_book">
+            <action
+                android:id="@+id/action_bookFragment_to_ordersFragment"
+                app:destination="@+id/navigation_my_orders"
+                app:popUpTo="@id/navigation_home" />
+        </fragment>
     </navigation>
 </navigation>

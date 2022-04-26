@@ -288,16 +288,7 @@ class SignUpFragment : Fragment() {
     }
 
     private fun stringValidator(_name: String): Boolean {
-        return if (_name.isEmpty() || _name.length < 3) {
-            false
-        } else {
-            val pattern: Pattern
-            val name = "^[a-zA-Z\\\\\\\\s]+"
-            pattern = Pattern.compile(name)
-            _name.split(" ").all { pattern.matcher(it).matches() }
-            /*val matcher: Matcher = pattern.matcher(_name)
-            matcher.matches()*/
-        }
+        return !(_name.isEmpty() || _name.length < 3)
     }
 
     private fun emailValidator(_email: String): Boolean {

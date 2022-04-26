@@ -55,17 +55,13 @@ class ReviewsFragment :
 
         lifecycleScope.launch { userPreferences.accessToken.first() }
         binding.bttCancel.setOnClickListener {
-            findNavController().navigate(R.id.action_reviewsFragment_to_techniciansFragment)
-
+            findNavController().navigateUp()
         }
 
         binding.bttBook.setOnClickListener {
-            //  showBottomSheetDialog()
-            findNavController().navigate(R.id.action_reviewsFragment_to_bookbuttomsheets)
-
+            findNavController().navigate(R.id.action_reviewsFragment_to_bookBottomSheetFragment)
         }
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -103,8 +99,6 @@ class ReviewsFragment :
                 }
             }
         }
-
     }
-
 }
 
