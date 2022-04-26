@@ -44,7 +44,7 @@ class TechnicianMainActivity : AppCompatActivity() {
                 }
                 else -> {
                     supportActionBar?.show()
-                    binding.toolbar.visibility = View.VISIBLE
+                    binding.toolbar.visibility = View.GONE
                 }
             }
         }

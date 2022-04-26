@@ -2,8 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".user.ui.book_sheets.BookButtomSheetsFragment"
-    >
+    tools:context=".user.ui.book_sheets.BookBottomSheetFragment">
 
     <data>
 
@@ -50,13 +49,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="8dp"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="15dp"
                             android:layout_marginBottom="8dp"
-                            android:background="@drawable/dark_background"
+                            style="@style/Theme.Servizi.CardView"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="MissingConstraints">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,6 +81,7 @@
                                     android:layout_marginVertical="8dp"
                                     android:layout_marginStart="8dp"
                                     android:hint="@string/date"
+                                    app:layout_constraintEnd_toStartOf="@id/s_time"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@id/t_select" />
@@ -96,6 +97,7 @@
                                     android:entries="@array/timeArray"
                                     android:spinnerMode="dropdown"
                                     android:textSize="12sp"
+                                    app:layout_constraintStart_toEndOf="@id/t_date"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintTop_toBottomOf="@id/t_select" />
@@ -159,8 +161,8 @@
                             android:layout_width="70dp"
                             android:layout_height="35dp"
                             android:layout_marginHorizontal="12dp"
-                            android:layout_marginTop="50dp"
-                            android:background="@drawable/dark_background"
+                            android:layout_marginVertical="50dp"
+                            android:background="@drawable/rounded_dark_background"
                             android:text="@string/cancel"
                             android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="parent"

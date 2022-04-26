@@ -23,10 +23,11 @@ import com.example.servizi.user.network.UserApiService
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+
 class ReviewsFragment :
     BaseFragment<ReviewsViewModel, FragmentUserReviewsBinding, UserRepository>() {
-     private var newApp: BookAppRequestData? = null
-    private lateinit var newcontrolar:NavController
+    private var newApp: BookAppRequestData? = null
+    private lateinit var newcontrolar: NavController
     override fun getViewModel() = ReviewsViewModel::class.java
 
     override fun getFragmentRepository(): UserRepository {
@@ -45,7 +46,7 @@ class ReviewsFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-             userPreferences = UserPreferences(requireContext())
+        userPreferences = UserPreferences(requireContext())
 
         binding = getFragmentBinding(inflater, container)
 
@@ -53,18 +54,14 @@ class ReviewsFragment :
         viewModel = ViewModelProvider(this, factory)[getViewModel()]
 
         lifecycleScope.launch { userPreferences.accessToken.first() }
-       binding.bttCancel.setOnClickListener {
-       findNavController().navigate(R.id.action_reviewsFragment_to_techniciansFragment)
-
+        binding.bttCancel.setOnClickListener {
+            findNavController().navigateUp()
         }
 
         binding.bttBook.setOnClickListener {
-            //  showBottomSheetDialog()
-            findNavController().navigate(R.id.action_reviewsFragment_to_bookbuttomsheets)
-
+            findNavController().navigate(R.id.action_reviewsFragment_to_bookBottomSheetFragment)
         }
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -102,8 +99,6 @@ class ReviewsFragment :
                 }
             }
         }
-
     }
-
 }
 
