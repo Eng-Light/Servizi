@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.servizi.application.BaseViewModel
 import com.example.servizi.technician.model.GetTechResponse
 import com.example.servizi.technician.model.TechRepository
+import com.example.servizi.technician.model.TechReviewResponse
 import com.example.servizi.technician.model.TechnicianResponse
 import com.example.servizi.technician.model.login.data.Result
 import kotlinx.coroutines.launch
