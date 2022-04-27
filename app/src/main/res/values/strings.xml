@@ -203,4 +203,10 @@
     <string name="nourelden515_gmail_com">nourelden515@gmail.com</string>
     <string name="full_name">Full Name</string>
     <string name="Location">Location</string>
+    <string name="rate_service">Rate Service</string>
+    <string name="review">Review</string>
+    <string name="rating_">What`s Your Rate ?</string>
+    <string name="confirm">Confirm</string>
+    <string name="user_name">User Name</string>
+    <string name="review_comment">Review Comment</string>
 </resources>

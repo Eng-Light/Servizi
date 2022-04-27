@@ -1,5 +1,6 @@
 package com.example.servizi.user.model
 
+import com.example.servizi.technician.model.TechReviewResponse
 import com.squareup.moshi.Json
 import java.lang.reflect.Array
 
@@ -11,5 +12,5 @@ data class TechsReResponse(
     @Json(name = "governorate ") val governorate: String,
     @Json(name = "city ") val city: String,
     @Json(name = "profession ") val profession: String,
-    @Json(name = "reviews ") val reviews: Array,  //TODO
+    @Json(name = "reviews ") var reviews: List<TechReviewResponse>
 )

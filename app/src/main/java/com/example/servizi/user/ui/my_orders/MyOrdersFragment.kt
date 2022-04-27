@@ -10,8 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
@@ -65,30 +67,13 @@ class MyOrdersFragment :
 
         lifecycleScope.launch { userPreferences.accessToken.first() }
 
-        binding.lifecycleOwner = this
-        binding.ordersViewModel = viewModel
-        val ordersAdapter = OrdersAdapter()
-        ordersAdapter.onItemClick = {
-            appointment = it
-            showPopUpCancelOrder()
-            popupWindow = showPopUpCancelOrder()
-            popupWindow?.isOutsideTouchable = true
-            popupWindow?.isFocusable = true
-            popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            popupWindow?.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
-        }
-        binding.rvOrders.adapter = ordersAdapter
-
-        refreshApp()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (viewModel.ordersResponse.value == null) {
-            viewModel.gerOrders()
-        }
+        refreshApp()
 
         viewModel.ordersResponse.observe(viewLifecycleOwner) {
             binding.loading.visible(true)
@@ -132,6 +117,20 @@ class MyOrdersFragment :
             }
         }
 
+        val ordersAdapter = OrdersAdapter()
+        ordersAdapter.onItemClick = {
+            appointment = it
+            //showPopUpCancelOrder()
+            popupWindow = showPopUpCancelOrder()
+            popupWindow?.isOutsideTouchable = true
+            popupWindow?.isFocusable = true
+            popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            popupWindow?.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
+        }
+        binding.rvOrders.adapter = ordersAdapter
+        binding.lifecycleOwner = this
+        binding.ordersViewModel = viewModel
+
         val adapter = StatusAdapter()
         adapter.submitList(
             arrayListOf(
@@ -149,8 +148,13 @@ class MyOrdersFragment :
 
     private fun refreshApp() {
         binding.swipeToRefresh.setOnRefreshListener {
-            viewModel.gerOrders()
+            if (viewModel.ordersResponse.value == null) {
+                viewModel.gerOrders()
+            }
             binding.swipeToRefresh.isRefreshing = false
+        }
+        if (viewModel.ordersResponse.value == null) {
+            viewModel.gerOrders()
         }
     }
 
@@ -162,18 +166,37 @@ class MyOrdersFragment :
         _popBinding!!.tech = appointment!!.technician
         _popBinding!!.appointment = appointment
 
-        popBinding.button.setOnClickListener {
-            if (appointment!!.status != "cancelled") {
-                showAlertDialog(appointment!!.id)
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "The Order is Already Cancelled !",
-                    Toast.LENGTH_SHORT
+        if (appointment!!.status == "completed") {
+            _popBinding!!.button.visible(false)
+            _popBinding!!.buttonComplete.visible(true)
+
+            _popBinding!!.buttonComplete.setOnClickListener {
+                val bundle = bundleOf("app" to (appointment as Any))
+                dismissPopup()
+                findNavController().navigate(
+                    R.id.action_navigation_my_orders_to_userReviewBottomSheetFragment2,
+                    bundle
                 )
-                    .show()
             }
-            dismissPopup()
+        } else {
+            _popBinding!!.button.visible(true)
+            _popBinding!!.buttonComplete.visible(false)
+
+            popBinding.button.setOnClickListener {
+                when {
+                    appointment!!.status != "cancelled" -> {
+                        showAlertDialog(appointment!!.id)
+                    }
+                    else -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "You have already cancelled this appointment",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                dismissPopup()
+            }
         }
 
         return PopupWindow(
