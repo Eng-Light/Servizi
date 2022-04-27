@@ -1,15 +1,23 @@
 package com.example.servizi
 
 import android.annotation.SuppressLint
+import android.os.Build
+import android.widget.RatingBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.servizi.technician.model.TechReviewResponse
 import com.example.servizi.technician.ui.orders.TechOrdersAdapter
 import com.example.servizi.user.model.Appointment
 import com.example.servizi.user.model.Technician
 import com.example.servizi.user.model.UserData
 import com.example.servizi.user.ui.my_orders.OrdersAdapter
+import com.example.servizi.user.ui.reviews.ReviewsAdapter
 import com.example.servizi.user.ui.technicians.TechsAdapter
+import java.time.Instant
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 /*The @BindingAdapter annotation tells data binding to execute this binding adapter
@@ -70,6 +78,25 @@ fun bindTechOrdersRecyclerView(
     adapter.submitList(data)
 }
 
+@BindingAdapter("ratingList")
+fun bindRatingList(
+    recyclerView: RecyclerView,
+    data: List<TechReviewResponse>? = listOf(
+        TechReviewResponse(
+            "",
+            "",
+            0,
+            "",
+            "",
+            "",
+            ""
+        )
+    )
+) {
+    val adapter = recyclerView.adapter as ReviewsAdapter
+    adapter.submitList(data)
+}
+
 @BindingAdapter("taskTitle")
 fun bindTextView(
     textView: TextView,
@@ -78,12 +105,30 @@ fun bindTextView(
     textView.text = tv_task
 }
 
-@BindingAdapter("PhoneNumber")
-fun bindTextViewPhone(
+@RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("SimpleDateFormat", "SetTextI18n")
+@BindingAdapter("date")
+fun bindDate(
+    textView: TextView,
+    date: String? = ""
+) {
+    textView.text = "In : ${getShortDate(date!!)}"
+}
+
+@SuppressLint("SimpleDateFormat")
+@RequiresApi(Build.VERSION_CODES.O)
+fun getShortDate(ts: String): String {
+    return Instant.parse(ts).atOffset(ZoneOffset.UTC)
+        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+}
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("ReviewsNumberData")
+fun bindTextViewNumber(
     textView: TextView,
     tv_task: Int? = 0
 ) {
-    textView.text = tv_task.toString()
+    textView.text = "${tv_task.toString()} Reviews"
 }
 
 @BindingAdapter("Text")
@@ -96,6 +141,14 @@ fun bindText(
             if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
         }
     }
+}
+
+@BindingAdapter("rating")
+fun bindRating(
+    ratingBar: RatingBar,
+    rating: Int? = 0
+) {
+    ratingBar.rating = rating!!.toFloat()
 }
 
 @SuppressLint("SetTextI18n")

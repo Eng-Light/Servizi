@@ -28,4 +28,8 @@ class UserRepository(
     ) = safeApiCall { dataSource.cancelAppointment(id) }
 
     suspend fun getAppointments() = safeApiCall { dataSource.getAppointmentsAsync() }
+
+    suspend fun postReview(
+        review: ReviewRequest
+    ) = safeApiCall { dataSource.postReviewAsync(review) }
 }

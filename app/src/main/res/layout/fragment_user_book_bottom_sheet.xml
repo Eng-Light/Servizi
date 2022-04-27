@@ -46,12 +46,12 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/c_visit"
+                            style="@style/Theme.Servizi.CardView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="8dp"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="8dp"
-                            style="@style/Theme.Servizi.CardView"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -81,8 +81,8 @@
                                     android:layout_marginVertical="8dp"
                                     android:layout_marginStart="8dp"
                                     android:hint="@string/date"
-                                    app:layout_constraintEnd_toStartOf="@id/s_time"
                                     app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@id/s_time"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@id/t_select" />
 
@@ -97,9 +97,9 @@
                                     android:entries="@array/timeArray"
                                     android:spinnerMode="dropdown"
                                     android:textSize="12sp"
-                                    app:layout_constraintStart_toEndOf="@id/t_date"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/t_date"
                                     app:layout_constraintTop_toBottomOf="@id/t_select" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
@@ -170,33 +170,19 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/ti_description1" />
 
+                        <ProgressBar
+                            android:id="@+id/loading1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </ScrollView>
-
-                <ProgressBar
-                    android:id="@+id/loading1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_error"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/no_technicians_found"
-                    android:textSize="30sp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>

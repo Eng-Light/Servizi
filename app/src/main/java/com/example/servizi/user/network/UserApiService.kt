@@ -50,6 +50,9 @@ interface UserApiService {
     @POST("/auth/user/signin")
     suspend fun userSignInRequestAsync(@Body loginData: LoginData): LoginResponseData
 
+    @POST("/user/postreview")
+    suspend fun postReviewAsync(@Body reviewData: ReviewRequest): ReviewResponse
+
 }
 
 object UserApi {

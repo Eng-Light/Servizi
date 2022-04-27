@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
@@ -20,6 +22,7 @@ import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.user.model.BookAppRequestData
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
+import com.example.servizi.user.ui.home.UserSharedViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -28,6 +31,7 @@ class ReviewsFragment :
     BaseFragment<ReviewsViewModel, FragmentUserReviewsBinding, UserRepository>() {
     private var newApp: BookAppRequestData? = null
     private lateinit var newcontrolar: NavController
+    private val userSharedModel: UserSharedViewModel by activityViewModels()
     override fun getViewModel() = ReviewsViewModel::class.java
 
     override fun getFragmentRepository(): UserRepository {
@@ -54,6 +58,19 @@ class ReviewsFragment :
         viewModel = ViewModelProvider(this, factory)[getViewModel()]
 
         lifecycleScope.launch { userPreferences.accessToken.first() }
+
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.rvShowReview.adapter = ReviewsAdapter()
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        refreshApp()
+
         binding.bttCancel.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -61,24 +78,24 @@ class ReviewsFragment :
         binding.bttBook.setOnClickListener {
             findNavController().navigate(R.id.action_reviewsFragment_to_bookBottomSheetFragment)
         }
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val adapter = ReviewsAdapter()
-        adapter.submitList(
-            arrayListOf(
-                "Nour", "Mayar", "Manar", "Saif", "Nada", "Talaa", "Khaled", "Abd Allah",
-                "Jasmin",
-                "Talaa",
-                "Khaled",
-                "Abd Allah",
-                "Jasmin"
-            )
-        )
-        binding.rvShowReview.adapter = adapter
+        viewModel.technicianResponse.observe(viewLifecycleOwner) {
+            when (it) {
+                is Result.Loading -> {
+                    binding.loading1.visible(true)
+                }
+                is Result.Success -> {
+                    binding.loading1.visible(false)
+                    viewModel.technician.value = it.data
+                }
+                is Result.Error -> {
+                    binding.loading1.visible(false)
+                    handleApiError(it) {
+                        refreshApp()
+                    }
+                }
+            }
+        }
 
         viewModel.bookingResponse.observe(viewLifecycleOwner) {
             binding.loading1.visible(true)
@@ -98,6 +115,18 @@ class ReviewsFragment :
                     binding.loading1.visible(false)
                 }
             }
+        }
+    }
+
+    private fun refreshApp() {
+        binding.swipeToRefresh.setOnRefreshListener {
+            if (viewModel.technicianResponse.value == null) {
+                viewModel.getTechnicianReviews(userSharedModel.techId.value!!)
+            }
+            binding.swipeToRefresh.isRefreshing = false
+        }
+        if (viewModel.technicianResponse.value == null) {
+            viewModel.getTechnicianReviews(userSharedModel.techId.value!!)
         }
     }
 }
