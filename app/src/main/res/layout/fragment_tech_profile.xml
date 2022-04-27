@@ -2,309 +2,350 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".technician.ui.profile.TechProfileFragment">
 
     <data>
 
         <variable
-            name="techProfileData"
-            type="com.example.servizi.technician.model.TechnicianResponse" />
+            name="techProfile"
+            type="com.example.servizi.technician.model.GetTechResponse" />
     </data>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/dark_background"
-        tools:context=".technician.ui.profile.TechProfileFragment">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/dark_background">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/techProfileContainer"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/view_header"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/techProfileContainer"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:background="@drawable/bottom_rounded_background"
-                    android:orientation="vertical"
-                    android:paddingTop="20dp"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="match_parent">
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/view_header"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginTop="15dp"
-                        android:text="@string/profile"
-                        android:textColor="@color/primaryTextColor"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:layout_height="180dp"
+                        android:background="@drawable/bottom_rounded_background"
+                        android:orientation="vertical"
+                        android:paddingTop="20dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                <FrameLayout
-                    android:id="@+id/layout_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@id/view_header"
-                    app:layout_constraintTop_toBottomOf="@id/view_header">
-
-                    <androidx.cardview.widget.CardView
-                        style="@style/Theme.Servizi.CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginVertical="10dp"
-                        app:cardCornerRadius="15dp"
-                        app:cardElevation="12dp"
-                        card_view:cardCornerRAdius="5dp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:id="@+id/tv_name"
-                                style="@style/Theme.Servizi.TextView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="40dp"
-                                android:gravity="center"
-                                android:text="@string/nour_elden_alaa"
-                                android:textSize="20sp"
-                                android:textStyle="bold"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:taskTitle="@{techProfileData.firstName}" />
-
-                            <TextView
-                                style="@style/Theme.Servizi.TextView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:layout_marginBottom="25dp"
-                                android:gravity="center"
-                                android:text="@string/carpenter"
-                                android:textSize="18sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tv_name" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-                </FrameLayout>
-
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_profile"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile"
-                    app:layout_constraintBottom_toTopOf="@id/layout_container"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/layout_container"
-                    app:riv_oval="true" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/layout_container">
-
-                    <androidx.cardview.widget.CardView
-                        style="@style/Theme.Servizi.CardView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="15dp"
-                        app:cardElevation="8dp"
-                        app:cardUseCompatPadding="true"
-                        card_view:cardCornerRAdius="5dp">
-
-                        <LinearLayout
+                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="15dp"
+                            android:text="@string/profile"
+                            android:textColor="@color/primaryTextColor"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:id="@+id/layout_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@id/view_header"
+                        app:layout_constraintTop_toBottomOf="@id/view_header">
+
+                        <androidx.cardview.widget.CardView
+                            style="@style/Theme.Servizi.CardView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="30dp"
+                            android:layout_marginVertical="10dp"
+                            app:cardCornerRadius="15dp"
+                            app:cardElevation="12dp"
+                            card_view:cardCornerRAdius="5dp">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_name"
+                                    style="@style/Theme.Servizi.TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="40dp"
+                                    android:gravity="center"
+                                    android:text="@string/nour_elden_alaa"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:taskTitle="@{techProfile.technician.firstName}" />
+
+                                <TextView
+                                    style="@style/Theme.Servizi.TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:layout_marginBottom="25dp"
+                                    android:gravity="center"
+                                    android:text="@string/carpenter"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_name" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </FrameLayout>
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_profile"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile"
+                        app:layout_constraintBottom_toTopOf="@id/layout_container"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/layout_container"
+                        app:riv_oval="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_container">
+
+                        <androidx.cardview.widget.CardView
+                            style="@style/Theme.Servizi.CardView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="15dp"
+                            app:cardElevation="8dp"
+                            app:cardUseCompatPadding="true"
+                            card_view:cardCornerRAdius="5dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="3dp">
+                                android:orientation="vertical">
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginStart="5dp"
-                                    android:contentDescription="@string/todo"
-                                    android:padding="2dp"
-                                    android:src="@drawable/ic_baseline_account_24" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="3dp">
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginStart="5dp"
+                                        android:contentDescription="@string/todo"
+                                        android:padding="2dp"
+                                        android:src="@drawable/ic_baseline_account_24" />
+
+                                    <TextView
+                                        style="@style/Theme.Servizi.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:text="@string/full_name"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
 
                                 <TextView
                                     style="@style/Theme.Servizi.TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginStart="10dp"
-                                    android:text="@string/full_name"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                                    android:layout_marginStart="25dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text="@string/nour_elden_alaa"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:taskTitle="@{techProfile.technician.firstName + ' ' + techProfile.technician.lastName}" />
 
-                            <TextView
-                                style="@style/Theme.Servizi.TextView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginBottom="15dp"
-                                android:text="@string/nour_elden_alaa"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                app:taskTitle="@{techProfileData.firstName + ' ' + techProfileData.lastName}" />
+                                <include
+                                    layout="@layout/item_divider"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginVertical="10dp" />
 
-                            <include
-                                layout="@layout/item_divider"
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginVertical="10dp" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="3dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="3dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginStart="5dp"
+                                        android:contentDescription="@string/todo"
+                                        android:padding="2dp"
+                                        android:src="@drawable/ic_mail_outline_24" />
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginStart="5dp"
-                                    android:contentDescription="@string/todo"
-                                    android:padding="2dp"
-                                    android:src="@drawable/ic_mail_outline_24" />
+                                    <TextView
+                                        style="@style/Theme.Servizi.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:text="@string/e_mail"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
 
                                 <TextView
                                     style="@style/Theme.Servizi.TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginStart="10dp"
-                                    android:text="@string/e_mail"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                                    android:layout_marginStart="25dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text="@string/nourelden515_gmail_com"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:taskTitle="@{techProfile.technician.email}" />
 
-                            <TextView
-                                style="@style/Theme.Servizi.TextView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginBottom="15dp"
-                                android:text="@string/nourelden515_gmail_com"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                app:taskTitle="@{techProfileData.email}" />
+                                <include
+                                    layout="@layout/item_divider"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginVertical="10dp" />
 
-                            <include
-                                layout="@layout/item_divider"
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginVertical="10dp" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="3dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="3dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginStart="5dp"
+                                        android:contentDescription="@string/todo"
+                                        android:padding="2dp"
+                                        android:src="@drawable/ic_location_on_24" />
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginStart="5dp"
-                                    android:contentDescription="@string/todo"
-                                    android:padding="2dp"
-                                    android:src="@drawable/ic_location_on_24" />
+                                    <TextView
+                                        style="@style/Theme.Servizi.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:text="@string/address"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
 
                                 <TextView
                                     style="@style/Theme.Servizi.TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginStart="10dp"
-                                    android:text="@string/address"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                                    android:layout_marginStart="25dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text="@string/CairoString"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:taskTitle="@{techProfile.technician.governorate + ' ' + techProfile.technician.city}" />
 
-                            <TextView
-                                style="@style/Theme.Servizi.TextView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginBottom="15dp"
-                                android:text="@string/CairoString"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                app:taskTitle="@{techProfileData.governorate + ' ' + techProfileData.city}" />
+                                <include
+                                    layout="@layout/item_divider"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_marginVertical="10dp" />
 
-                            <include
-                                layout="@layout/item_divider"
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginVertical="10dp" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="3dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:padding="3dp">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_marginStart="5dp"
+                                        android:contentDescription="@string/todo"
+                                        android:padding="2dp"
+                                        android:src="@drawable/ic_phone" />
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginStart="5dp"
-                                    android:contentDescription="@string/todo"
-                                    android:padding="2dp"
-                                    android:src="@drawable/ic_phone" />
+                                    <TextView
+                                        style="@style/Theme.Servizi.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="10dp"
+                                        android:text="@string/mobile"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
 
                                 <TextView
                                     style="@style/Theme.Servizi.TextView"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginStart="10dp"
-                                    android:text="@string/mobile"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold" />
+                                    android:layout_marginStart="25dp"
+                                    android:layout_marginBottom="15dp"
+                                    android:text="@string/_02_01020506814"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    app:taskTitle="@{techProfile.technician.phone}" />
                             </LinearLayout>
 
-                            <TextView
-                                style="@style/Theme.Servizi.TextView"
-                                android:layout_width="wrap_content"
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            style="@style/Theme.Servizi.CardView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="15dp"
+                            app:cardElevation="8dp"
+                            app:cardUseCompatPadding="true"
+                            card_view:cardCornerRAdius="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
-                                android:layout_marginBottom="15dp"
-                                android:text="@string/_02_01020506814"
-                                android:textSize="16sp"
-                                android:textStyle="bold"
-                                app:taskTitle="@{techProfileData.phone}" />
-                        </LinearLayout>
+                                android:orientation="vertical">
 
-                    </androidx.cardview.widget.CardView>
-                </LinearLayout>
+                                <TextView
+                                    style="@style/Theme.Servizi.TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="8dp"
+                                    android:padding="6dp"
+                                    android:text="@string/reviews"
+                                    android:textSize="18sp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_showReview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    app:ratingList="@{techProfile.reviews}"
+                                    tools:listitem="@layout/rev_item" />
+                            </LinearLayout>
 
-            <ProgressBar
-                android:id="@+id/loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
-                android:layout_gravity="center_horizontal"
-                android:visibility="gone" />
-        </FrameLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
+                <ProgressBar
+                    android:id="@+id/loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="300dp"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

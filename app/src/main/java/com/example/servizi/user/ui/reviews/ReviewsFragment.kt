@@ -30,7 +30,6 @@ import kotlinx.coroutines.runBlocking
 class ReviewsFragment :
     BaseFragment<ReviewsViewModel, FragmentUserReviewsBinding, UserRepository>() {
     private var newApp: BookAppRequestData? = null
-    private lateinit var newcontrolar: NavController
     private val userSharedModel: UserSharedViewModel by activityViewModels()
     override fun getViewModel() = ReviewsViewModel::class.java
 
