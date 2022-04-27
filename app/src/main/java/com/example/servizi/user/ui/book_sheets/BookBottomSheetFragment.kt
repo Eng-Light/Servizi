@@ -119,7 +119,7 @@ class BookBottomSheetFragment : BottomSheetDialogFragment() {
                 is Result.Success -> {
                     binding.loading1.visible(false)
                     Toast.makeText(requireContext(), it.data.msg, Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.navigation_my_orders)
+                    findNavController().navigate(R.id.action_bookBottomSheetFragment_to_MyOrdersFragment)
                     viewModel._bookingResponse.value = null
                 }
                 is Result.Loading -> {

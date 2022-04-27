@@ -1,34 +1,39 @@
 package com.example.servizi.user.ui.reviews
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.databinding.RevItemBinding
+import com.example.servizi.technician.model.TechReviewResponse
 
-class ReviewsAdapter : ListAdapter<String,
+class ReviewsAdapter : ListAdapter<TechReviewResponse,
         ReviewsAdapter.ReviewsViewHolder>(DiffCallback) {
 
     inner class ReviewsViewHolder(
         private var binding: RevItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        @SuppressLint("SetTextI18n")
-        fun bind(review: String) {
-            binding.clintItemName.text = review
+        fun bind(review: TechReviewResponse) {
+            binding.review = review
             binding.executePendingBindings()
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<String>() {
-        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem == newItem
+    companion object DiffCallback : DiffUtil.ItemCallback<TechReviewResponse>() {
+        override fun areItemsTheSame(
+            oldItem: TechReviewResponse,
+            newItem: TechReviewResponse
+        ): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem == newItem
+        override fun areContentsTheSame(
+            oldItem: TechReviewResponse,
+            newItem: TechReviewResponse
+        ): Boolean {
+            return oldItem.content == newItem.content
         }
 
     }

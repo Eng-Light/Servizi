@@ -12,6 +12,7 @@ import com.example.servizi.user.ui.book_sheets.BookBottomSheetViewModel
 import com.example.servizi.user.ui.booking.BookViewModel
 import com.example.servizi.user.ui.home.UserSharedViewModel
 import com.example.servizi.user.ui.my_orders.MyOrdersViewModel
+import com.example.servizi.user.ui.my_orders.UserReviewBottomSheetViewModel
 import com.example.servizi.user.ui.reviews.ReviewsViewModel
 import com.example.servizi.user.ui.settings.UserSettingsViewModel
 import com.example.servizi.user.ui.technicians.TechniciansViewModel
@@ -52,6 +53,9 @@ class ViewModelFactory(private val repository: BaseRepository) :
             ) as T
             modelClass.isAssignableFrom(TechProfileViewModel::class.java) -> TechProfileViewModel(
                 repository as TechRepository
+            ) as T
+            modelClass.isAssignableFrom(UserReviewBottomSheetViewModel::class.java) -> UserReviewBottomSheetViewModel(
+                repository as UserRepository
             ) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

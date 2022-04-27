@@ -8,7 +8,11 @@
         android:id="@+id/navigation_my_orders"
         android:name="com.example.servizi.user.ui.my_orders.MyOrdersFragment"
         android:label="MyOrders"
-        tools:layout="@layout/fragment_user_my_orders" />
+        tools:layout="@layout/fragment_user_my_orders">
+        <action
+            android:id="@+id/action_navigation_my_orders_to_userReviewBottomSheetFragment2"
+            app:destination="@id/userReviewBottomSheetFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_settings"
         android:name="com.example.servizi.user.ui.settings.UserSettingsFragment"
@@ -67,7 +71,10 @@
             android:name="com.example.servizi.user.ui.book_sheets.BookBottomSheetFragment"
             android:label="fragment_user_book"
             tools:layout="@layout/fragment_user_book_bottom_sheet">
-
+            <action
+                android:id="@+id/action_bookBottomSheetFragment_to_MyOrdersFragment"
+                app:destination="@id/navigation_my_orders"
+                app:popUpTo="@id/navigation_home" />
         </dialog>
         <fragment
             android:id="@+id/bookFragment"
@@ -80,4 +87,9 @@
                 app:popUpTo="@id/navigation_home" />
         </fragment>
     </navigation>
+    <dialog
+        android:id="@+id/userReviewBottomSheetFragment"
+        android:name="com.example.servizi.user.ui.my_orders.UserReviewBottomSheetFragment"
+        android:label="fragment_user_review_bottom_sheet"
+        tools:layout="@layout/fragment_user_review_bottom_sheet" />
 </navigation>
