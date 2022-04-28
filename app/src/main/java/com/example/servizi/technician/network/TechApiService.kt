@@ -1,14 +1,10 @@
 package com.example.servizi.technician.network
 
-import com.example.servizi.technician.model.ChangeStatusRequest
-import com.example.servizi.technician.model.ChangeStatusResponse
-import com.example.servizi.technician.model.GetTechResponse
+import com.example.servizi.technician.model.*
 import com.example.servizi.technician.model.login.data.LoginData
 import com.example.servizi.technician.model.login.data.LoginResponseData
 import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
 import com.example.servizi.technician.model.signup.TechnicianData
-import com.example.servizi.user.model.Appointment
-import com.example.servizi.user.model.AppointmentsResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -45,6 +41,9 @@ interface TechApiService {
 
     @GET("technician/profile")
     suspend fun getTechProfileAsync(): GetTechResponse
+
+    @PUT("auth/technician/updateinfo")
+    suspend fun updateInformation(@Body newdata: UpdateRequest) :UpdateResponse
 }
 
 object TechApi {

@@ -21,8 +21,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class TechProfileFragment :
-    BaseFragment<TechProfileViewModel, FragmentTechProfileBinding, TechRepository>() {
+class TechProfileFragment : BaseFragment<TechProfileViewModel, FragmentTechProfileBinding, TechRepository>() {
     override fun getViewModel() = TechProfileViewModel::class.java
 
     override fun getFragmentRepository(): TechRepository {

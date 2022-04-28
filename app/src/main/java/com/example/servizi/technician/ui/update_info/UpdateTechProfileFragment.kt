@@ -1,46 +1,37 @@
-package com.example.servizi.technician.ui.settings
+package com.example.servizi.technician.ui.update_info
 
-import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
-import com.example.servizi.databinding.FragmentTechSettingsBinding
-import com.example.servizi.databinding.PopupUpdateLocationBinding
+import com.example.servizi.databinding.UpdateTechProfileFragmentBinding
 import com.example.servizi.technician.model.TechRepository
+import com.example.servizi.technician.model.UpdateRequest
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.network.TechApiService
 import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
-import com.example.servizi.user.model.NewLocation
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class TechSettingsFragment :
-    BaseFragment<TechSettingsViewModel, FragmentTechSettingsBinding, TechRepository>() {
+class UpdateTechProfileFragment :
+    BaseFragment<UpdateTechProfileViewModel, UpdateTechProfileFragmentBinding, TechRepository>() {
 
-    private var popupWindow: PopupWindow? = null
-    private var _popBinding: PopupUpdateLocationBinding? = null
-    private var newLocation: NewLocation? = null
-    private val popBinding get() = _popBinding!!
-
-    override fun getViewModel() = TechSettingsViewModel::class.java
-
+    private var newData: UpdateRequest? = null
     override fun getFragmentRepository(): TechRepository {
         val token = runBlocking { userPreferences.accessToken.first().toString() }
         val api = remoteDataSource.buildApi(TechApiService::class.java, token)
@@ -50,73 +41,26 @@ class TechSettingsFragment :
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = FragmentTechSettingsBinding.inflate(inflater, container, false)
+    ) = UpdateTechProfileFragmentBinding.inflate(inflater, container, false)
+
+    override fun getViewModel() = UpdateTechProfileViewModel::class.java
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         userPreferences = UserPreferences(requireContext())
         binding = getFragmentBinding(inflater, container)
         val factory = ViewModelFactory(getFragmentRepository())
         viewModel = ViewModelProvider(this, factory)[getViewModel()]
         lifecycleScope.launch { userPreferences.accessToken.first() }
-
+        binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val loadingProgressBar = binding.loading
-       binding.accountCrdV.setOnClickListener {
-           findNavController().navigate(R.id.action_navigation_tech_settings_to_navigation_update_tech_profile)
-            }
-        binding.logoutCrdV.setOnClickListener { showAlertDialog() }
-
-        /*binding.changeLocCrdV.setOnClickListener {
-            showPopUpUpdateLoc()
-            popupWindow = showPopUpUpdateLoc()
-            popupWindow?.isOutsideTouchable = true
-            popupWindow?.isFocusable = true
-            popupWindow?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            popupWindow?.showAsDropDown(binding.changeLocCrdV)
-        }*/
-
-        viewModel.updateResponse.observe(viewLifecycleOwner) {
-            if (it != null) {
-                when (it) {
-                    is Result.Success -> {
-                        loadingProgressBar.visible(false)
-                        Toast.makeText(requireContext(), "Address Updated", Toast.LENGTH_SHORT)
-                            .show()
-                        lifecycleScope.launch {
-                            userPreferences.saveUserGovernorate(newLocation?.governorate)
-                            userPreferences.saveUserCity(newLocation?.city)
-                        }
-                        viewModel._updateResponse.value = null
-                    }
-                    is Result.Loading -> {
-                        loadingProgressBar.visible(true)
-                    }
-                    is Result.Error -> {
-                        handleApiError(it) {
-                            viewModel.updateLoc(newLocation!!)
-                        }
-                        loadingProgressBar.visible(false)
-                    }
-                }
-            }
-        }
-    }
-
-    private fun showPopUpUpdateLoc(): PopupWindow {
-        val inflater =
-            requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.popup_update_location, null)
-        _popBinding = PopupUpdateLocationBinding.bind(view)
 
         val governorates =
             requireContext().resources.getStringArray(R.array.Governorate_List)
@@ -136,16 +80,16 @@ class TechSettingsFragment :
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
             governorates
         )
-        popBinding.yourGovernorate.adapter = arrayAdapterGov
+        binding.editGovernorate.adapter = arrayAdapterGov
 
         val arrayAdapterCities = ArrayAdapter(
             requireContext(),
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
             suez
         )
-        popBinding.yourCity.adapter = arrayAdapterCities
+        binding.editCity.adapter = arrayAdapterCities
 
-        popBinding.yourGovernorate.onItemSelectedListener =
+        binding.editGovernorate.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     val arrayAdapterCity: ArrayAdapter<String>
@@ -156,7 +100,7 @@ class TechSettingsFragment :
                                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                                 suez
                             )
-                            popBinding.yourCity.adapter = arrayAdapterCity
+                            binding.editCity.adapter = arrayAdapterCity
                         }
                         1 -> {
                             arrayAdapterCity = ArrayAdapter(
@@ -164,7 +108,7 @@ class TechSettingsFragment :
                                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                                 cairo
                             )
-                            popBinding.yourCity.adapter = arrayAdapterCity
+                            binding.editCity.adapter = arrayAdapterCity
                         }
                         2 -> {
                             arrayAdapterCity = ArrayAdapter(
@@ -172,7 +116,7 @@ class TechSettingsFragment :
                                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                                 alexandria
                             )
-                            popBinding.yourCity.adapter = arrayAdapterCity
+                            binding.editCity.adapter = arrayAdapterCity
                         }
                         3 -> {
                             arrayAdapterCity = ArrayAdapter(
@@ -180,7 +124,7 @@ class TechSettingsFragment :
                                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                                 qalyubia
                             )
-                            popBinding.yourCity.adapter = arrayAdapterCity
+                            binding.editCity.adapter = arrayAdapterCity
                         }
                         4 -> {
                             arrayAdapterCity = ArrayAdapter(
@@ -188,7 +132,7 @@ class TechSettingsFragment :
                                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                                 giza
                             )
-                            popBinding.yourCity.adapter = arrayAdapterCity
+                            binding.editCity.adapter = arrayAdapterCity
                         }
                     }
                 }
@@ -196,47 +140,72 @@ class TechSettingsFragment :
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
+
             }
 
-        popBinding.yourBtnUpdate.setOnClickListener {
-            newLocation = NewLocation(
-                popBinding.yourGovernorate.selectedItem.toString().trim(),
-                popBinding.yourCity.selectedItem.toString().trim()
-            )
-            viewModel.updateLoc(newLocation!!)
-            dismissPopup()
+        binding.updateInfo.setOnClickListener {
+            showAlertDialog()
         }
 
-        return PopupWindow(
-            popBinding.root,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+        viewModel.updateinfoResponse.observe(viewLifecycleOwner) {
+            when (it) {
+                is Result.Loading -> {
+                    binding.loading.visible(true)
+                }
+                is Result.Success -> {
+                    binding.loading.visible(false)
+                }
+                is Result.Error -> {
+                    binding.loading.visible(false)
+                    handleApiError(it) {
+                        viewModel.updateinfo(newData!!)
+                    }
+                }
+            }
+        }
     }
 
-    private fun dismissPopup() {
-        popupWindow?.let {
-            if (it.isShowing) {
-                it.dismiss()
-            }
-            popupWindow = null
+    private fun validate(data: UpdateRequest): Boolean {
+        var valid = true
+
+        if (!stringValidator(data.firstName)) {
+            binding.fName.error = "Not Valid Name"
+            valid = false
         }
+        if (!stringValidator(data.lastName)) {
+            binding.lName.error = "Not Valid Name"
+            valid = false
+        }
+        return valid
+    }
+
+    private fun stringValidator(_name: String): Boolean {
+        return !(_name.isEmpty() || _name.length < 3)
     }
 
     private fun showAlertDialog() {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Servizi")
-            .setMessage("Confirm logout ?")
-            .setPositiveButton(
-                "Logout"
-            ) { _, _ ->
-                logout()
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Servizi")
+        builder.setMessage("Confirm change ?")
+        builder.setPositiveButton("Yes") { _, _ ->
+            newData = UpdateRequest(
+                binding.fName.text.toString().trim(),
+                binding.lName.text.toString().trim(),
+                binding.editGovernorate.selectedItem.toString().trim(),
+                binding.editCity.selectedItem.toString().trim()
+            )
+            if (validate(newData!!)) {
+                viewModel.updateinfo(newData!!)
+            } else {
+                Snackbar.make(requireView(), "Please Chick Your Data", Snackbar.LENGTH_SHORT)
+                    .show()
             }
-            .setNegativeButton(
-                "Stay"
-            ) { _, _ ->
-                Toast.makeText(requireContext(), "Nice Choice !", Toast.LENGTH_SHORT).show()
-            }.show()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 
 }
