@@ -16,5 +16,5 @@ class TechRepository(
     }
 
     suspend fun getTechProfile() = safeApiCall { dataSource.getTechProfileAsync() }
-
+   suspend fun updateInfo(newdata: UpdateRequest) = safeApiCall { dataSource.updateInformation(newdata) }
 }
