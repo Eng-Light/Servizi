@@ -81,14 +81,17 @@ class ReviewsFragment :
         viewModel.technicianResponse.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Loading -> {
+                    binding.appBar.visible(false)
                     binding.loading1.visible(true)
                 }
                 is Result.Success -> {
                     binding.loading1.visible(false)
+                    binding.appBar.visible(true)
                     viewModel.technician.value = it.data
                 }
                 is Result.Error -> {
                     binding.loading1.visible(false)
+                    binding.appBar.visible(true)
                     handleApiError(it) {
                         refreshApp()
                     }
