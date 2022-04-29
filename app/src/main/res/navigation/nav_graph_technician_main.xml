@@ -6,27 +6,10 @@
     app:startDestination="@id/navigation_tech_profile">
 
     <fragment
-        android:id="@+id/navigation_tech_settings"
-        android:name="com.example.servizi.technician.ui.settings.TechSettingsFragment"
-        android:label="fragment_tech_settings"
-        tools:layout="@layout/fragment_tech_settings" >
-         <action
-             android:id="@+id/action_navigation_tech_settings_to_navigation_update_tech_profile"
-             app:destination="@id/navigation_update_tech_profile"
-             />
-    </fragment>
-<fragment
-    android:id="@+id/navigation_update_tech_profile"
-    android:name="com.example.servizi.technician.ui.update_info.UpdateTechProfileFragment"
-    android:label="update_tech_profile_fragment"
-    tools:layout="@layout/update_tech_profile_fragment"
-    >
-</fragment>
-    <fragment
         android:id="@+id/navigation_tech_orders"
         android:name="com.example.servizi.technician.ui.orders.TechOrdersFragment"
         android:label="fragment_tech_orders"
-        tools:layout="@layout/fragment_tech_orders" >
+        tools:layout="@layout/fragment_tech_orders">
         <action
             android:id="@+id/action_navigation_tech_orders_to_techOrdersBottomSheetFragment"
             app:destination="@id/techOrdersBottomSheetFragment" />
@@ -40,9 +23,31 @@
         android:id="@+id/techOrdersBottomSheetFragment"
         android:name="com.example.servizi.technician.ui.orders.TechOrdersBottomSheetFragment"
         android:label="fragment_tech_orders_bottom_sheet"
-        tools:layout="@layout/fragment_tech_orders_bottom_sheet" >
+        tools:layout="@layout/fragment_tech_orders_bottom_sheet">
         <action
             android:id="@+id/action_techOrdersBottomSheetFragment_to_navigation_tech_orders"
             app:destination="@id/navigation_tech_orders" />
     </dialog>
+    <navigation
+        android:id="@+id/settings_navigation"
+        app:startDestination="@id/navigation_tech_settings">
+        <fragment
+            android:id="@+id/navigation_tech_settings"
+            android:name="com.example.servizi.technician.ui.settings.TechSettingsFragment"
+            android:label="fragment_tech_settings"
+            tools:layout="@layout/fragment_tech_settings">
+            <action
+                android:id="@+id/action_navigation_tech_settings_to_navigation_update_tech_profile"
+                app:destination="@id/navigation_update_tech_profile"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right" />
+        </fragment>
+        <fragment
+            android:id="@+id/navigation_update_tech_profile"
+            android:name="com.example.servizi.technician.ui.update_info.UpdateTechProfileFragment"
+            android:label="update_tech_profile_fragment"
+            tools:layout="@layout/fragment_tech_update_profile" />
+    </navigation>
 </navigation>
