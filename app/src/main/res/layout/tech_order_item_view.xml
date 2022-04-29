@@ -12,20 +12,21 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="148dp"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
         app:cardCornerRadius="12dp"
-        app:cardElevation="12dp">
+        app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/iv_userImage"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="8dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginHorizontal="12dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -38,7 +39,7 @@
                 Text="@{appointment.user.firstName + ' ' + appointment.user.lastName}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="22dp"
                 android:text="@string/profession"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -51,7 +52,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_toEndOf="@id/iv_userImage"
                 android:text="@string/location"
                 app:drawableStartCompat="@drawable/ic_location_on_24"
                 app:layout_constraintStart_toStartOf="@id/tv_item_profession"
@@ -62,7 +62,6 @@
                 Text="@{appointment.date}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
                 android:text="@string/date"
                 app:layout_constraintStart_toStartOf="@id/iv_userImage"
                 app:layout_constraintTop_toBottomOf="@id/iv_userImage" />
@@ -72,11 +71,10 @@
                 Text="@{appointment.duration}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_toEndOf="@id/iv_userImage"
                 android:text="@string/time"
                 app:layout_constraintBottom_toBottomOf="@id/cancel_date"
-                app:layout_constraintStart_toEndOf="@id/cancel_date"
+                app:layout_constraintStart_toStartOf="@id/tv_item_profession"
                 app:layout_constraintTop_toTopOf="@id/cancel_date" />
 
             <TextView

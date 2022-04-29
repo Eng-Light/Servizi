@@ -37,12 +37,12 @@
                     <androidx.cardview.widget.CardView
                         style="@style/Theme.Servizi.CardView"
                         android:layout_width="match_parent"
-                        android:layout_height="165dp"
-                        android:elevation="8dp"
-                        app:cardCornerRadius="4dp"
-                        android:layout_marginVertical="8dp"
+                        android:layout_height="145dp"
                         android:layout_marginHorizontal="4dp"
+                        android:layout_marginVertical="8dp"
+                        android:elevation="8dp"
                         android:fitsSystemWindows="true"
+                        app:cardCornerRadius="4dp"
                         app:layout_collapseMode="none">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,8 +51,8 @@
 
                             <ImageView
                                 android:id="@+id/item_userImage"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_marginHorizontal="8dp"
                                 android:layout_marginVertical="8dp"
                                 android:contentDescription="@string/todo"
@@ -69,11 +69,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:layout_marginBottom="8dp"
+                                android:layout_marginTop="12dp"
                                 android:text="@string/technician_name"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="@id/item_userImage"
                                 app:layout_constraintStart_toEndOf="@id/item_userImage"
                                 app:layout_constraintTop_toTopOf="@id/item_userImage" />
 
@@ -91,7 +90,8 @@
                                 app:layout_constraintBottom_toBottomOf="@id/item_userImage"
                                 app:layout_constraintStart_toEndOf="@id/item_userImage"
                                 app:layout_constraintTop_toBottomOf="@id/item_Name"
-                                app:layout_constraintVertical_bias="0.52" />
+                                app:layout_constraintVertical_bias="0.52"
+                                app:rating="@{viewModel.technician.rateAvg}" />
 
                             <TextView
                                 android:id="@+id/TVCourseRating"
@@ -105,6 +105,7 @@
                                 app:layout_constraintBottom_toBottomOf="@id/rating2"
                                 app:layout_constraintStart_toEndOf="@id/rating2"
                                 app:layout_constraintTop_toTopOf="@id/rating2"
+                                app:ratingNumber="@{viewModel.technician.rateAvg}"
                                 tools:ignore="UnknownId" />
 
                             <TextView
@@ -113,12 +114,24 @@
                                 ReviewsNumberData="@{viewModel.technician.reviews.size()}"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="8dp"
                                 android:text="@string/reviews"
                                 android:textSize="20sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="@id/item_userImage"
                                 app:layout_constraintTop_toBottomOf="@id/item_userImage" />
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginEnd="4dp"
+                                android:padding="4dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_rating_1"
+                                app:layout_constraintBottom_toBottomOf="@id/tv_review"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/tv_review" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 

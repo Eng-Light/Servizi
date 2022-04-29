@@ -1,5 +1,6 @@
 package com.example.servizi.technician.model
 
+import com.example.servizi.user.model.User
 import com.squareup.moshi.Json
 
 data class TechReviewResponse(
@@ -10,4 +11,5 @@ data class TechReviewResponse(
     @Json(name = "userId") val userId: String,
     @Json(name = "appointmentId") val appointmentId: String,
     @Json(name = "createdAt") val createdAt: String,
+    @Json(name = "user") val user: User
 )

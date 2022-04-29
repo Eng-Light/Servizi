@@ -5,12 +5,14 @@ import android.os.Build
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.util.toHalf
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.technician.model.TechReviewResponse
 import com.example.servizi.technician.ui.orders.TechOrdersAdapter
 import com.example.servizi.user.model.Appointment
 import com.example.servizi.user.model.Technician
+import com.example.servizi.user.model.User
 import com.example.servizi.user.model.UserData
 import com.example.servizi.user.ui.my_orders.OrdersAdapter
 import com.example.servizi.user.ui.reviews.ReviewsAdapter
@@ -19,6 +21,8 @@ import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 /*The @BindingAdapter annotation tells data binding to execute this binding adapter
 when a View item has the imageUrl attribute.*/
@@ -34,7 +38,8 @@ fun bindRecyclerView(
             "",
             "",
             "",
-            ""
+            "",
+            0.0f
         )
     )
 ) {
@@ -48,7 +53,7 @@ fun bindOrdersRecyclerView(
     data: List<Appointment>? = listOf(
         Appointment(
             0, "", "", "", "", 0, "",
-            Technician(0, "", "", "", "", "", "", "")
+            Technician(0, "", "", "", "", "", "", "", 0.0f)
         )
     )
 ) {
@@ -89,7 +94,8 @@ fun bindRatingList(
             "",
             "",
             "",
-            ""
+            "",
+            User("", "")
         )
     )
 ) {
@@ -146,9 +152,31 @@ fun bindText(
 @BindingAdapter("rating")
 fun bindRating(
     ratingBar: RatingBar,
-    rating: Int? = 0
+    rating: Float? = 0.0f
 ) {
-    ratingBar.rating = rating!!.toFloat()
+    ratingBar.rating = rating!!
+}
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("ratingNumber")
+fun bindRatingNumber(
+    textView: TextView,
+    rating: Float? = 0.0f
+) {
+    if (rating != null) {
+        textView.text = "%.1f".format(rating)
+    }
+}
+
+@SuppressLint("SetTextI18n")
+@BindingAdapter("ratingTechNumber")
+fun bindRatingTechNumber(
+    textView: TextView,
+    rating: Float? = 0.0f
+) {
+    if (rating != null) {
+        textView.text = "Rating: %.1f".format(rating)
+    }
 }
 
 @SuppressLint("SetTextI18n")
