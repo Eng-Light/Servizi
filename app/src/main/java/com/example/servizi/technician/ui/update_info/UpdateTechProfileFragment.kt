@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -137,7 +138,6 @@ class UpdateTechProfileFragment :
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
-
                 }
             }
 
@@ -156,6 +156,7 @@ class UpdateTechProfileFragment :
                 }
                 is Result.Success -> {
                     binding.loading.visible(false)
+                    Toast.makeText(requireContext(), it.data.msg, Toast.LENGTH_LONG).show()
                 }
                 is Result.Error -> {
                     binding.loading.visible(false)
@@ -193,8 +194,8 @@ class UpdateTechProfileFragment :
             newData = UpdateRequest(
                 binding.fName.text.toString().trim(),
                 binding.lName.text.toString().trim(),
-                binding.editGovernorate.selectedItem.toString().trim(),
-                binding.editCity.selectedItem.toString().trim()
+                binding.editCity.selectedItem.toString().trim(),
+                binding.editGovernorate.selectedItem.toString().trim()
             )
             if (validate(newData!!)) {
                 viewModel.updateinfo(newData!!)
