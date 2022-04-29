@@ -12,5 +12,6 @@ data class TechsReResponse(
     @Json(name = "governorate ") val governorate: String,
     @Json(name = "city ") val city: String,
     @Json(name = "profession ") val profession: String,
-    @Json(name = "reviews ") var reviews: List<TechReviewResponse>
+    @Json(name = "reviews ") var reviews: List<TechReviewResponse>,
+    @Json(name = "rateAvg ") val rateAvg: Float
 )
