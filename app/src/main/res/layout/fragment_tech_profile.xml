@@ -87,16 +87,32 @@
                                     app:taskTitle="@{techProfile.technician.firstName}" />
 
                                 <TextView
+                                    android:id="@+id/tv_profession"
                                     style="@style/Theme.Servizi.TextView"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="6dp"
-                                    android:layout_marginBottom="25dp"
+                                    android:layout_marginBottom="6dp"
                                     android:gravity="center"
                                     android:text="@string/carpenter"
                                     android:textSize="18sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintBottom_toTopOf="@id/tv_rating"
                                     app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                                <TextView
+                                    android:id="@+id/tv_rating"
+                                    style="@style/Theme.Servizi.TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginBottom="16dp"
+                                    android:gravity="center"
+                                    android:text="@string/rating"
+                                    android:textSize="14sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_profession"
+                                    app:ratingTechNumber="@{techProfile.rateAvg}" />
+
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </androidx.cardview.widget.CardView>

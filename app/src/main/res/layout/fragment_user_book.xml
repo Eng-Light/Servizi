@@ -5,7 +5,8 @@
     android:layout_gravity="center"
     android:background="@drawable/dark_background"
     app:layout_constrainedWidth="true"
-    app:layout_constraintEnd_toEndOf="parent">
+    app:layout_constraintEnd_toEndOf="parent"
+    tools:context="com.example.servizi.user.ui.booking.BookFragment">
 
     <data>
 
@@ -17,8 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/FR_Tech"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.servizi.user.ui.technicians.TechniciansFragment">
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -60,8 +60,8 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -104,39 +104,24 @@
                             android:text="@string/technician_name"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@id/rating2"
+                            app:Text="@{sharedViewModel.techName}"
+                            app:layout_constraintBottom_toTopOf="@id/profession"
                             app:layout_constraintStart_toEndOf="@id/item_userImage"
-                            app:layout_constraintTop_toTopOf="@id/item_userImage"
-                            app:Text="@{sharedViewModel.techName}" />
+                            app:layout_constraintTop_toTopOf="@id/item_userImage" />
 
-                        <androidx.appcompat.widget.AppCompatRatingBar
-                            android:id="@+id/rating2"
-                            style="@style/Widget.AppCompat.RatingBar.Small"
+                        <TextView
+                            android:id="@+id/profession"
+                            style="@style/Theme.Servizi.TextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:numStars="5"
-                            android:rating="3.5"
-                            android:stepSize="0.5"
-                            android:theme="@style/RatingBar"
+                            android:layout_margin="8dp"
+                            android:text="@string/profession"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="@id/item_userImage"
                             app:layout_constraintStart_toStartOf="@id/item_Name"
                             app:layout_constraintTop_toBottomOf="@id/item_Name"
-                            app:layout_constraintVertical_bias="0.52" />
+                            app:taskTitle="@{sharedViewModel.profession}" />
 
-                        <TextView
-                            android:id="@+id/TVCourseRating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/item_Name"
-                            android:layout_marginStart="5dp"
-                            android:layout_toEndOf="@id/item_userImage"
-                            android:drawablePadding="2dp"
-                            android:text="@string/rating"
-                            app:layout_constraintBottom_toBottomOf="@id/rating2"
-                            app:layout_constraintStart_toEndOf="@id/rating2"
-                            app:layout_constraintTop_toTopOf="@id/rating2"
-                            tools:ignore="UnknownId" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -191,9 +176,9 @@
                             android:entries="@array/timeArray"
                             android:spinnerMode="dropdown"
                             android:textSize="12sp"
-                            app:layout_constraintStart_toEndOf="@id/tv_date"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tv_date"
                             app:layout_constraintTop_toBottomOf="@id/tv_select" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
@@ -232,37 +217,37 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/ti_description"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"/>
+                        android:layout_height="100dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/bt_book"
-                        android:layout_width="70dp"
-                        android:layout_height="35dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:background="@drawable/rounded_background"
-                        android:text="@string/book"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="@id/bt_cancel"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/bt_cancel"
-                        app:layout_constraintTop_toTopOf="@id/bt_cancel" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_book"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/rounded_background"
+                    android:text="@string/book"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/bt_cancel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/bt_cancel"
+                    app:layout_constraintTop_toTopOf="@id/bt_cancel" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/bt_cancel"
-                        style="@style/Widget.AppCompat.Button"
-                        android:layout_width="70dp"
-                        android:layout_height="35dp"
-                        android:layout_marginHorizontal="12dp"
-                        android:layout_marginTop="50dp"
-                        android:background="@drawable/rounded_dark_background"
-                        android:text="@string/cancel"
-                        android:textSize="12sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/bt_book"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ti_description1" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_cancel"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/rounded_dark_background"
+                    android:text="@string/cancel"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/bt_book"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ti_description1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

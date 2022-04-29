@@ -24,12 +24,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/iv_item_userImage"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_margin="10dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,19 +52,21 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:taskTitle="@{tech.firstName + ' ' + tech.lastName}" />
 
-            <androidx.appcompat.widget.AppCompatRatingBar
+            <RatingBar
                 android:id="@+id/rating"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="8dp"
                 android:numStars="5"
                 android:rating="3.5"
                 android:stepSize="0.5"
                 android:theme="@style/RatingBar"
                 app:layout_constraintBottom_toBottomOf="@id/iv_item_userImage"
-                app:layout_constraintStart_toEndOf="@id/iv_item_userImage"
-                app:layout_constraintTop_toBottomOf="@id/tv_item_Name" />
+                app:layout_constraintStart_toStartOf="@id/tv_item_Name"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_Name"
+                app:rating="@{tech.rateAvg}" />
 
             <TextView
                 android:id="@+id/idTVCourseRating"
@@ -75,9 +77,10 @@
                 android:layout_toEndOf="@id/iv_item_userImage"
                 android:drawablePadding="2dp"
                 android:text="@string/rating"
+                app:layout_constraintBottom_toBottomOf="@id/rating"
                 app:layout_constraintStart_toEndOf="@id/rating"
                 app:layout_constraintTop_toTopOf="@id/rating"
-                app:layout_constraintBottom_toBottomOf="@id/rating"
+                app:ratingNumber="@{tech.rateAvg}"
                 tools:ignore="UnknownId" />
 
             <androidx.appcompat.widget.AppCompatButton

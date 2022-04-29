@@ -11,5 +11,5 @@ data class TechnicianResponse(
     @Json(name = "city") val city: String,
     @Json(name = "governorate") val governorate: String,
     @Json(name = "profession") val profession: String,
-    @Json(name = "createdAt") val createdAt: String,
+    @Json(name = "createdAt") val createdAt: String
 )
