@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/orders" />
     <item
-        android:id="@+id/navigation_tech_settings"
+        android:id="@+id/settings_navigation"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="@string/settings" />
 </menu>
