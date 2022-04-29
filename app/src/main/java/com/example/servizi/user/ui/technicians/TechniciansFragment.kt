@@ -80,7 +80,6 @@ class TechniciansFragment :
 
         if (viewModel.techs.value == null) {
             userSharedModel.techProf.value?.let { it -> viewModel.getTechs(it) }
-            refreshApp()
         }
 
         return binding.root
@@ -88,6 +87,7 @@ class TechniciansFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        refreshApp()
 
         val loadingProgressBar = binding.loading
         val tvError = binding.tvError
@@ -293,7 +293,9 @@ class TechniciansFragment :
 
     private fun refreshApp() {
         binding.swipeToRefresh.setOnRefreshListener {
-            userSharedModel.techProf.value?.let { it -> viewModel.getTechs(it) }
+            if (viewModel.techs.value == null) {
+                userSharedModel.techProf.value?.let { it -> viewModel.getTechs(it) }
+            }
             binding.swipeToRefresh.isRefreshing = false
         }
     }
