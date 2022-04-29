@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI.navigateUp
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
-import com.example.servizi.databinding.UpdateTechProfileFragmentBinding
+import com.example.servizi.databinding.FragmentTechUpdateProfileBinding
 import com.example.servizi.technician.model.TechRepository
 import com.example.servizi.technician.model.UpdateRequest
 import com.example.servizi.technician.model.login.data.Result
@@ -21,15 +22,13 @@ import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.network.TechApiService
 import com.example.servizi.technician.ui.login.handleApiError
 import com.example.servizi.technician.ui.login.visible
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class UpdateTechProfileFragment :
-    BaseFragment<UpdateTechProfileViewModel, UpdateTechProfileFragmentBinding, TechRepository>() {
+    BaseFragment<UpdateTechProfileViewModel, FragmentTechUpdateProfileBinding, TechRepository>() {
 
     private var newData: UpdateRequest? = null
     override fun getFragmentRepository(): TechRepository {
@@ -41,7 +40,7 @@ class UpdateTechProfileFragment :
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
-    ) = UpdateTechProfileFragmentBinding.inflate(inflater, container, false)
+    ) = FragmentTechUpdateProfileBinding.inflate(inflater, container, false)
 
     override fun getViewModel() = UpdateTechProfileViewModel::class.java
 
@@ -140,8 +139,11 @@ class UpdateTechProfileFragment :
                 override fun onNothingSelected(p0: AdapterView<*>?) {
 
                 }
-
             }
+
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
         binding.updateInfo.setOnClickListener {
             showAlertDialog()
