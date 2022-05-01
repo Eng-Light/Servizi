@@ -118,14 +118,14 @@ fun bindDate(
     textView: TextView,
     date: String? = ""
 ) {
-    textView.text = "In : ${getShortDate(date!!)}"
+    textView.text = getShortDate(date!!)
 }
 
 @SuppressLint("SimpleDateFormat")
 @RequiresApi(Build.VERSION_CODES.O)
 fun getShortDate(ts: String): String {
     return Instant.parse(ts).atOffset(ZoneOffset.UTC)
-        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd  HH:mm"))
 }
 
 @SuppressLint("SetTextI18n")

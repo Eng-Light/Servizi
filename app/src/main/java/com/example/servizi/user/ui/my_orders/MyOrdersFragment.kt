@@ -178,6 +178,10 @@ class MyOrdersFragment :
                     bundle
                 )
             }
+        } else if (appointment!!.status == "cancelled" || appointment!!.status == "rejected") {
+            _popBinding!!.button.visible(false)
+            _popBinding!!.buttonComplete.visible(false)
+
         } else {
             _popBinding!!.button.visible(true)
             _popBinding!!.buttonComplete.visible(false)
