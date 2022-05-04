@@ -18,7 +18,6 @@ import com.example.servizi.technician.ui.login.visible
 import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel
 import com.example.servizi.user.model.UserData
 import com.google.android.material.snackbar.Snackbar
-import java.util.regex.Pattern
 
 class UserSignupFragment : Fragment() {
     private lateinit var viewModel: UserSignUpViewModel

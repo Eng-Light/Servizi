@@ -1,8 +1,6 @@
 package com.example.servizi.technician.ui.settings
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

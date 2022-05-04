@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.servizi.databinding.FragmentUserPagerBinding
 import com.example.servizi.technician.ui.login_signup_pager.PagerViewModel

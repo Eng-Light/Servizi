@@ -7,7 +7,6 @@ import com.example.servizi.application.BaseViewModel
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.user.model.*
 import kotlinx.coroutines.launch
-import java.util.*
 
 class TechniciansViewModel(private val userRepository: UserRepository) :
     BaseViewModel(userRepository) {

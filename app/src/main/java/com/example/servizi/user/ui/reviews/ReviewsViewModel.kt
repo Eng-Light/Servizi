@@ -2,12 +2,14 @@ package com.example.servizi.user.ui.reviews
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.servizi.application.BaseViewModel
 import com.example.servizi.technician.model.TechReviewResponse
 import com.example.servizi.technician.model.login.data.Result
-import com.example.servizi.user.model.*
+import com.example.servizi.user.model.BookAppRequestData
+import com.example.servizi.user.model.BookAppResponse
+import com.example.servizi.user.model.TechsReResponse
+import com.example.servizi.user.model.UserRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*

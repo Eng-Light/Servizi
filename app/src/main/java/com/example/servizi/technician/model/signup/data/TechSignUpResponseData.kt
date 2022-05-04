@@ -2,7 +2,6 @@ package com.example.servizi.technician.model.signup.data
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import java.lang.Exception
 
 @JsonClass(generateAdapter = true)
 data class TechSignUpResponseData(

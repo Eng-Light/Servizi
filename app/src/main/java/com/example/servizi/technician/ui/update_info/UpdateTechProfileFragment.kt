@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI.navigateUp
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory

@@ -3,10 +3,7 @@ package com.example.servizi.user.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.servizi.technician.model.TechnicianResponse
 import com.example.servizi.user.model.NewLocation
-import com.example.servizi.user.model.Technician
-import com.example.servizi.user.model.TechsReResponse
 import java.util.*
 
 class UserSharedViewModel : ViewModel() {

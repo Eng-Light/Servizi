@@ -1,7 +1,5 @@
 package com.example.servizi.technician.ui.login_signup_pager
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 

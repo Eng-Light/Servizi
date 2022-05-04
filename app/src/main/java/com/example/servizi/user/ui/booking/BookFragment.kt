@@ -28,7 +28,6 @@ import com.example.servizi.user.model.BookAppRequestData
 import com.example.servizi.user.model.UserRepository
 import com.example.servizi.user.network.UserApiService
 import com.example.servizi.user.ui.home.UserSharedViewModel
-import com.example.servizi.user.ui.technicians.TechniciansViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch

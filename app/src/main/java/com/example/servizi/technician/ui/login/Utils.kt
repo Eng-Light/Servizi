@@ -4,13 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import com.example.servizi.technician.TechnicianMainActivity
 import com.example.servizi.technician.model.login.data.Result
-import com.example.servizi.technician.ui.signup.SignUpFragment
-import com.example.servizi.user.ui.technicians.TechniciansFragment
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
 
 fun <A : Activity> Activity.startNewActivity(activity: Class<A>) {
     Intent(this, activity).also {
