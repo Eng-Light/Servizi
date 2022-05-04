@@ -202,9 +202,11 @@
                         android:gravity="center_horizontal"
                         android:paddingHorizontal="30dp"
                         android:paddingVertical="12dp"
+                        android:textStyle="bold|italic"
+                        android:textAllCaps="false"
                         android:text="@string/update_info"
                         android:textColor="@color/primaryTextColor"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
