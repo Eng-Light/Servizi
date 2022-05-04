@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.servizi.application.BaseViewModel
-import com.example.servizi.user.model.Appointment
-import com.example.servizi.technician.model.ChangeStatusResponse
 import com.example.servizi.technician.model.login.data.Result
+import com.example.servizi.user.model.Appointment
 import com.example.servizi.user.model.ReviewRequest
 import com.example.servizi.user.model.ReviewResponse
 import com.example.servizi.user.model.UserRepository

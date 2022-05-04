@@ -5,7 +5,6 @@ import android.os.Build
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.core.util.toHalf
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.servizi.technician.model.TechReviewResponse
@@ -21,8 +20,6 @@ import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 /*The @BindingAdapter annotation tells data binding to execute this binding adapter
 when a View item has the imageUrl attribute.*/
@@ -118,14 +115,14 @@ fun bindDate(
     textView: TextView,
     date: String? = ""
 ) {
-    textView.text = "In : ${getShortDate(date!!)}"
+    textView.text = getShortDate(date!!)
 }
 
 @SuppressLint("SimpleDateFormat")
 @RequiresApi(Build.VERSION_CODES.O)
 fun getShortDate(ts: String): String {
     return Instant.parse(ts).atOffset(ZoneOffset.UTC)
-        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd  HH:mm"))
 }
 
 @SuppressLint("SetTextI18n")

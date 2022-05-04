@@ -9,7 +9,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.servizi.R
 import com.example.servizi.databinding.ActivityUserMainBinding
-import com.example.servizi.user.ui.main.UserMainFragment
 
 class UserMainActivity : AppCompatActivity() {
 

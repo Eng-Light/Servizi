@@ -28,7 +28,6 @@ import com.google.android.material.snackbar.Snackbar
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.regex.Pattern
 
 /**
  * A placeholder fragment containing a simple view.
