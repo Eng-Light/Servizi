@@ -40,7 +40,7 @@
                     Text="@{sharedViewModel.profession}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
+                    android:layout_gravity="start|center"
                     android:text="@string/technician" />
 
                 <TextView
@@ -49,6 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|center"
+                    android:enabled="false"
                     android:layout_marginHorizontal="15dp"
                     android:text="@string/location"
                     android:textSize="16sp"
