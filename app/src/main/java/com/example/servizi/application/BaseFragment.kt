@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.example.servizi.MainActivity
-import com.example.servizi.application.BaseRepository
 import com.example.servizi.technician.model.login.data.UserPreferences
 import com.example.servizi.technician.ui.login.startNewActivity
 import com.example.servizi.user.network.RemoteDataSource

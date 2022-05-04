@@ -2,7 +2,6 @@ package com.example.servizi.user.model
 
 import com.example.servizi.technician.model.TechReviewResponse
 import com.squareup.moshi.Json
-import java.lang.reflect.Array
 
 data class TechsReResponse(
     @Json(name = "firstName") val firstName: String,

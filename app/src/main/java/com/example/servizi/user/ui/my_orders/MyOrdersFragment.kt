@@ -1,5 +1,6 @@
 package com.example.servizi.user.ui.my_orders
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -158,6 +159,7 @@ class MyOrdersFragment :
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showPopUpCancelOrder(): PopupWindow {
         val inflater =
             requireActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -168,15 +170,27 @@ class MyOrdersFragment :
 
         if (appointment!!.status == "completed") {
             _popBinding!!.button.visible(false)
-            _popBinding!!.buttonComplete.visible(true)
-
-            _popBinding!!.buttonComplete.setOnClickListener {
-                val bundle = bundleOf("app" to (appointment as Any))
-                dismissPopup()
-                findNavController().navigate(
-                    R.id.action_navigation_my_orders_to_userReviewBottomSheetFragment2,
-                    bundle
-                )
+            if (appointment!!.reviewed == 1) {
+                _popBinding!!.buttonComplete.visible(true)
+                _popBinding!!.buttonComplete.text = "Order Already Reviewed"
+                _popBinding!!.buttonComplete.setOnClickListener {
+                    Toast.makeText(
+                        requireContext(),
+                        "You Can Rete Order for One Time Only",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    dismissPopup()
+                }
+            } else {
+                _popBinding!!.buttonComplete.visible(true)
+                _popBinding!!.buttonComplete.setOnClickListener {
+                    val bundle = bundleOf("app" to (appointment as Any))
+                    dismissPopup()
+                    findNavController().navigate(
+                        R.id.action_navigation_my_orders_to_userReviewBottomSheetFragment2,
+                        bundle
+                    )
+                }
             }
         } else if (appointment!!.status == "cancelled" || appointment!!.status == "rejected") {
             _popBinding!!.button.visible(false)

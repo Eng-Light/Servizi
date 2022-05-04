@@ -3,7 +3,6 @@ package com.example.servizi.user.ui.settings
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.servizi.application.BaseRepository
 import com.example.servizi.application.BaseViewModel
 import com.example.servizi.technician.model.login.data.Result
 import com.example.servizi.user.model.LocUpdateResponse

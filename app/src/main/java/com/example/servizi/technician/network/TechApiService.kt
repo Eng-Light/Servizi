@@ -3,8 +3,8 @@ package com.example.servizi.technician.network
 import com.example.servizi.technician.model.*
 import com.example.servizi.technician.model.login.data.LoginData
 import com.example.servizi.technician.model.login.data.LoginResponseData
-import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
 import com.example.servizi.technician.model.signup.TechnicianData
+import com.example.servizi.technician.model.signup.data.TechSignUpResponseData
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -12,7 +12,10 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.PUT
 
 private const val BASE_URL = "https://servizi.seifahmed.com/auth/"
 
