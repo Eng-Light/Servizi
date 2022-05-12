@@ -6,7 +6,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
 /**
- * Class that handles authentication w/ login credentials and retrieves user information.
+ * Class that handles authentication w/ Api credentials and retrieves user information.
  */
 open class BaseRepository {
 

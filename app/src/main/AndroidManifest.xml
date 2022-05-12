@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.servizi">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name="com.example.servizi.application.FTApplication"
         android:allowBackup="true"
@@ -14,20 +14,20 @@
         <activity
             android:name=".technician.TechnicianMainActivity"
             android:exported="false"
+            android:hardwareAccelerated="true"
             android:label="@string/title_activity_technician_main"
-            android:theme="@style/Theme.Servizi.NoActionBar"
-            android:hardwareAccelerated="true"/>
+            android:theme="@style/Theme.Servizi.NoActionBar" />
         <activity
             android:name=".user.UserMainActivity"
             android:exported="false"
+            android:hardwareAccelerated="true"
             android:label="@string/title_activity_user_main"
-            android:theme="@style/Theme.Servizi.NoActionBar"
-            android:hardwareAccelerated="true"/>
+            android:theme="@style/Theme.Servizi.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.App.Starting"
-            android:hardwareAccelerated="true">
+            android:hardwareAccelerated="true"
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
