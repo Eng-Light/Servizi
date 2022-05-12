@@ -78,9 +78,7 @@ class LoginFragment : Fragment() {
             })
 
 
-        loginViewModel.loginResponse.observe(
-            viewLifecycleOwner
-        ) {
+        loginViewModel.loginResponse.observe(viewLifecycleOwner) {
             loadingProgressBar.visible(it is Result.Loading)
             when (it) {
                 is Result.Success -> {
