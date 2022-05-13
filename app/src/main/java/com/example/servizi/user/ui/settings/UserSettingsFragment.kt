@@ -14,6 +14,7 @@ import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.servizi.R
 import com.example.servizi.application.BaseFragment
 import com.example.servizi.application.ViewModelFactory
@@ -57,7 +58,6 @@ class UserSettingsFragment :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         userPreferences = UserPreferences(requireContext())
         binding = getFragmentBinding(inflater, container)
         val factory = ViewModelFactory(getFragmentRepository())
@@ -111,6 +111,9 @@ class UserSettingsFragment :
 
         binding.shareAppCrdV.setOnClickListener {
             shareApp()
+        }
+        binding.aboutAppCrdV.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_settings_to_about_app)
         }
     }
 
