@@ -29,7 +29,7 @@
         android:id="@+id/about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="start"
+        android:gravity="center_horizontal"
         android:paddingBottom="20dp"
         android:text="@string/about"
         android:textSize="20sp"
