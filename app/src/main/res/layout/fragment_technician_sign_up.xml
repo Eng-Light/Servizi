@@ -153,8 +153,8 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/Theme.Servizi.TextView"
                     android:id="@+id/birthDate"
+                    style="@style/Theme.Servizi.TextView"
                     android:layout_width="320dp"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
@@ -312,6 +312,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/rounded_button"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:text="@string/register"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="16sp" />
@@ -349,6 +352,9 @@
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="@string/already_have_an_account"
