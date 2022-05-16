@@ -14,7 +14,7 @@ class TechProfileViewModel(private val repository: TechRepository) : BaseViewMod
     private val _techProfile: MutableLiveData<Result<GetTechResponse>> = MutableLiveData()
     val techProfile: LiveData<Result<GetTechResponse>> = _techProfile
 
-    val techProfileData: MutableLiveData<TechnicianResponse> = MutableLiveData()
+    val techProfileData: MutableLiveData<GetTechResponse> = MutableLiveData()
 
     fun getTechProfile() {
         viewModelScope.launch {

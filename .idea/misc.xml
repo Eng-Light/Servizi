@@ -15,13 +15,6 @@
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_pager.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up.xml" value="0.21784420289855072" />
         <entry key="..\:/New folder/Servizi/app/src/main/res/layout/fragment_user_sign_up_view_model.xml" value="0.21784420289855072" />
-        <entry key="..\:/Servizim/app/src/main/res/drawable/ic_baseline_article_24.xml" value="0.2" />
-        <entry key="..\:/Servizim/app/src/main/res/layout/fragment_about_app.xml" value="0.264" />
-        <entry key="..\:/Servizim/app/src/main/res/layout/fragment_about_app2.xml" value="0.1" />
-        <entry key="..\:/Servizim/app/src/main/res/layout/fragment_scrolling.xml" value="0.176" />
-        <entry key="..\:/Servizim/app/src/main/res/layout/fragment_tech_settings.xml" value="0.16032608695652173" />
-        <entry key="..\:/Servizim/app/src/main/res/layout/fragment_user_settings.xml" value="0.2" />
-        <entry key="..\:/Servizim/app/src/main/res/layout/fragment_user_technicians.xml" value="0.21784420289855072" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/already_background.xml" value="0.222" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/dark_background.xml" value="0.218" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable-night/rounded_dark_background.xml" value="0.1705" />
@@ -40,6 +33,7 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.174" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.176" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.176" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_article_24.xml" value="0.1695" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_home_repair_service_24.xml" value="0.126" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_logout_24.xml" value="0.185" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1705" />
@@ -48,6 +42,7 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.204" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_location_on_24.xml" value="0.1835" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_mail_outline_24.xml" value="0.165" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_share_24.xml" value="0.1695" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/ic_visibility_off_24.xml" value="0.222" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/item_divider.xml" value="0.165" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/drawable/rounded.xml" value="0.226" />
@@ -74,6 +69,7 @@
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_orders_bottom_sheet.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_profile.xml" value="0.28527131782945736" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_settings.xml" value="0.2905405405405405" />
+        <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_tech_update_profile.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_login.xml" value="0.2905405405405405" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_main.xml" value="0.2756756756756757" />
         <entry key="..\:/Studying/Kotlin/Servizi/app/src/main/res/layout/fragment_technician_pager.xml" value="0.2905405405405405" />
@@ -129,17 +125,10 @@
       <item index="0" class="java.lang.String" itemvalue="com.squareup.moshi.JsonClass" />
     </list>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.2" />
-      </ProjectState>
-    </option>
   </component>
 </project>
