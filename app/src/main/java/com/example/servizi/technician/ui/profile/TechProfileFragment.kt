@@ -1,6 +1,8 @@
 package com.example.servizi.technician.ui.profile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +22,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class TechProfileFragment : BaseFragment<TechProfileViewModel, FragmentTechProfileBinding, TechRepository>() {
+class TechProfileFragment :
+    BaseFragment<TechProfileViewModel, FragmentTechProfileBinding, TechRepository>() {
     override fun getViewModel() = TechProfileViewModel::class.java
 
     override fun getFragmentRepository(): TechRepository {
@@ -63,7 +66,7 @@ class TechProfileFragment : BaseFragment<TechProfileViewModel, FragmentTechProfi
                 is Result.Success -> {
                     binding.loading.visible(false)
                     binding.techProfileContainer.visible(true)
-                    binding.techProfile = it.data
+                    viewModel.techProfileData.value = it.data
                 }
                 is Result.Loading -> {
                     binding.loading.visible(true)
@@ -79,17 +82,24 @@ class TechProfileFragment : BaseFragment<TechProfileViewModel, FragmentTechProfi
                 }
             }
         }
+
+        viewModel.techProfileData.observe(viewLifecycleOwner) {
+            binding.techProfile = it
+        }
     }
 
     private fun refreshApp() {
         binding.swipeToRefresh.setOnRefreshListener {
-            if (viewModel.techProfileData.value == null) {
                 viewModel.getTechProfile()
-            }
             binding.swipeToRefresh.isRefreshing = false
         }
         if (viewModel.techProfileData.value == null) {
             viewModel.getTechProfile()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.unbind()
     }
 }
