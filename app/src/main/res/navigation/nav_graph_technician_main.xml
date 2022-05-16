@@ -43,7 +43,15 @@
                 app:exitAnim="@anim/slide_out_left"
                 app:popEnterAnim="@anim/slide_in_left"
                 app:popExitAnim="@anim/slide_out_right" />
+            <action android:id="@+id/action_navigation_tech_settings_to__about_app"
+                app:destination="@+id/about_app" />
         </fragment>
+        <fragment
+            android:id="@+id/about_app"
+            android:name="com.example.servizi.user.ui.about_app.AboutAppFragment"
+            android:label="@string/about"
+            tools:layout="@layout/fragment_about_app"
+            />
         <fragment
             android:id="@+id/navigation_update_tech_profile"
             android:name="com.example.servizi.technician.ui.update_info.UpdateTechProfileFragment"

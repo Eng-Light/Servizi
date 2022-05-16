@@ -212,4 +212,23 @@
     <string name="Edit_Profile">Edit Profile</string>
     <string name="update_info">Update</string>
     <string name="share_servizi">Share Servizi</string>
+    <string name="about">About Us</string>
+    <string name="about_us1">
+  The best experience with fixers that are very talented and you can easily review their portfolio and pick your fixer by other’s rating.
+  </string>
+    <string name="about_us2">
+ Servizi will help you to pick the best route for your service if you want to meet them in person and show them what they’ll fix.
+</string>
+    <string name="about_us3">
+ Servizi is the only service that will help you in fixing your stuff and locating the places you want them to get fixed in.
+    </string>
+    <string name="about_us4">
+ You can easily choose your service based on previous customer ratings, location, and category. You can too, review them.
+    </string>
+    <string name="about_us5">
+ We will help you with a pricing system that will listen to your problem first, responds with details about the problem and then gives you the most convenient price to fix your damaged stuff.
+    </string>
+    <string name="about_us6">
+ We did our research and evaluated our fixers so don’t worry your things are safe with us
+    </string>
 </resources>

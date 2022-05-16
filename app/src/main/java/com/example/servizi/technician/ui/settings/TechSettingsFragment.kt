@@ -104,6 +104,9 @@ class TechSettingsFragment :
         binding.shareAppCrdV.setOnClickListener {
             shareApp()
         }
+        binding.aboutAppCrdV.setOnClickListener{
+            findNavController().navigate(R.id.action_navigation_tech_settings_to__about_app)
+        }
     }
 
     private fun showAlertDialog() {
